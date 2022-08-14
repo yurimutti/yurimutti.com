@@ -1,12 +1,18 @@
 {
   "name": "yurimutti.com",
-  "version": "0.1.0",
+  "version": "0.0.0",
   "private": true,
+  "engines": {
+    "node": ">=14.0.0",
+    "yarn": ">=1.22.0",
+    "npm": "please-use-yarn"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "prettier": "prettier --write ."
   },
   "dependencies": {
     "next": "12.2.5",
@@ -19,6 +25,7 @@
     "@types/react-dom": "18.0.6",
     "eslint": "8.21.0",
     "eslint-config-next": "12.2.5",
+    "prettier": "^2.7.1",
     "typescript": "4.7.4"
   }
 }
