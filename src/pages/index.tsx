@@ -1,7 +1,8 @@
+import User from '@features/User';
 import type { NextPage } from 'next';
 
 const Home: NextPage = () => {
-  return <div>HelloWorld</div>;
+  return <User />;
 };
 
 export default Home;
