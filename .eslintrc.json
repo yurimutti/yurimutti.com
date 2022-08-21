@@ -10,7 +10,6 @@
     {
       "files": ["*.stories.@(ts|tsx|js|jsx|mjs|cjs)"],
       "rules": {
-        // example of overriding a rule
         "storybook/hierarchy-separator": "error"
       }
     }
@@ -22,16 +21,17 @@
         "newlinesBetween": "always",
         "groups": [
           "/^@/storybook/",
+          "/^react/",
           "module",
-          "/^@/styles/",
-          "/^@/public/",
-          "/^@/utils/",
           "/^@/components/",
           "/^@/features/",
-          "/^@/types/",
           "/^@/hooks/",
+          "/^@/utils/",
+          "/^@/types/",
           "/^@/config/",
+          "/^@/public/",
           "/^@/constants/",
+          "/^@/styles/",
           ["parent", "sibling", "index"]
         ],
         "alphabetize": { "order": "asc", "ignoreCase": true }
