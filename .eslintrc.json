@@ -5,7 +5,7 @@
     "next/core-web-vitals",
     "eslint:recommended"
   ],
-  "plugins": ["prettier", "eslint-plugin-import-helpers"],
+  "plugins": ["eslint-plugin-import-helpers"],
   "overrides": [
     {
       "files": ["*.stories.@(ts|tsx|js|jsx|mjs|cjs)"],
@@ -16,12 +16,12 @@
     }
   ],
   "rules": {
-    "prettier/prettier": "error",
     "import-helpers/order-imports": [
       "warn",
       {
         "newlinesBetween": "always",
         "groups": [
+          "/^@/storybook/",
           "module",
           "/^@/styles/",
           "/^@/public/",
