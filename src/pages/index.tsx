@@ -1,4 +1,4 @@
-import User from '@features/User';
+import User from '@features/user';
 import type { NextPage } from 'next';
 
 const Home: NextPage = () => {
