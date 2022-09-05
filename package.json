@@ -27,7 +27,8 @@
     "@stitches/react": "^1.2.8",
     "next": "12.2.5",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "zustand": "^4.1.1"
   },
   "devDependencies": {
     "@babel/core": "^7.18.10",
@@ -44,7 +45,6 @@
     "@types/node": "18.7.3",
     "@types/react": "18.0.17",
     "@types/react-dom": "18.0.6",
-    "framer-motion": "^7.2.1",
     "babel-loader": "^8.2.5",
     "cross-env": "^7.0.3",
     "eslint": "8.21.0",
@@ -52,6 +52,7 @@
     "eslint-import-resolver-typescript": "^2.5.0",
     "eslint-plugin-import-helpers": "^1.2.1",
     "eslint-plugin-storybook": "^0.5.7",
+    "framer-motion": "^7.2.1",
     "lint-staged": "^13.0.3",
     "prettier": "^2.7.1",
     "react-hook-form": "^7.34.2",
