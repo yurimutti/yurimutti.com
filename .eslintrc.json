@@ -20,8 +20,8 @@
       {
         "newlinesBetween": "always",
         "groups": [
-          "/^@/storybook/",
           "/^react/",
+          "/^@/storybook/",
           "module",
           "/^@/components/",
           "/^@/features/",
