@@ -1,16 +1,12 @@
-import { styled } from '@stitches/react';
+import { styled } from '@/styles';
 
-const Button = styled('button', {
-  backgroundColor: 'gainsboro',
-  borderRadius: '9999px',
-  fontSize: '13px',
-  padding: '10px 15px',
-  '&:hover': {
-    backgroundColor: 'lightgray',
-  },
+const Div = styled('div', {
+  backgroundColor: '$indigo8',
+  color: 'white',
 });
+
 function User() {
-  return <Button>User</Button>;
+  return <Div>User</Div>;
 }
 
 export default User;
