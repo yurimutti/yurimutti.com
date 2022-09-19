@@ -1,9 +1,9 @@
 import type { NextPage } from 'next';
 
-import User from '@/features/user';
+import { Navbar } from '@/components/layouts/navbar';
 
 const Home: NextPage = () => {
-  return <User />;
+  return <Navbar />;
 };
 
 export default Home;
