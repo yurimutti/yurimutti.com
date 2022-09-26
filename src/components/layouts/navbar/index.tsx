@@ -1,8 +1,8 @@
 // import { motion, AnimateSharedLayout } from 'framer-motion'
-
 import Link from 'next/link';
 
 import { Logo } from '@/components/logo';
+import { ToggleLang } from '@/components/toggle-lang';
 import { ToggleTheme } from '@/components/toggle-theme';
 
 import {
@@ -13,6 +13,7 @@ import {
   ListItem,
   ButtonLogo,
   Anchor,
+  ToggleArea,
 } from './styles';
 
 const pages = ['About', 'Projects', 'Blog', 'Discord'];
@@ -37,7 +38,10 @@ export function Navbar() {
             ))}
           </List>
         </Nav>
-        <ToggleTheme />
+        <ToggleArea>
+          <ToggleTheme />
+          <ToggleLang />
+        </ToggleArea>
       </Header>
     </Container>
   );

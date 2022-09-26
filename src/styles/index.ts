@@ -43,12 +43,12 @@ export const {
       11: '80px',
     },
     media: {
-      bp1: '(max-width: 576px)',
-      bp2: '(max-width: 768px)',
-      bp3: '(max-width: 992px)',
-      bp4: '(max-width: 1024px)',
-      bp5: '(max-width: 1200px)',
-      bp6: '(min-width: 1400px)',
+      xs: '(max-width: 576px)',
+      sm: '(max-width: 768px)',
+      md: '(max-width: 992px)',
+      lg: '(max-width: 1024px)',
+      xl: '(max-width: 1200px)',
+      xxl: '(min-width: 1400px)',
     },
     fonts: {
       body: 'Inter, sans-serif',
@@ -76,7 +76,12 @@ export const lightTheme = createTheme({
 });
 
 const globalStyles = globalCss({
-  '*': { margin: 0, padding: 0, fontFamily: '$body' },
+  '*': {
+    margin: 0,
+    padding: 0,
+    fontFamily: '$body',
+    boxSizing: 'border-box',
+  },
   'body, html': {
     background: '$indigo1',
     a: {

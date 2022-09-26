@@ -6,6 +6,10 @@ export const Header = styled('header', {
   display: 'flex',
   justifyContent: 'space-between',
   alignItems: 'center',
+
+  '@md': {
+    padding: '$2 0',
+  },
 });
 
 export const Container = styled('div', {
@@ -21,8 +25,17 @@ export const List = styled('ul', {
   display: 'flex',
   listStyle: 'none',
   gap: '$6',
+
+  '@md': {
+    gap: '$2',
+  },
 });
 
 export const ListItem = styled('li', {});
 
 export const Anchor = styled('a', {});
+
+export const ToggleArea = styled('div', {
+  display: 'flex',
+  gap: '$3',
+});
