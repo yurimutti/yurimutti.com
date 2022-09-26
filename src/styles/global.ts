@@ -1,6 +1,4 @@
-import { createStitches } from '@stitches/react';
-
-export const { globalCss } = createStitches({});
+import { globalCss } from '@/styles';
 
 export const globalStyles = globalCss({
   '*': {
