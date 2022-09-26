@@ -42,14 +42,6 @@ export const {
       10: '72px',
       11: '80px',
     },
-    media: {
-      xs: '(max-width: 576px)',
-      sm: '(max-width: 768px)',
-      md: '(max-width: 992px)',
-      lg: '(max-width: 1024px)',
-      xl: '(max-width: 1200px)',
-      xxl: '(min-width: 1400px)',
-    },
     fonts: {
       body: 'Inter, sans-serif',
       heading: 'Source Sans Pro, sans-serif',
@@ -60,6 +52,14 @@ export const {
     radii: {
       borderRadius: '8px',
     },
+  },
+  media: {
+    xs: '(max-width: 576px)',
+    sm: '(max-width: 768px)',
+    md: '(max-width: 992px)',
+    lg: '(max-width: 1024px)',
+    xl: '(max-width: 1200px)',
+    xxl: '(min-width: 1400px)',
   },
   themeMap: {
     ...defaultThemeMap,

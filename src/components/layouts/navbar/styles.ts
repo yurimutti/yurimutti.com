@@ -27,7 +27,7 @@ export const List = styled('ul', {
   gap: '$6',
 
   '@md': {
-    gap: '$2',
+    gap: '$3',
   },
 });
 
