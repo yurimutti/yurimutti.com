@@ -50,7 +50,7 @@ export const {
       durations: '0.2s',
     },
     radii: {
-      borderRadius: '8px',
+      default: '8px',
     },
   },
   media: {

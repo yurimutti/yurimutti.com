@@ -10,7 +10,7 @@ export const Theme = styled('button', {
 
   svg: {
     color: '$slate12',
-    width: '$3',
-    height: '$3',
+    width: '$4',
+    height: '$4',
   },
 });

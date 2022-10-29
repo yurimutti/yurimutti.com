@@ -1,4 +1,4 @@
-// import { motion, AnimateSharedLayout } from 'framer-motion'
+import { AnimateSharedLayout } from 'framer-motion';
 import Link from 'next/link';
 
 import { Logo } from '@/components/logo';
@@ -22,27 +22,29 @@ export function Navbar() {
   // const router = useRouter();
 
   return (
-    <Container>
-      <Header>
-        <Link href="/">
-          <ButtonLogo>
-            <Logo />
-          </ButtonLogo>
-        </Link>
-        <Nav>
-          <List>
-            {pages.map((page) => (
-              <ListItem key={page}>
-                <Anchor href="">{page}</Anchor>
-              </ListItem>
-            ))}
-          </List>
-        </Nav>
-        <ToggleArea>
-          <ToggleTheme />
-          <ToggleLang />
-        </ToggleArea>
-      </Header>
-    </Container>
+    <AnimateSharedLayout>
+      <Container>
+        <Header>
+          <Link href="/">
+            <ButtonLogo>
+              <Logo />
+            </ButtonLogo>
+          </Link>
+          <Nav>
+            <List>
+              {pages.map((page) => (
+                <ListItem key={page}>
+                  <Anchor href="">{page}</Anchor>
+                </ListItem>
+              ))}
+            </List>
+          </Nav>
+          <ToggleArea>
+            <ToggleTheme />
+            <ToggleLang />
+          </ToggleArea>
+        </Header>
+      </Container>
+    </AnimateSharedLayout>
   );
 }

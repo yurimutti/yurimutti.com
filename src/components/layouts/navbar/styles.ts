@@ -1,13 +1,13 @@
 import { styled } from '@/styles';
 
 export const Header = styled('header', {
-  color: '$slate12',
   padding: '$4 0',
   display: 'flex',
   justifyContent: 'space-between',
   alignItems: 'center',
+  flexWrap: 'wrap',
 
-  '@md': {
+  '@xs': {
     padding: '$2 0',
   },
 });
@@ -19,23 +19,33 @@ export const Container = styled('div', {
 
 export const ButtonLogo = styled('a', { cursor: 'pointer' });
 
-export const Nav = styled('nav', {});
+export const Nav = styled('nav', {
+  '@xs': {
+    order: '1',
+  },
+});
 
 export const List = styled('ul', {
   display: 'flex',
   listStyle: 'none',
   gap: '$6',
 
-  '@md': {
+  '@xs': {
     gap: '$3',
   },
 });
 
 export const ListItem = styled('li', {});
 
-export const Anchor = styled('a', {});
+export const Anchor = styled('a', {
+  textTransform: 'uppercase',
+});
 
 export const ToggleArea = styled('div', {
   display: 'flex',
-  gap: '$3',
+  gap: '$6',
+
+  '@xs': {
+    gap: '$3',
+  },
 });

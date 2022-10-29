@@ -7,12 +7,14 @@ export const globalStyles = globalCss({
     fontFamily: '$body',
     boxSizing: 'border-box',
   },
+
   'body, html': {
     background: '$indigo1',
     a: {
       color: '$slate12',
       textDecoration: 'none',
     },
+
     img: {
       maxWidth: '100%',
     },

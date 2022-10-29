@@ -1,25 +1,17 @@
 import { styled } from '@/styles';
 
-export const Lang = styled('button', {
-  color: '$slate12',
-  width: '$6',
-  height: '$6',
+export const Lang = styled('div', {
   display: 'flex',
   border: 'none',
   alignItems: 'center',
-  flexDirection: 'column',
   justifyContent: 'center',
+  flexDirection: 'column',
   cursor: 'pointer',
-  backgroundColor: 'transparent',
+  gap: '$2',
 
-  ':first-child': {
-    '&:after': {
-      content: '',
-      width: '$2',
-      display: 'block',
-      height: '0.0625rem',
-      backgroundColor: '$slate11',
-      margin: '0 auto',
-    },
+  svg: {
+    borderRadius: '$default',
+    width: '$4',
+    height: '$4',
   },
 });

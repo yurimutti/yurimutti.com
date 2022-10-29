@@ -1,10 +1,12 @@
+import { US, BR } from 'country-flag-icons/react/3x2';
+
 import { Lang } from './styles';
 
 export function ToggleLang() {
   return (
     <Lang>
-      <span>PT</span>
-      <span>BR</span>
+      <BR title="Brazil" />
+      <US title="United States" />
     </Lang>
   );
 }
