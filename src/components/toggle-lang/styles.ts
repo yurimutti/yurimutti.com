@@ -1,17 +1,12 @@
 import { styled } from '@/styles';
 
 export const Lang = styled('div', {
-  display: 'flex',
-  border: 'none',
   alignItems: 'center',
-  justifyContent: 'center',
-  flexDirection: 'column',
+  border: 'none',
   cursor: 'pointer',
+  display: 'flex',
+  flexDirection: 'column',
   gap: '$2',
-
-  svg: {
-    borderRadius: '$default',
-    width: '$4',
-    height: '$4',
-  },
+  justifyContent: 'center',
+  color: 'white',
 });

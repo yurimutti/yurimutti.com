@@ -1,3 +1,5 @@
+import { motion } from 'framer-motion';
+
 import { styled } from '@/styles';
 
 export const Header = styled('header', {
@@ -37,8 +39,19 @@ export const List = styled('ul', {
 
 export const ListItem = styled('li', {});
 
-export const Anchor = styled('a', {
-  textTransform: 'uppercase',
+export const Anchor = styled(motion.a, {
+  position: 'relative',
+});
+
+export const NavHovered = styled(motion.span, {
+  position: 'absolute',
+  height: '3px',
+  width: '100%',
+  top: '24px',
+  left: '0',
+  right: '0',
+  background: '$teal9',
+  borderRadius: '4px',
 });
 
 export const ToggleArea = styled('div', {
