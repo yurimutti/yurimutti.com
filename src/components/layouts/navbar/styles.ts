@@ -21,11 +21,7 @@ export const Container = styled('div', {
 
 export const ButtonLogo = styled('a', { cursor: 'pointer' });
 
-export const Nav = styled('nav', {
-  '@xs': {
-    order: '1',
-  },
-});
+export const Nav = styled('nav', {});
 
 export const List = styled('ul', {
   display: 'flex',
@@ -40,19 +36,19 @@ export const List = styled('ul', {
 export const ListItem = styled('li', {});
 
 export const Anchor = styled(motion.a, {
+  color: '$slate11',
   position: 'relative',
+  height: '40px',
+  borderRadius: '$default',
+  padding: '$2',
+
+  '&:hover': {
+    backgroundColor: '$slate5',
+    color: '$slate12',
+  },
 });
 
-export const NavHovered = styled(motion.span, {
-  position: 'absolute',
-  height: '3px',
-  width: '100%',
-  top: '24px',
-  left: '0',
-  right: '0',
-  background: '$teal9',
-  borderRadius: '4px',
-});
+export const NavHovered = styled(motion.span, {});
 
 export const ToggleArea = styled('div', {
   display: 'flex',
