@@ -5,7 +5,6 @@ import Link from 'next/link';
 // import { useRouter } from 'next/router';
 
 import { Logo } from '@/components/logo';
-import { ToggleLang } from '@/components/toggle-lang';
 import { ToggleTheme } from '@/components/toggle-theme';
 
 import {
@@ -36,21 +35,17 @@ export function Navbar() {
             </ButtonLogo>
           </Link>
           <Nav>
-            <List>
+            <List onHoverEnd={() => setHovered('')}>
               {pages.map((page) => {
                 const isHovered = hovered === page;
                 // const path = `/${page.toLowerCase()}`;
 
                 return (
                   <ListItem key={page}>
-                    <Anchor
-                      href="#"
-                      onHoverStart={() => setHovered(page)}
-                      onHoverEnd={() => setHovered('')}
-                    >
+                    <Anchor href="#" onHoverStart={() => setHovered(page)}>
                       {isHovered && (
                         <NavHovered
-                          layoutId="underline"
+                          layoutId="shape"
                           initial={{ opacity: 0 }}
                           animate={{ opacity: 1 }}
                           exit={{ opacity: 0 }}
@@ -65,7 +60,6 @@ export function Navbar() {
           </Nav>
           <ToggleArea>
             <ToggleTheme />
-            <ToggleLang />
           </ToggleArea>
         </Header>
       </Container>

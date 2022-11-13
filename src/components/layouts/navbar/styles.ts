@@ -23,7 +23,7 @@ export const ButtonLogo = styled('a', { cursor: 'pointer' });
 
 export const Nav = styled('nav', {});
 
-export const List = styled('ul', {
+export const List = styled(motion.ul, {
   display: 'flex',
   listStyle: 'none',
   gap: '$6',
@@ -39,16 +39,21 @@ export const Anchor = styled(motion.a, {
   color: '$slate11',
   position: 'relative',
   height: '40px',
-  borderRadius: '$default',
+  zIndex: 1,
   padding: '$2',
 
   '&:hover': {
-    backgroundColor: '$slate5',
     color: '$slate12',
   },
 });
 
-export const NavHovered = styled(motion.span, {});
+export const NavHovered = styled(motion.span, {
+  position: 'absolute',
+  inset: 0,
+  backgroundColor: '$slate5',
+  borderRadius: '$default',
+  zIndex: -1,
+});
 
 export const ToggleArea = styled('div', {
   display: 'flex',
