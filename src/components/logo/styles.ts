@@ -8,10 +8,14 @@ export const Content = styled('span', {
   letterSpacing: '2px',
   padding: '$2',
   height: '40px',
-  transition: 'all $durations ease-in-out',
+  transition: 'all $durations ease',
   borderRadius: '$default',
 
   '&:hover': {
     backgroundColor: '$slate6',
+  },
+
+  '@sm': {
+    fontSize: 'medium',
   },
 });

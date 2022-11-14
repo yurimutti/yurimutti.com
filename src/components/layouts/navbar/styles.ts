@@ -9,8 +9,8 @@ export const Header = styled('header', {
   alignItems: 'center',
   flexWrap: 'wrap',
 
-  '@xs': {
-    padding: '$2 0',
+  '@sm': {
+    padding: '$3 0',
   },
 });
 
@@ -21,16 +21,15 @@ export const Container = styled('div', {
 
 export const ButtonLogo = styled('a', { cursor: 'pointer' });
 
-export const Nav = styled('nav', {});
+export const Nav = styled('nav', {
+  '@sm': {
+    display: 'none',
+  },
+});
 
 export const List = styled(motion.ul, {
   display: 'flex',
-  listStyle: 'none',
   gap: '$6',
-
-  '@xs': {
-    gap: '$3',
-  },
 });
 
 export const ListItem = styled('li', {});
@@ -51,12 +50,51 @@ export const NavHovered = styled(motion.span, {
   zIndex: -1,
 });
 
+export const NavMobile = styled('button', {
+  display: 'none',
+  cursor: 'pointer',
+  border: 'none',
+  background: 'transparent',
+
+  svg: {
+    color: '$slate12',
+    width: '$4',
+    height: '$4',
+  },
+
+  '@sm': {
+    display: 'flex',
+    alignItems: 'center',
+  },
+});
+
+export const NavMobileOverlay = styled('div', {
+  position: 'fixed',
+  inset: 0,
+  backgroundColor: '$slate6',
+  height: '100vh',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  flexDirection: 'column',
+
+  nav: {
+    color: '$slate12',
+  },
+
+  '.closeMobileMenu': {
+    position: 'absolute',
+    top: '$3',
+    right: '$3',
+  },
+});
+
 export const ToggleArea = styled('div', {
   display: 'flex',
   alignItems: 'center',
   gap: '$6',
 
-  '@xs': {
-    gap: '$3',
+  '@sm': {
+    display: 'none',
   },
 });

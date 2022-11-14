@@ -18,5 +18,9 @@ export const globalStyles = globalCss({
     img: {
       maxWidth: '100%',
     },
+
+    ul: {
+      listStyle: 'none',
+    },
   },
 });

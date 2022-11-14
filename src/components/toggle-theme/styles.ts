@@ -10,7 +10,7 @@ export const Theme = styled('button', {
   color: '$slate12',
   padding: '$2',
   height: '40px',
-  transition: 'all $durations ease-in-out',
+  transition: 'all $durations ease',
   borderRadius: '$default',
 
   svg: {

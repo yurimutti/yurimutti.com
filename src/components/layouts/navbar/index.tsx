@@ -8,17 +8,8 @@ import { Logo } from '@/components/logo';
 import { ToggleLang } from '@/components/toggle-lang';
 import { ToggleTheme } from '@/components/toggle-theme';
 
-import {
-  Anchor,
-  ButtonLogo,
-  Container,
-  Header,
-  List,
-  ListItem,
-  Nav,
-  ToggleArea,
-  NavHovered,
-} from './styles';
+import { NavMobile } from './NavMobile';
+import * as S from './styles';
 
 const pages = ['About', 'Blog', 'Discord', 'Projects'];
 
@@ -28,24 +19,25 @@ export function Navbar() {
 
   return (
     <AnimateSharedLayout>
-      <Container>
-        <Header>
+      <S.Container>
+        <S.Header>
           <Link href="/">
-            <ButtonLogo>
+            <S.ButtonLogo>
               <Logo />
-            </ButtonLogo>
+            </S.ButtonLogo>
           </Link>
-          <Nav>
-            <List onHoverEnd={() => setHovered('')}>
+          <NavMobile pages={pages} />
+          <S.Nav>
+            <S.List onHoverEnd={() => setHovered('')}>
               {pages.map((page) => {
                 const isHovered = hovered === page;
                 // const path = `/${page.toLowerCase()}`;
 
                 return (
-                  <ListItem key={page}>
-                    <Anchor href="#" onHoverStart={() => setHovered(page)}>
+                  <S.ListItem key={page}>
+                    <S.Anchor href="#" onHoverStart={() => setHovered(page)}>
                       {isHovered && (
-                        <NavHovered
+                        <S.NavHovered
                           layoutId="shape"
                           initial={{ opacity: 0 }}
                           animate={{ opacity: 1 }}
@@ -53,18 +45,18 @@ export function Navbar() {
                         />
                       )}
                       {page}
-                    </Anchor>
-                  </ListItem>
+                    </S.Anchor>
+                  </S.ListItem>
                 );
               })}
-            </List>
-          </Nav>
-          <ToggleArea>
+            </S.List>
+          </S.Nav>
+          <S.ToggleArea>
             <ToggleTheme />
             <ToggleLang />
-          </ToggleArea>
-        </Header>
-      </Container>
+          </S.ToggleArea>
+        </S.Header>
+      </S.Container>
     </AnimateSharedLayout>
   );
 }
