@@ -36,27 +36,24 @@ export const List = styled(motion.ul, {
 export const ListItem = styled('li', {});
 
 export const Anchor = styled(motion.a, {
-  color: '$slate11',
   position: 'relative',
   height: '40px',
   zIndex: 1,
   padding: '$2',
-
-  '&:hover': {
-    color: '$slate12',
-  },
+  color: '$slate12',
 });
 
 export const NavHovered = styled(motion.span, {
   position: 'absolute',
   inset: 0,
-  backgroundColor: '$slate5',
+  backgroundColor: '$slate6',
   borderRadius: '$default',
   zIndex: -1,
 });
 
 export const ToggleArea = styled('div', {
   display: 'flex',
+  alignItems: 'center',
   gap: '$6',
 
   '@xs': {

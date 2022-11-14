@@ -44,7 +44,14 @@ export function Navbar() {
                 return (
                   <ListItem key={page}>
                     <Anchor href="#" onHoverStart={() => setHovered(page)}>
-                      {isHovered && <NavHovered layoutId="shape" />}
+                      {isHovered && (
+                        <NavHovered
+                          layoutId="shape"
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          exit={{ opacity: 0 }}
+                        />
+                      )}
                       {page}
                     </Anchor>
                   </ListItem>

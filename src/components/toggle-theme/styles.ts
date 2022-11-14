@@ -6,13 +6,20 @@ export const Theme = styled('button', {
   justifyContent: 'center',
   cursor: 'pointer',
   backgroundColor: 'transparent',
-  width: '$8',
-  height: '$8',
   border: 'none',
+  color: '$slate12',
+  padding: '$2',
+  height: '40px',
+  transition: 'all $durations ease-in-out',
+  borderRadius: '$default',
 
   svg: {
     color: '$slate12',
     width: '$4',
     height: '$4',
+  },
+
+  '&:hover': {
+    backgroundColor: '$slate6',
   },
 });
