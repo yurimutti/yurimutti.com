@@ -5,6 +5,7 @@ import Link from 'next/link';
 // import { useRouter } from 'next/router';
 
 import { Logo } from '@/components/logo';
+import { ToggleLang } from '@/components/toggle-lang';
 import { ToggleTheme } from '@/components/toggle-theme';
 
 import {
@@ -43,14 +44,7 @@ export function Navbar() {
                 return (
                   <ListItem key={page}>
                     <Anchor href="#" onHoverStart={() => setHovered(page)}>
-                      {isHovered && (
-                        <NavHovered
-                          layoutId="shape"
-                          initial={{ opacity: 0 }}
-                          animate={{ opacity: 1 }}
-                          exit={{ opacity: 0 }}
-                        />
-                      )}
+                      {isHovered && <NavHovered layoutId="shape" />}
                       {page}
                     </Anchor>
                   </ListItem>
@@ -60,6 +54,7 @@ export function Navbar() {
           </Nav>
           <ToggleArea>
             <ToggleTheme />
+            <ToggleLang />
           </ToggleArea>
         </Header>
       </Container>
