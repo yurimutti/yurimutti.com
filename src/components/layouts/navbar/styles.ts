@@ -2,6 +2,11 @@ import { motion } from 'framer-motion';
 
 import { styled } from '@/styles';
 
+export const Container = styled('div', {
+  width: '100%',
+  padding: '0 $4',
+});
+
 export const Header = styled('header', {
   padding: '$4 0',
   display: 'flex',
@@ -12,11 +17,6 @@ export const Header = styled('header', {
   '@sm': {
     padding: '$3 0',
   },
-});
-
-export const Container = styled('div', {
-  maxWidth: '95%',
-  margin: '0 auto',
 });
 
 export const ButtonLogo = styled('a', {

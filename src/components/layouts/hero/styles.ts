@@ -4,6 +4,8 @@ import { backgroundGradient } from '@/styles/global';
 export const Section = styled('section', {
   maxWidth: '1200px',
   margin: '$6 auto',
+  flex: 1,
+  position: 'relative',
 });
 
 export const Text = styled('p', {
