@@ -1,6 +1,8 @@
+import { motion } from 'framer-motion';
+
 import { styled } from '@/styles';
 
-export const SocialIconsList = styled('ul', {
+export const SocialIconsList = styled(motion.ul, {
   display: 'flex',
   alignItems: 'center',
   gap: '$4',
@@ -8,7 +10,7 @@ export const SocialIconsList = styled('ul', {
 
 export const SocialIconsItem = styled('li', {});
 
-export const SocialIconsLink = styled('a', {
+export const SocialIconsLink = styled(motion.a, {
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
@@ -16,15 +18,13 @@ export const SocialIconsLink = styled('a', {
   height: '40px',
   transition: 'all $durations ease',
   borderRadius: '$default',
+  position: 'relative',
+  zIndex: 1,
 
   svg: {
     color: '$slate12',
     width: '$4',
     height: '$4',
-  },
-
-  '&:hover': {
-    backgroundColor: '$slate6',
   },
 
   '@sm': {
@@ -33,4 +33,12 @@ export const SocialIconsLink = styled('a', {
       height: '$3',
     },
   },
+});
+
+export const SocialIconsHovered = styled(motion.span, {
+  position: 'absolute',
+  inset: 0,
+  backgroundColor: '$slate6',
+  borderRadius: '$default',
+  zIndex: -1,
 });

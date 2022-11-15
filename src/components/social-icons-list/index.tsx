@@ -1,33 +1,59 @@
+import { useState } from 'react';
 import { SiGithub, SiTwitter, SiLinkedin, SiInstagram } from 'react-icons/si';
 
 import * as S from './styles';
 
+const socialNetworks = [
+  {
+    name: 'github',
+    icon: <SiGithub />,
+    link: '/',
+  },
+  {
+    name: 'twitter',
+    icon: <SiTwitter />,
+    link: '/',
+  },
+  {
+    name: 'linkedin',
+    icon: <SiLinkedin />,
+    link: '/',
+  },
+  {
+    name: 'instagram',
+    icon: <SiInstagram />,
+    link: '/',
+  },
+];
+
 export function SocialIconsList() {
+  const [hovered, setHovered] = useState('');
+
   return (
-    <S.SocialIconsList>
-      <S.SocialIconsItem>
-        <S.SocialIconsLink href="#">
-          <SiGithub />
-        </S.SocialIconsLink>
-      </S.SocialIconsItem>
+    <S.SocialIconsList onHoverEnd={() => setHovered('')}>
+      {socialNetworks.map(({ name, icon, link }) => {
+        const isHovered = hovered === name;
 
-      <S.SocialIconsItem>
-        <S.SocialIconsLink href="#">
-          <SiTwitter />
-        </S.SocialIconsLink>
-      </S.SocialIconsItem>
+        return (
+          <S.SocialIconsItem key={name}>
+            <S.SocialIconsLink
+              href={link}
+              onHoverStart={() => setHovered(name)}
+            >
+              {icon}
 
-      <S.SocialIconsItem>
-        <S.SocialIconsLink href="#">
-          <SiLinkedin />
-        </S.SocialIconsLink>
-      </S.SocialIconsItem>
-
-      <S.SocialIconsItem>
-        <S.SocialIconsLink href="#">
-          <SiInstagram />
-        </S.SocialIconsLink>
-      </S.SocialIconsItem>
+              {isHovered && (
+                <S.SocialIconsHovered
+                  layoutId="shape"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                />
+              )}
+            </S.SocialIconsLink>
+          </S.SocialIconsItem>
+        );
+      })}
     </S.SocialIconsList>
   );
 }

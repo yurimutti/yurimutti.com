@@ -1,6 +1,7 @@
 import { SocialIconsList } from '@/components/social-icons-list';
 
 import * as S from './styles';
+
 export function Footer() {
   return (
     <S.Footer>

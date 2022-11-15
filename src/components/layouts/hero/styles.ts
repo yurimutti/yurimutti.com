@@ -13,7 +13,7 @@ export const Text = styled('p', {
 });
 
 export const HeroGradient = styled('strong', {
-  background: 'linear-gradient(-45deg,#21D4FD,#B721FF 100%',
+  background: 'linear-gradient(-45deg,#21D4FD,#B721FF 100%)',
   backgroundClip: 'text',
   WebkitBackgroundClip: 'text',
   WebkitTextFillColor: 'transparent',
