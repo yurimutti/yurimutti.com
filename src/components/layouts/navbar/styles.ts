@@ -19,7 +19,9 @@ export const Container = styled('div', {
   margin: '0 auto',
 });
 
-export const ButtonLogo = styled('a', { cursor: 'pointer' });
+export const ButtonLogo = styled('a', {
+  cursor: 'pointer',
+});
 
 export const Nav = styled('nav', {
   '@sm': {

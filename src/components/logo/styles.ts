@@ -1,6 +1,7 @@
 import { styled } from '@/styles';
 
 export const Logo = styled('span', {
+  color: '$slate12',
   fontSize: 'x-large',
   fontFamily: '$heading',
   fontWeight: 'bold',
