@@ -3,7 +3,7 @@ import { backgroundGradient } from '@/styles/global';
 
 export const Section = styled('section', {
   maxWidth: '1200px',
-  margin: '$6 auto',
+  margin: '$11 auto 0 auto',
   flex: 1,
   position: 'relative',
 });
