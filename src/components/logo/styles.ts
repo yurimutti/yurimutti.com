@@ -10,6 +10,7 @@ export const Logo = styled('span', {
   height: '40px',
   transition: 'all $durations ease',
   borderRadius: '$default',
+  textTransform: 'uppercase',
 
   '&:hover': {
     backgroundColor: '$slate6',
