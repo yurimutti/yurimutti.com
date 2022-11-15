@@ -1,4 +1,4 @@
-import { globalCss } from '@/styles';
+import { globalCss, keyframes } from '@/styles';
 
 export const globalStyles = globalCss({
   '*': {
@@ -28,4 +28,10 @@ export const globalStyles = globalCss({
       cursor: 'pointer',
     },
   },
+});
+
+export const backgroundGradient = keyframes({
+  '0%': { backgroundPosition: '0% 50%' },
+  '50%': { backgroundPosition: '100% 50%' },
+  '100%': { backgroundPosition: '0% 50%' },
 });

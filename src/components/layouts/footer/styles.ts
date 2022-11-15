@@ -12,7 +12,7 @@ export const Footer = styled('footer', {
 export const Container = styled('div', {
   maxWidth: '95%',
   margin: '0 auto',
-  paddingTop: '$2',
+  padding: '$3 0',
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
