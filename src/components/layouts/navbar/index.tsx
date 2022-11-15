@@ -8,7 +8,7 @@ import { Logo } from '@/components/logo';
 import { ToggleLang } from '@/components/toggle-lang';
 import { ToggleTheme } from '@/components/toggle-theme';
 
-import { NavMobile } from './NavMobile';
+import { NavMobile } from './nav-mobile';
 import * as S from './styles';
 
 const pages = ['About', 'Blog', 'Discord', 'Projects'];

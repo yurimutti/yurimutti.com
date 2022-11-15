@@ -1,5 +1,5 @@
-import { Content } from './styles';
+import * as S from './styles';
 
 export function Logo() {
-  return <Content>Yuri Mutti</Content>;
+  return <S.Logo>Yuri Mutti</S.Logo>;
 }

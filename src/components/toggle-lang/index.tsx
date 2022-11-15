@@ -1,12 +1,12 @@
 import { MdLanguage } from 'react-icons/md';
 
-import { Lang } from './styles';
+import * as S from './styles';
 
 export function ToggleLang() {
   return (
-    <Lang>
+    <S.Lang>
       <MdLanguage />
       PT-BR
-    </Lang>
+    </S.Lang>
   );
 }

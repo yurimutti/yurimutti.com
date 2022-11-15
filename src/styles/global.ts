@@ -10,6 +10,7 @@ export const globalStyles = globalCss({
 
   'body, html': {
     background: '$indigo1',
+
     a: {
       color: '$slate12',
       textDecoration: 'none',
@@ -21,6 +22,10 @@ export const globalStyles = globalCss({
 
     ul: {
       listStyle: 'none',
+    },
+
+    button: {
+      cursor: 'pointer',
     },
   },
 });

@@ -1,11 +1,12 @@
 import { MdNightlight } from 'react-icons/md';
 
-import { Theme } from './styles';
+import * as S from './styles';
 
 export function ToggleTheme() {
   return (
-    <Theme>
+    <S.Theme>
       <MdNightlight />
-    </Theme>
+      <S.ThemeInfo>switch to light mode</S.ThemeInfo>
+    </S.Theme>
   );
 }

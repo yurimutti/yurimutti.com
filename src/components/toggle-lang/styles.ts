@@ -5,7 +5,6 @@ export const Lang = styled('button', {
   alignItems: 'center',
   justifyContent: 'center',
   gap: '$2',
-  cursor: 'pointer',
   backgroundColor: 'transparent',
   border: 'none',
   color: '$slate12',
@@ -22,5 +21,9 @@ export const Lang = styled('button', {
 
   '&:hover': {
     backgroundColor: '$slate6',
+  },
+
+  '@sm': {
+    border: '1px solid $slate12',
   },
 });

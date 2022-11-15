@@ -4,7 +4,6 @@ export const Theme = styled('button', {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  cursor: 'pointer',
   backgroundColor: 'transparent',
   border: 'none',
   color: '$slate12',
@@ -21,5 +20,17 @@ export const Theme = styled('button', {
 
   '&:hover': {
     backgroundColor: '$slate6',
+  },
+
+  '@sm': {
+    border: '1px solid $slate12',
+  },
+});
+
+export const ThemeInfo = styled('span', {
+  display: 'none',
+
+  '@sm': {
+    display: 'inline-block',
   },
 });

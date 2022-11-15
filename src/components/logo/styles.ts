@@ -1,10 +1,9 @@
 import { styled } from '@/styles';
 
-export const Content = styled('span', {
+export const Logo = styled('span', {
   fontSize: 'x-large',
   fontFamily: '$heading',
   fontWeight: 'bold',
-  textTransform: 'uppercase',
   letterSpacing: '2px',
   padding: '$2',
   height: '40px',
