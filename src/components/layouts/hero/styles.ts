@@ -8,10 +8,14 @@ export const Section = styled('section', {
   position: 'relative',
 });
 
-export const Text = styled('p', {
+export const Text = styled('h1', {
   color: '$slate12',
   fontSize: '80px',
   fontWeight: 700,
+
+  '@sm': {
+    fontSize: '32px',
+  },
 });
 
 export const HeroGradient = styled('strong', {

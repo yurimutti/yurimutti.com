@@ -27,6 +27,7 @@ export const NavMobile = styled('div', {
 export const NavMobileOverlay = styled(motion.div, {
   position: 'fixed',
   inset: 0,
+  zIndex: 2,
   backgroundColor: '$indigo1',
   height: '100vh',
   display: 'flex',

@@ -4,7 +4,7 @@ export function Hero() {
   return (
     <S.Section>
       <S.Text>
-        <S.HeroGradient>Building</S.HeroGradient> products
+        <S.HeroGradient>Creating</S.HeroGradient> things
         <br /> and <S.HeroGradient>solving</S.HeroGradient> problems.
       </S.Text>
     </S.Section>
