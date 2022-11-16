@@ -19,11 +19,22 @@ export const Text = styled('h1', {
 });
 
 export const HeroGradient = styled('strong', {
-  background:
-    'linear-gradient(109.6deg,  rgba(238,58,136,1) 11.2%, rgba(128,162,245,1) 91.1% )',
   backgroundClip: 'text',
   WebkitBackgroundClip: 'text',
   WebkitTextFillColor: 'transparent',
   backgroundSize: '400% 400%',
   animation: `${backgroundGradient} 3s ease infinite`,
+
+  variants: {
+    gradient: {
+      pink: {
+        backgroundImage:
+          'linear-gradient(109.6deg,  rgba(238,58,136,1) 11.2%, rgba(128,162,245,1) 91.1% )',
+      },
+      blue: {
+        backgroundImage:
+          'linear-gradient(109.6deg,  rgba(128,162,245,1)  11.2%, rgba(238,58,136,1) 91.1% )',
+      },
+    },
+  },
 });
