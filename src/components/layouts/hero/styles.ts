@@ -4,9 +4,10 @@ import { backgroundGradient } from '@/styles/global';
 export const Section = styled('section', {
   display: 'flex',
   justifyContent: 'center',
-  marginTop: '$10',
+  alignItems: 'center',
   flex: 1,
   position: 'relative',
+  textAlign: 'center',
 });
 
 export const Text = styled('h1', {
