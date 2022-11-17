@@ -52,8 +52,8 @@ export const NavMobileOverlay = styled(motion.div, {
 
   '.closeNavMobile': {
     position: 'absolute',
-    top: '$3',
-    right: '$3',
+    top: '$4',
+    right: '$4',
     border: 'none',
     backgroundColor: 'transparent',
   },

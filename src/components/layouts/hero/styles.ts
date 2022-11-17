@@ -2,8 +2,9 @@ import { styled } from '@/styles';
 import { backgroundGradient } from '@/styles/global';
 
 export const Section = styled('section', {
-  maxWidth: '1200px',
-  margin: '$11 auto 0 auto',
+  display: 'flex',
+  justifyContent: 'center',
+  marginTop: '$10',
   flex: 1,
   position: 'relative',
 });

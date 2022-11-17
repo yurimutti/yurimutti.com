@@ -13,10 +13,6 @@ export const Header = styled('header', {
   justifyContent: 'space-between',
   alignItems: 'center',
   flexWrap: 'wrap',
-
-  '@sm': {
-    padding: '$3 0',
-  },
 });
 
 export const ButtonLogo = styled('a', {
