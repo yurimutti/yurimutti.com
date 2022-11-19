@@ -25,17 +25,14 @@ export const HeroGradient = styled('strong', {
   WebkitBackgroundClip: 'text',
   WebkitTextFillColor: 'transparent',
   backgroundSize: '400% 400%',
-  animation: `${backgroundGradient} 3s ease infinite`,
+  animation: `${backgroundGradient} 4s ease infinite`,
+  backgroundImage: 'linear-gradient(109.6deg,  #00dbde  11.2%, #fc00ff 91.1% )',
 
   variants: {
     gradient: {
-      pink: {
+      invert: {
         backgroundImage:
-          'linear-gradient(109.6deg,  rgba(238,58,136,1) 11.2%, rgba(128,162,245,1) 91.1% )',
-      },
-      blue: {
-        backgroundImage:
-          'linear-gradient(109.6deg,  rgba(128,162,245,1)  11.2%, rgba(238,58,136,1) 91.1% )',
+          'linear-gradient(109.6deg,  #fc00ff  11.2%, #00dbde 91.1% )',
       },
     },
   },
