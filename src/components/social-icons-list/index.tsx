@@ -5,24 +5,24 @@ import * as S from './styles';
 
 const socialNetworks = [
   {
+    name: 'linkedin',
+    icon: <SiLinkedin />,
+    link: 'https://www.linkedin.com/in/yuri-mutti-0418bb1aa',
+  },
+  {
     name: 'github',
     icon: <SiGithub />,
-    link: '/',
+    link: 'https://github.com/yurimutti',
   },
   {
     name: 'twitter',
     icon: <SiTwitter />,
-    link: '/',
-  },
-  {
-    name: 'linkedin',
-    icon: <SiLinkedin />,
-    link: '/',
+    link: 'https://twitter.com/Yuri_Mutti',
   },
   {
     name: 'instagram',
     icon: <SiInstagram />,
-    link: '/',
+    link: 'https://www.instagram.com/yurimuttidev',
   },
 ];
 
@@ -38,6 +38,7 @@ export function SocialIconsList() {
           <S.SocialIconsItem key={name}>
             <S.SocialIconsLink
               href={link}
+              target="_blank"
               onHoverStart={() => setHovered(name)}
             >
               {icon}
