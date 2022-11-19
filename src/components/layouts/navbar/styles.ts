@@ -38,6 +38,7 @@ export const Anchor = styled(motion.a, {
   zIndex: 1,
   padding: '$2',
   color: '$slate12',
+  cursor: 'pointer',
 });
 
 export const NavHovered = styled(motion.span, {

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { MdMenu, MdClose } from 'react-icons/md';
 
 import { AnimatePresence } from 'framer-motion';
+import Link from 'next/link';
 
 import { ToggleLang } from '@/components/toggle-lang';
 import { ToggleTheme } from '@/components/toggle-theme';
@@ -24,9 +25,15 @@ export function NavMobile({ pages }: { pages: string[] }) {
             </button>
             <nav>
               <ul>
-                {pages.map((page) => (
-                  <li key={page}>{page}</li>
-                ))}
+                {pages.map((page) => {
+                  const path = `/${page.toLowerCase()}`;
+
+                  return (
+                    <li key={page}>
+                      <Link href={path}>{page}</Link>
+                    </li>
+                  );
+                })}
               </ul>
               <ToggleLang />
               <ToggleTheme />

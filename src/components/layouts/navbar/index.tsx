@@ -1,7 +1,6 @@
 import { useState } from 'react';
 
 import Link from 'next/link';
-// import { useRouter } from 'next/router';
 
 import { Logo } from '@/components/logo';
 import { ToggleLang } from '@/components/toggle-lang';
@@ -10,11 +9,10 @@ import { ToggleTheme } from '@/components/toggle-theme';
 import { NavMobile } from './nav-mobile';
 import * as S from './styles';
 
-const pages = ['About', 'Blog', 'Discord', 'Projects'];
+const pages = ['About', 'Contact', 'Projects', 'Blog', 'Discord'];
 
 export function Navbar() {
   const [hovered, setHovered] = useState('');
-  // const router = useRouter();
 
   return (
     <S.Container>
@@ -29,21 +27,23 @@ export function Navbar() {
           <S.List onHoverEnd={() => setHovered('')}>
             {pages.map((page) => {
               const isHovered = hovered === page;
-              // const path = `/${page.toLowerCase()}`;
+              const path = `/${page.toLowerCase()}`;
 
               return (
                 <S.ListItem key={page}>
-                  <S.Anchor href="#" onHoverStart={() => setHovered(page)}>
-                    {isHovered && (
-                      <S.NavHovered
-                        layoutId="shape"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                      />
-                    )}
-                    {page}
-                  </S.Anchor>
+                  <Link href={path}>
+                    <S.Anchor onHoverStart={() => setHovered(page)}>
+                      {isHovered && (
+                        <S.NavHovered
+                          layoutId="shape"
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          exit={{ opacity: 0 }}
+                        />
+                      )}
+                      {page}
+                    </S.Anchor>
+                  </Link>
                 </S.ListItem>
               );
             })}
