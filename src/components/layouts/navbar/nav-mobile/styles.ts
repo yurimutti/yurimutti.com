@@ -16,11 +16,12 @@ export const NavMobile = styled('div', {
   '.openNavMobile': {
     border: 'none',
     backgroundColor: 'transparent',
+    display: 'flex',
+    alignItems: 'center',
   },
 
   '@sm': {
     display: 'flex',
-    alignItems: 'center',
   },
 });
 
