@@ -27,6 +27,10 @@ export const globalStyles = globalCss({
     button: {
       cursor: 'pointer',
     },
+
+    'h1,h2,h3,h4,h5,h6': {
+      fontFamily: '$heading',
+    },
   },
 });
 
