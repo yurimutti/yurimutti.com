@@ -79,7 +79,7 @@ export const LanguagesList = styled('ul', {
   fontWeight: '700',
 });
 
-export const Language = styled('li', {
+export const LanguageItem = styled('li', {
   cursor: 'pointer',
   padding: '$4',
   transition: 'all $durations ease',

@@ -5,6 +5,21 @@ import { AnimatePresence } from 'framer-motion';
 import { useOnClickOutside } from 'usehooks-ts';
 
 import * as S from './styles';
+interface Languages {
+  name: string;
+  code: string;
+}
+
+const languages: Languages[] = [
+  {
+    name: 'English',
+    code: 'en',
+  },
+  {
+    name: 'Português (Brasil)',
+    code: 'pt-BR',
+  },
+];
 
 export function ToggleLang() {
   const [open, setOpen] = useState(false);
@@ -19,8 +34,6 @@ export function ToggleLang() {
   };
 
   useOnClickOutside(ref, handleClickOutside);
-
-  // EN // PT-BR
 
   return (
     <AnimatePresence>
@@ -44,8 +57,11 @@ export function ToggleLang() {
 
             <S.Languages>
               <S.LanguagesList>
-                <S.Language isActive>English</S.Language>
-                <S.Language>Português (Brasil)</S.Language>
+                {languages.map((lang) => (
+                  <S.LanguageItem isActive key={lang.code}>
+                    {lang.name}
+                  </S.LanguageItem>
+                ))}
               </S.LanguagesList>
             </S.Languages>
           </S.Container>
