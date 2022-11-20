@@ -1,3 +1,5 @@
+import { motion } from 'framer-motion';
+
 import { styled } from '@/styles';
 
 export const Theme = styled('div', {
@@ -26,13 +28,17 @@ export const Theme = styled('div', {
   },
 });
 
-export const ToggleButton = styled('button', {
+export const ToggleButton = styled(motion.button, {
   backgroundColor: 'transparent',
   border: 'none',
+  display: 'flex',
+  gap: '$2',
+  alignItems: 'center',
 });
 
 export const ThemeInfo = styled('span', {
   display: 'none',
+  color: '$slate12',
 
   '@md': {
     display: 'inline-block',
