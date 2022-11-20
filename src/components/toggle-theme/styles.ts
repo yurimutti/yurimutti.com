@@ -22,7 +22,7 @@ export const Theme = styled('button', {
     backgroundColor: '$slate6',
   },
 
-  '@sm': {
+  '@md': {
     border: '1px solid $slate12',
   },
 });
@@ -30,7 +30,7 @@ export const Theme = styled('button', {
 export const ThemeInfo = styled('span', {
   display: 'none',
 
-  '@sm': {
+  '@md': {
     display: 'inline-block',
   },
 });

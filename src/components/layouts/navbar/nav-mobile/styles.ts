@@ -20,7 +20,7 @@ export const NavMobile = styled('div', {
     alignItems: 'center',
   },
 
-  '@sm': {
+  '@md': {
     display: 'flex',
   },
 });

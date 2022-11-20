@@ -15,6 +15,10 @@ export const Text = styled('h1', {
   fontSize: '80px',
   fontWeight: 700,
 
+  '@md': {
+    fontSize: '48px',
+  },
+
   '@sm': {
     fontSize: '32px',
   },

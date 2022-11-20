@@ -20,7 +20,7 @@ export const ButtonLogo = styled('a', {
 });
 
 export const Nav = styled('nav', {
-  '@sm': {
+  '@md': {
     display: 'none',
   },
 });
@@ -54,7 +54,7 @@ export const ToggleArea = styled('div', {
   alignItems: 'center',
   gap: '$6',
 
-  '@sm': {
+  '@md': {
     display: 'none',
   },
 });
