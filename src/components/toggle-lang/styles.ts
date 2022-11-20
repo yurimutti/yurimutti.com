@@ -33,9 +33,9 @@ export const ToggleLang = styled('button', {
 export const LangModal = styled(motion.div, {
   backgroundColor: '$slate12',
   width: '100vw',
-  position: 'absolute',
+  position: 'fixed',
   inset: '0',
-  top: '80px',
+  top: '90px',
   zIndex: '$modal',
 });
 
@@ -57,7 +57,7 @@ export const CloseButton = styled('button', {
   borderRadius: '50%',
   width: '$5',
   height: '$5',
-  transitions: 'all $durations ease',
+  transition: 'all $durations ease',
 
   '&:hover': {
     backgroundColor: '$slate11',
@@ -82,7 +82,7 @@ export const LanguagesList = styled('ul', {
 export const Language = styled('li', {
   cursor: 'pointer',
   padding: '$4',
-  transitions: 'all $durations ease',
+  transition: 'all $durations ease',
   borderRadius: '$default',
   minWidth: '250px',
 

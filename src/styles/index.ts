@@ -63,6 +63,7 @@ export const {
       modal: 1060,
       popover: 1070,
       tooltip: 1080,
+      max: '9999',
     },
   },
   media: {

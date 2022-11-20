@@ -1,11 +1,10 @@
 import { styled } from '@/styles';
 
-export const Theme = styled('button', {
+export const Theme = styled('div', {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  backgroundColor: 'transparent',
-  border: 'none',
+
   color: '$slate12',
   padding: '$2',
   height: '40px',
@@ -25,6 +24,11 @@ export const Theme = styled('button', {
   '@md': {
     border: '1px solid $slate12',
   },
+});
+
+export const ToggleButton = styled('button', {
+  backgroundColor: 'transparent',
+  border: 'none',
 });
 
 export const ThemeInfo = styled('span', {
