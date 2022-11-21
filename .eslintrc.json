@@ -1,10 +1,5 @@
 {
-  "extends": [
-    "plugin:storybook/recommended",
-    "next",
-    "next/core-web-vitals",
-    "eslint:recommended"
-  ],
+  "extends": ["next", "next/core-web-vitals", "eslint:recommended"],
   "plugins": ["eslint-plugin-import-helpers"],
   "overrides": [
     {
@@ -21,7 +16,7 @@
         "newlinesBetween": "always",
         "groups": [
           "/^react/",
-          "/^@/storybook/",
+          "/^next/",
           "module",
           "/^@/components/",
           "/^@/features/",

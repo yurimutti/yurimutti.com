@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { MdMenu, MdClose } from 'react-icons/md';
 
-import { AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
+
+import { AnimatePresence } from 'framer-motion';
 
 import { ToggleLang } from '@/components/toggle-lang';
 import { ToggleTheme } from '@/components/toggle-theme';
