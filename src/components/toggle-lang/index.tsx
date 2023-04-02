@@ -1,15 +1,10 @@
-import { useRef, useState } from 'react';
-import { MdLanguage, MdClose } from 'react-icons/md';
+import { useState } from 'react';
+import { MdLanguage } from 'react-icons/md';
 
-import { AnimatePresence } from 'framer-motion';
-import { useOnClickOutside } from 'usehooks-ts';
+import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 
 import * as S from './styles';
-
-interface Languages {
-  name: string;
-  code: string;
-}
+import { Languages } from './types';
 
 const languages: Languages[] = [
   {
@@ -23,51 +18,34 @@ const languages: Languages[] = [
 ];
 
 export const ToggleLang = () => {
-  const [open, setOpen] = useState(false);
-  const ref = useRef(null);
-
-  const handlCloseModal = () => {
-    setOpen(false);
-  };
-
-  const handleClickOutside = () => {
-    handlCloseModal();
-  };
-
-  useOnClickOutside(ref, handleClickOutside);
+  const [activeLanguage, setActiveLanguage] = useState('en');
 
   return (
-    <AnimatePresence>
-      <S.ToggleLang onClick={() => setOpen(!open)}>
-        <MdLanguage />
-        EN
+    <DropdownMenu.Root>
+      <S.ToggleLang>
+        <S.DropdownMenuTriggerStyled>
+          <MdLanguage />
+          {activeLanguage.toUpperCase()}
+        </S.DropdownMenuTriggerStyled>
       </S.ToggleLang>
 
-      {open && (
-        <S.LangModal
-          ref={ref}
-          initial={{ y: '-100%' }}
-          animate={{ y: 0 }}
-          transition={{ duration: 1, origin: 1 }}
-        >
-          <S.Container>
-            <S.CloseButton onClick={handlCloseModal}>
-              <MdClose />
-            </S.CloseButton>
-            <S.LangTitle>Selecione o idioma de sua preferência</S.LangTitle>
-
-            <S.Languages>
-              <S.LanguagesList>
-                {languages.map((lang) => (
-                  <S.LanguageItem isActive key={lang.code}>
-                    {lang.name}
-                  </S.LanguageItem>
-                ))}
-              </S.LanguagesList>
-            </S.Languages>
-          </S.Container>
-        </S.LangModal>
-      )}
-    </AnimatePresence>
+      <DropdownMenu.Portal>
+        <S.DropdownMenuContentStyled>
+          {languages.map((language) => (
+            <S.DropdownMenuItemStyled
+              key={language.code}
+              onClick={() => setActiveLanguage(language.code)}
+              css={{
+                backgroundColor:
+                  activeLanguage === language.code ? '$slate6' : 'inehrit',
+                color: '$slate12',
+              }}
+            >
+              {language.name}
+            </S.DropdownMenuItemStyled>
+          ))}
+        </S.DropdownMenuContentStyled>
+      </DropdownMenu.Portal>
+    </DropdownMenu.Root>
   );
 };
