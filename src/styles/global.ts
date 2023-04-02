@@ -1,4 +1,6 @@
-import { globalCss, keyframes } from '@/styles';
+import { globalCss, createTheme, keyframes } from '@/styles';
+
+export const darkTheme = createTheme({});
 
 export const globalStyles = globalCss({
   '*': {
@@ -30,6 +32,10 @@ export const globalStyles = globalCss({
 
     'h1,h2,h3,h4,h5,h6': {
       fontFamily: '$heading',
+    },
+
+    [`.${darkTheme} &`]: {
+      backgroundColor: '$slate12',
     },
   },
 });

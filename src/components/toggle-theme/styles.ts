@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 
 import { styled } from '@/styles';
+import { darkTheme } from '@/styles/global';
 
 export const Theme = styled('div', {
   display: 'flex',
@@ -25,6 +26,12 @@ export const Theme = styled('div', {
 
   '@md': {
     border: '1px solid $slate12',
+  },
+
+  [`.${darkTheme} &`]: {
+    svg: {
+      color: '$slate1',
+    },
   },
 });
 

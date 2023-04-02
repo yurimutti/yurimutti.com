@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 
 import { styled } from '@/styles';
+import { darkTheme } from '@/styles/global';
 
 export const SocialIconsList = styled(motion.ul, {
   display: 'flex',
@@ -31,6 +32,12 @@ export const SocialIconsLink = styled(motion.a, {
     svg: {
       width: '$3',
       height: '$3',
+    },
+  },
+
+  [`.${darkTheme} &`]: {
+    svg: {
+      color: '$slate1',
     },
   },
 });

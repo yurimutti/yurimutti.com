@@ -1,6 +1,7 @@
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 
 import { styled } from '@/styles';
+import { darkTheme } from '@/styles/global';
 
 export const ToggleLang = styled('div', {
   borderRadius: '$default',
@@ -18,6 +19,12 @@ export const ToggleLang = styled('div', {
   '@sm': {
     border: '1px solid $slate12',
   },
+
+  [`.${darkTheme} &`]: {
+    svg: {
+      color: '$slate1',
+    },
+  },
 });
 
 export const DropdownMenuTriggerStyled = styled(DropdownMenu.Trigger, {
@@ -31,6 +38,10 @@ export const DropdownMenuTriggerStyled = styled(DropdownMenu.Trigger, {
   padding: '$2',
   height: '40px',
   transition: 'all $durations ease',
+
+  [`.${darkTheme} &`]: {
+    color: '$slate1',
+  },
 });
 
 export const DropdownMenuContentStyled = styled(DropdownMenu.Content, {
@@ -52,5 +63,11 @@ export const DropdownMenuItemStyled = styled(DropdownMenu.Item, {
   '&:hover': {
     color: '$slate12',
     backgroundColor: '$slate6',
+  },
+
+  [`.${darkTheme} &`]: {
+    svg: {
+      color: '$slate1',
+    },
   },
 });

@@ -1,4 +1,5 @@
 import { styled } from '@/styles';
+import { darkTheme } from '@/styles/global';
 
 export const Logo = styled('span', {
   color: '$slate12',
@@ -18,5 +19,9 @@ export const Logo = styled('span', {
 
   '@sm': {
     fontSize: 'medium',
+  },
+
+  [`.${darkTheme} &`]: {
+    color: '$slate1',
   },
 });

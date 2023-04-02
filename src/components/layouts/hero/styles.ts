@@ -1,5 +1,5 @@
 import { styled } from '@/styles';
-import { backgroundGradient } from '@/styles/global';
+import { backgroundGradient, darkTheme } from '@/styles/global';
 
 export const Section = styled('section', {
   display: 'flex',
@@ -21,6 +21,10 @@ export const Text = styled('h1', {
 
   '@sm': {
     fontSize: '32px',
+  },
+
+  [`.${darkTheme} &`]: {
+    color: '$slate1',
   },
 });
 

@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 
 import { styled } from '@/styles';
+import { darkTheme } from '@/styles/global';
 
 export const Container = styled('div', {
   width: '100%',
@@ -39,6 +40,10 @@ export const Anchor = styled(motion.a, {
   padding: '$2',
   color: '$slate12',
   cursor: 'pointer',
+
+  [`.${darkTheme} &`]: {
+    color: '$slate1',
+  },
 });
 
 export const NavHovered = styled(motion.span, {

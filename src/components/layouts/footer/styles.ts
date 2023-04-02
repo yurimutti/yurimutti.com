@@ -1,4 +1,5 @@
 import { styled } from '@/styles';
+import { darkTheme } from '@/styles/global';
 
 export const Footer = styled('footer', {
   color: '$slate12',
@@ -6,6 +7,10 @@ export const Footer = styled('footer', {
 
   span: {
     fontSize: 'small',
+  },
+
+  [`.${darkTheme} &`]: {
+    color: '$slate1',
   },
 });
 
