@@ -3,8 +3,6 @@
     "next",
     "next/core-web-vitals",
     "eslint:recommended",
-    "react-app",
-    "react-app/jest",
     "airbnb",
     "plugin:react/recommended",
     "plugin:react-hooks/recommended",
@@ -13,7 +11,7 @@
     "plugin:import/typescript",
     "plugin:prettier/recommended" // Prettier needs to be the last plugin in list.
   ],
-  "plugins": ["eslint-plugin-import-helpers", "unicorn"],
+  "plugins": ["eslint-plugin-import-helpers", "react", "unicorn"],
   "rules": {
     // Imports
     "import-helpers/order-imports": [
