@@ -1,5 +1,3 @@
-import React from 'react';
-
 import NextDocument, { Html, Head, Main, NextScript } from 'next/document';
 
 import { getCssText } from '@/styles';
@@ -19,6 +17,7 @@ export default class Document extends NextDocument {
           />
           <style
             id="stitches"
+            // eslint-disable-next-line react/no-danger
             dangerouslySetInnerHTML={{ __html: getCssText() }}
           />
         </Head>

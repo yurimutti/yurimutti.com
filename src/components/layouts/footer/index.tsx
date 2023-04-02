@@ -2,7 +2,7 @@ import { SocialIconsList } from '@/components/social-icons-list';
 
 import * as S from './styles';
 
-export function Footer() {
+export const Footer = () => {
   return (
     <S.Footer>
       <S.Container>
@@ -11,4 +11,4 @@ export function Footer() {
       </S.Container>
     </S.Footer>
   );
-}
+};

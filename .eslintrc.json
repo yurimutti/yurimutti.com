@@ -11,7 +11,12 @@
     "plugin:import/typescript",
     "plugin:prettier/recommended" // Prettier needs to be the last plugin in list.
   ],
-  "plugins": ["eslint-plugin-import-helpers", "react", "unicorn"],
+  "plugins": [
+    "eslint-plugin-import-helpers",
+    "react",
+    "unicorn",
+    "@tanstack/query"
+  ],
   "rules": {
     // Imports
     "import-helpers/order-imports": [

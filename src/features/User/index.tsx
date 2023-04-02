@@ -5,8 +5,8 @@ const Div = styled('div', {
   color: 'white',
 });
 
-function User() {
+export const User = () => {
   return <Div>User</Div>;
-}
+};
 
 export default User;

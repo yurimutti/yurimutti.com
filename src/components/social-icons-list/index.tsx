@@ -26,7 +26,7 @@ const socialNetworks = [
   },
 ];
 
-export function SocialIconsList() {
+export const SocialIconsList = () => {
   const [hovered, setHovered] = useState('');
 
   return (
@@ -57,4 +57,4 @@ export function SocialIconsList() {
       })}
     </S.SocialIconsList>
   );
-}
+};

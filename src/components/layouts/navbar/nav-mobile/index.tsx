@@ -10,7 +10,7 @@ import { ToggleTheme } from '@/components/toggle-theme';
 
 import * as S from './styles';
 
-export function NavMobile({ pages }: { pages: string[] }) {
+export const NavMobile = ({ pages }: { pages: string[] }) => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <S.NavMobile>
@@ -21,7 +21,11 @@ export function NavMobile({ pages }: { pages: string[] }) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           >
-            <button className="closeNavMobile" onClick={() => setIsOpen(false)}>
+            <button
+              type="button"
+              className="closeNavMobile"
+              onClick={() => setIsOpen(false)}
+            >
               <MdClose />
             </button>
             <nav>
@@ -42,9 +46,13 @@ export function NavMobile({ pages }: { pages: string[] }) {
           </S.NavMobileOverlay>
         )}
       </AnimatePresence>
-      <button className="openNavMobile" onClick={() => setIsOpen(!isOpen)}>
+      <button
+        type="button"
+        className="openNavMobile"
+        onClick={() => setIsOpen(!isOpen)}
+      >
         <MdMenu />
       </button>
     </S.NavMobile>
   );
-}
+};

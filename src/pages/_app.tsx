@@ -4,8 +4,8 @@ import { globalStyles } from '@/styles/global';
 
 globalStyles();
 
-function MyApp({ Component, pageProps }: AppProps) {
+const MyApp = ({ Component, pageProps }: AppProps) => {
   return <Component {...pageProps} />;
-}
+};
 
 export default MyApp;

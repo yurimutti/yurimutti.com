@@ -5,7 +5,7 @@ import { AnimatePresence } from 'framer-motion';
 
 import * as S from './styles';
 
-export function ToggleTheme() {
+export const ToggleTheme = () => {
   const [theme, setTheme] = useState('dark');
 
   return (
@@ -25,4 +25,4 @@ export function ToggleTheme() {
       </S.Theme>
     </AnimatePresence>
   );
-}
+};

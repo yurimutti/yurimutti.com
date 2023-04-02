@@ -1,6 +1,6 @@
 import * as S from './styles';
 
-export function Hero() {
+export const Hero = () => {
   return (
     <S.Section>
       <S.Text>
@@ -12,4 +12,4 @@ export function Hero() {
       </S.Text>
     </S.Section>
   );
-}
+};

@@ -1,5 +1,5 @@
 import * as S from './styles';
 
-export function Logo() {
+export const Logo = () => {
   return <S.Logo>Yuri Mutti</S.Logo>;
-}
+};

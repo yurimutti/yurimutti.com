@@ -11,7 +11,7 @@ import * as S from './styles';
 
 const pages = ['About', 'Contact', 'Projects', 'Blog', 'Discord'];
 
-export function Navbar() {
+export const Navbar = () => {
   const [hovered, setHovered] = useState('');
 
   return (
@@ -56,4 +56,4 @@ export function Navbar() {
       </S.Header>
     </S.Container>
   );
-}
+};
