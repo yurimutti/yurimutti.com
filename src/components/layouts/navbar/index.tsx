@@ -9,7 +9,7 @@ import { ToggleTheme } from '@/components/toggle-theme';
 import { NavMobile } from './nav-mobile';
 import * as S from './styles';
 
-const pages = ['About', 'Contact', 'Projects', 'Blog', 'Discord'];
+const pages = ['About', 'Contact', 'Projects', 'Discord'];
 
 export const Navbar = () => {
   const [hovered, setHovered] = useState('');
