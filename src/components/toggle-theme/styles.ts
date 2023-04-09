@@ -42,12 +42,3 @@ export const ToggleButton = styled(motion.button, {
   gap: '$2',
   alignItems: 'center',
 });
-
-export const ThemeInfo = styled('span', {
-  display: 'none',
-  color: '$slate12',
-
-  '@md': {
-    display: 'inline-block',
-  },
-});

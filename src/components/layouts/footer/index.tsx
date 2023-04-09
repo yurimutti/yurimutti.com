@@ -1,4 +1,4 @@
-import { SocialIconsList } from '@/components/social-icons-list';
+import { SocialIcons } from '@/components/social-icons';
 
 import * as S from './styles';
 
@@ -7,7 +7,7 @@ export const Footer = () => {
     <S.Footer>
       <S.Container>
         <span>Connect with me online</span>
-        <SocialIconsList />
+        <SocialIcons />
       </S.Container>
     </S.Footer>
   );

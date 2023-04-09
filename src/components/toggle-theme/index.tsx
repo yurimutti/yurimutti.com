@@ -15,8 +15,7 @@ export const ToggleTheme = () => {
     <AnimatePresence>
       <S.Theme>
         <S.ToggleButton onClick={handleToggleTheme}>
-          {theme === 'dark' ? <MdWbSunny /> : <MdNightlight />}
-          <S.ThemeInfo>switch to {invertedTheme} mode</S.ThemeInfo>
+          {theme === 'dark' ? <MdNightlight /> : <MdWbSunny />}
         </S.ToggleButton>
       </S.Theme>
     </AnimatePresence>
