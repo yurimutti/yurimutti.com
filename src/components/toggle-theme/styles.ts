@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 
-import { styled } from '@/styles';
-import { darkTheme } from '@/styles/global';
+import { styled } from '@/libs/stitches';
+import { darkTheme } from '@/libs/stitches/global';
 
 export const Theme = styled('div', {
   display: 'flex',

@@ -1,7 +1,7 @@
 import { ThemeProvider } from 'next-themes';
 import type { AppProps } from 'next/app';
 
-import { globalStyles, darkTheme } from '@/styles/global';
+import { globalStyles, darkTheme } from '@/libs/stitches/global';
 
 globalStyles();
 

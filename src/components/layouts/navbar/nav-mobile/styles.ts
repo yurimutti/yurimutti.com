@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 
-import { styled } from '@/styles';
+import { styled } from '@/libs/stitches';
 
 export const NavMobile = styled('div', {
   display: 'none',

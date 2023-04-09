@@ -1,6 +1,6 @@
 import NextDocument, { Html, Head, Main, NextScript } from 'next/document';
 
-import { getCssText } from '@/styles';
+import { getCssText } from '@/libs/stitches';
 
 export default class Document extends NextDocument {
   render() {

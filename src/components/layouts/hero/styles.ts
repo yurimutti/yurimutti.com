@@ -1,5 +1,5 @@
-import { styled } from '@/styles';
-import { backgroundGradient, darkTheme } from '@/styles/global';
+import { styled } from '@/libs/stitches';
+import { backgroundGradient, darkTheme } from '@/libs/stitches/global';
 
 export const Section = styled('section', {
   display: 'flex',

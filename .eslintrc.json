@@ -35,7 +35,7 @@
           "/^@/config/",
           "/^@/public/",
           "/^@/constants/",
-          "/^@/styles/",
+          "/^@/libs/",
           ["parent", "sibling", "index"]
         ],
         "alphabetize": { "order": "asc", "ignoreCase": true }

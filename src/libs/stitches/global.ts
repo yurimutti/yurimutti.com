@@ -1,4 +1,4 @@
-import { globalCss, createTheme, keyframes } from '@/styles';
+import { globalCss, createTheme, keyframes } from '@/libs/stitches';
 
 export const darkTheme = createTheme({});
 

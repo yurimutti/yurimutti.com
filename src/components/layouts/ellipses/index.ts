@@ -1,4 +1,4 @@
-import { styled } from '@/styles';
+import { styled } from '@/libs/stitches';
 
 export const Ellipses = styled('div', {
   inset: '0px',

@@ -1,5 +1,5 @@
-import { styled } from '@/styles';
-import { darkTheme } from '@/styles/global';
+import { styled } from '@/libs/stitches';
+import { darkTheme } from '@/libs/stitches/global';
 
 export const Footer = styled('footer', {
   color: '$slate12',
