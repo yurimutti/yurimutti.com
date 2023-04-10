@@ -1,7 +1,9 @@
 import { useState } from 'react';
 
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
+import { Container } from '@/components/layouts/container';
 import { Logo } from '@/components/logo';
 import { ToggleLang } from '@/components/toggle-lang';
 import { ToggleTheme } from '@/components/toggle-theme';
@@ -12,10 +14,11 @@ import * as S from './styles';
 const pages = ['About', 'Contact', 'Projects', 'Discord'];
 
 export const Navbar = () => {
+  const router = useRouter();
   const [hovered, setHovered] = useState('');
 
   return (
-    <S.Container>
+    <Container>
       <S.Header>
         <Link href="/">
           <S.ButtonLogo>
@@ -28,9 +31,22 @@ export const Navbar = () => {
             {pages.map((page) => {
               const isHovered = hovered === page;
               const path = `/${page.toLowerCase()}`;
+              const isActive = router.pathname === path;
 
               return (
-                <S.ListItem key={page}>
+                <S.ListItem
+                  key={page}
+                  css={{
+                    '&:after': {
+                      display: isActive ? 'block' : 'none',
+                      content: '',
+                      width: '32px',
+                      height: '1px',
+                      margin: '4px auto 0 auto',
+                      backgroundColor: '$white',
+                    },
+                  }}
+                >
                   <Link href={path}>
                     <S.Anchor onHoverStart={() => setHovered(page)}>
                       {isHovered && (
@@ -54,6 +70,6 @@ export const Navbar = () => {
           <ToggleLang />
         </S.ToggleArea>
       </S.Header>
-    </S.Container>
+    </Container>
   );
 };

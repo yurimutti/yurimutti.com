@@ -3,11 +3,6 @@ import { motion } from 'framer-motion';
 import { styled } from '@/libs/stitches';
 import { darkTheme } from '@/libs/stitches/global';
 
-export const Container = styled('div', {
-  width: '100%',
-  padding: '0 $4',
-});
-
 export const Header = styled('header', {
   padding: '$4 0',
   display: 'flex',
