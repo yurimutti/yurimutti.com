@@ -7,10 +7,10 @@ import * as S from './styles';
 import { Languages } from './types';
 
 const languages: Languages[] = [
-  // {
-  //   name: 'English',
-  //   code: 'en',
-  // },
+  {
+    name: 'English',
+    code: 'en',
+  },
   {
     name: 'Português (Brasil)',
     code: 'pt-BR',
@@ -18,7 +18,7 @@ const languages: Languages[] = [
 ];
 
 export const ToggleLang = () => {
-  const [activeLanguage, setActiveLanguage] = useState('pt-BR');
+  const [activeLanguage, setActiveLanguage] = useState('en');
 
   return (
     <DropdownMenu.Root>

@@ -14,7 +14,7 @@
     "lint": "next lint",
     "prettier": "prettier --write .",
     "prepare": "husky install",
-    "dead-code": "ts-prune | grep -v 'used in module'"
+    "find-deadcode": "ts-prune"
   },
   "lint-staged": {
     "./src/**/*.{ts,js,jsx,tsx}": [
@@ -31,7 +31,8 @@
     "next-themes": "^0.2.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-icons": "^4.4.0"
+    "react-icons": "^4.4.0",
+    "zustand": "^4.1.1"
   },
   "devDependencies": {
     "@babel/core": "^7.18.10",
@@ -60,9 +61,10 @@
     "lint-staged": "^13.0.3",
     "prettier": "^2.7.1",
     "react-hook-form": "^7.34.2",
-    "ts-prune": "0.10.3",
+    "ts-prune": "^0.10.3",
     "typescript": "^5.0.3",
-    "usehooks-ts": "^2.6.0"
+    "usehooks-ts": "^2.6.0",
+    "yup": "^0.32.11"
   },
   "resolutions": {
     "webpack": "^5"

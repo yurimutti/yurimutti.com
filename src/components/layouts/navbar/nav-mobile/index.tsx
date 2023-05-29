@@ -12,7 +12,6 @@ import * as S from './styles';
 
 export const NavMobile = ({ pages }: { pages: string[] }) => {
   const [isOpen, setIsOpen] = useState(false);
-
   return (
     <S.NavMobile>
       <AnimatePresence>
