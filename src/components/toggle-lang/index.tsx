@@ -7,10 +7,10 @@ import * as S from './styles';
 import { Languages } from './types';
 
 const languages: Languages[] = [
-  {
-    name: 'English',
-    code: 'en',
-  },
+  // {
+  //   name: 'English',
+  //   code: 'en',
+  // },
   {
     name: 'Português (Brasil)',
     code: 'pt-BR',
