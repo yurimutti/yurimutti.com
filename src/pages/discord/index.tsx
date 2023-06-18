@@ -1,4 +1,4 @@
-import { AiOutlineCodeSandbox } from 'react-icons/ai';
+import { AiOutlineCodepen } from 'react-icons/ai';
 import { FaDiscord } from 'react-icons/fa';
 
 import { Container } from '@/components/layouts/container';
@@ -25,7 +25,7 @@ const Discord = () => {
           </S.Info>
 
           <S.Image>
-            <AiOutlineCodeSandbox />
+            <AiOutlineCodepen />
           </S.Image>
         </S.Wrapper>
       </Container>
