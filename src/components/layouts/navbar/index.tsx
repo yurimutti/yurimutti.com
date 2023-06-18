@@ -11,7 +11,7 @@ import { ToggleTheme } from '@/components/toggle-theme';
 import { NavMobile } from './nav-mobile';
 import * as S from './styles';
 
-const pages = ['About', 'Contact', 'Projects', 'Discord'];
+const pages = ['Sobre', 'Projetos', 'Contato', 'Discord'];
 
 export const Navbar = () => {
   const router = useRouter();

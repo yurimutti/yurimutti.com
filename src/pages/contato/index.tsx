@@ -1,4 +1,3 @@
-import { AiOutlineMail } from 'react-icons/ai';
 import { BsTelephone } from 'react-icons/bs';
 
 import { Container } from '@/components/layouts/container';
@@ -41,26 +40,15 @@ const Contact = () => {
           </S.FormGroup>
         </S.Form>
 
-        <S.ContactInfos>
-          <S.ContactInfo>
-            <a
-              href="mailto:contato@yurimutti.com"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <AiOutlineMail /> contato@yurimutti.com
-            </a>
-          </S.ContactInfo>
-          <S.ContactInfo>
-            <a
-              href="https://api.whatsapp.com/send?phone=557131904989"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <BsTelephone /> +55 71 3190-4989
-            </a>
-          </S.ContactInfo>
-        </S.ContactInfos>
+        <S.Telephone
+          href="https://api.whatsapp.com/send?phone=557131904989"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <S.TelephoneNumber>
+            <BsTelephone /> +55 71 3190-4989
+          </S.TelephoneNumber>
+        </S.Telephone>
       </Container>
     </Layout>
   );

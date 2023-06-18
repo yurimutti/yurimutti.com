@@ -18,7 +18,7 @@ const languages: Languages[] = [
 ];
 
 export const ToggleLang = () => {
-  const [activeLanguage, setActiveLanguage] = useState('en');
+  const [activeLanguage, setActiveLanguage] = useState('pt-BR');
 
   return (
     <DropdownMenu.Root>

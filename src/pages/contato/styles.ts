@@ -44,13 +44,13 @@ export const Textarea = styled('textarea', {
 
 export const Button = styled('button', {
   textTransform: 'uppercase',
-  color: '$slate2',
-  background: '#fff',
-  border: '1px solid #fff',
+  color: '$slate1',
+  background: '$white',
+  border: '1px solid $white',
   borderRadius: '$default',
   cursor: 'pointer',
   padding: '16px',
-  marginTop: '5px',
+  marginTop: '4px',
   transition: 'all 0.2s ease-in-out',
   '&:hover': {
     background: 'transparent',
@@ -65,21 +65,32 @@ export const Button = styled('button', {
   },
 });
 
-export const ContactInfos = styled('div', {
+export const Telephone = styled('a', {
+  maxWidth: '400px',
   display: 'flex',
-  justifyContent: 'space-between',
+  justifyContent: 'center',
   alignItems: 'center',
   padding: '$3',
   margin: '$4 0',
   backgroundColor: '$indigo1',
-  border: '1px solid #fff',
+  border: '1px solid $white',
   borderRadius: '$default',
-  color: '$slate12',
+  transition: 'all 0.2s ease-in-out',
+  background: 'transparent',
+  borderColor: '$pink8',
+  color: '$pink8',
+
+  '&:hover': {
+    background: '$white',
+    border: '1px solid $white',
+    color: '$slate1',
+  },
 });
 
-export const ContactInfo = styled('div', {
+export const TelephoneNumber = styled('div', {
   a: {
     display: 'flex',
+    justifyContent: 'center',
     alignItems: 'center',
     gap: '$2',
   },
