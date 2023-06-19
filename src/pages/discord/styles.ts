@@ -19,7 +19,7 @@ export const Discord = styled('div', {
 export const Info = styled('div', {
   display: 'flex',
   flexDirection: 'column',
-  gap: '$3',
+  gap: '$2',
 });
 
 export const Image = styled('div', {
@@ -38,6 +38,7 @@ export const PageTitle = styled('h1', {
     'linear-gradient(135deg, var(--colors-teal10) 0%, var(--colors-teal2) 100% )',
   fontSize: '48px',
   lineHeight: '50px',
+  marginBottom: '$3',
 });
 
 export const Subtitle = styled('h1', {
@@ -56,7 +57,7 @@ export const Button = styled('a', {
   borderRadius: '32px',
   cursor: 'pointer',
   padding: '16px',
-  transition: 'all 0.2s ease-in-out',
+  transition: 'all $durations ease',
   maxWidth: '250px',
   '&:hover': {
     background: 'transparent',

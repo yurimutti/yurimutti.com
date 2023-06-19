@@ -10,7 +10,6 @@ const Contact = () => {
     <Layout>
       <Container>
         <S.PageTitle>Entre em contato comigo.</S.PageTitle>
-
         <S.Form>
           <h2>Envie um email</h2>
           <S.FormGroup>
@@ -39,7 +38,6 @@ const Contact = () => {
             <S.Button type="submit">Enviar</S.Button>
           </S.FormGroup>
         </S.Form>
-
         <S.Telephone
           href="https://api.whatsapp.com/send?phone=557131904989"
           target="_blank"

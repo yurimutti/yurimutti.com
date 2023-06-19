@@ -4,7 +4,7 @@ export const PageTitle = styled('h1', {
   color: 'transparent',
   backgroundClip: 'text',
   backgroundImage:
-    'linear-gradient(135deg, var(--colors-indigo4) 0%, var(--colors-indigo12) 100% )',
+    'linear-gradient(135deg, var(--colors-indigo3) 0%, var(--colors-indigo12) 100% )',
   fontSize: '48px',
   lineHeight: '50px',
   marginBottom: '$3',

@@ -8,6 +8,7 @@ import {
   yellow,
   pink,
   blue,
+  purple,
 } from '@radix-ui/colors';
 import { createStitches, defaultThemeMap } from '@stitches/react';
 
@@ -32,6 +33,7 @@ export const {
       ...yellow,
       ...blue,
       ...pink,
+      ...purple,
     },
     space: {
       1: '4px',

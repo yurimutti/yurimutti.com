@@ -103,5 +103,5 @@ export const PageTitle = styled('h1', {
     'linear-gradient(135deg, var(--colors-pink8) 0%, var(--colors-slate8) 100% )',
   fontSize: '48px',
   lineHeight: '50px',
-  margin: '$4 0',
+  marginBottom: '$3',
 });
