@@ -14,7 +14,7 @@ const Contact = () => {
           <h2>Envie um email</h2>
           <S.FormGroup>
             <S.Label htmlFor="name">Nome</S.Label>
-            <S.Input id="name" type="text" placeholder="Sou Nome" required />
+            <S.Input id="name" type="text" placeholder="Seu Nome" required />
           </S.FormGroup>
           <S.FormGroup>
             <S.Label htmlFor="email">Email</S.Label>

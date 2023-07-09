@@ -26,6 +26,7 @@ export const {
     colors: {
       white: '#FFFFFF',
       black: '#000000',
+      hover: 'hsla(0,0%,100%,.02)',
       ...slateDark,
       ...indigoDark,
       ...red,

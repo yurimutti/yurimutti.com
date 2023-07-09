@@ -3,6 +3,39 @@ import { Layout } from '@/components/layouts/layout';
 
 import * as S from './styles';
 
+const projects = [
+  {
+    name: 'Makes',
+    link: 'https://www.makes.ai/',
+    tech: ['React', 'JavaScript'],
+    text: 'Developed, maintained, and shipped production code for client websites. Clients included JetBlue, Lovesac, U.S. Cellular, U.S. Department of Defense, and more.',
+  },
+  {
+    name: 'Propulmão',
+    link: 'https://propulmao.com.br/',
+    tech: ['React', 'JavaScript'],
+    text: 'Developed, maintained, and shipped production code for client websites. Clients included JetBlue, Lovesac, U.S. Cellular, U.S. Department of Defense, and more.',
+  },
+  {
+    name: 'Mnz Tecnologia',
+    link: 'https://mnztecnologia.com.br/',
+    tech: ['React', 'JavaScript'],
+    text: 'Developed, maintained, and shipped production code for client websites. Clients included JetBlue, Lovesac, U.S. Cellular, U.S. Department of Defense, and more.',
+  },
+  {
+    name: 'MeStream',
+    link: 'https://mestream.com.br/',
+    tech: ['React', 'JavaScript'],
+    text: 'Developed, maintained, and shipped production code for client websites. Clients included JetBlue, Lovesac, U.S. Cellular, U.S. Department of Defense, and more.',
+  },
+  {
+    name: 'Projeto Cria',
+    link: 'https://projetocria.org.br',
+    tech: ['React', 'JavaScript'],
+    text: 'Developed, maintained, and shipped production code for client websites. Clients included JetBlue, Lovesac, U.S. Cellular, U.S. Department of Defense, and more.',
+  },
+];
+
 const Projects = () => {
   return (
     <Layout>
@@ -10,74 +43,29 @@ const Projects = () => {
         <S.PageTitle>Todos Projetos</S.PageTitle>
 
         <S.Projects>
-          <div>
-            <h3>2023</h3>
-            <ul>
-              <li>
-                <a
-                  href="https://www.makes.ai/"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  Makes
-                </a>
-              </li>
-            </ul>
-          </div>
+          <S.ProjectList>
+            {projects.map((item) => (
+              <S.ProjectItem key={item.name}>
+                <a href={item.link} target="_blank" rel="noreferrer">
+                  <div>
+                    <img src="https://placehold.co/144x88" alt={item.title} />
+                  </div>
+                  <div>
+                    <h3>{item.name}</h3>
+                    <h4>{item.text}</h4>
 
-          <div>
-            <h3>2022</h3>
-            <ul>
-              <li>
-                <a
-                  href="https://propulmao.com.br/"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  Propulmão
+                    <S.Tech>
+                      {item.tech.map((tech) => (
+                        <S.Badge key={tech}>
+                          <span>{tech}</span>
+                        </S.Badge>
+                      ))}
+                    </S.Tech>
+                  </div>
                 </a>
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <h3>2021</h3>
-            <ul>
-              <li>
-                <a
-                  href="https://mnztecnologia.com.br/"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  Mnz Tecnologia
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://mestream.com.br/"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  MeStream
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <h3>2020</h3>
-            <ul>
-              <li>
-                <a
-                  href="https://projetocria.org.br"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  Projeto Cria
-                </a>
-              </li>
-            </ul>
-          </div>
+              </S.ProjectItem>
+            ))}
+          </S.ProjectList>
         </S.Projects>
       </Container>
     </Layout>

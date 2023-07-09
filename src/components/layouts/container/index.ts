@@ -1,6 +1,6 @@
 import { styled } from '@/libs/stitches';
 
 export const Container = styled('div', {
-  width: '100%',
-  padding: '0 $4',
+  maxWidth: '1200px',
+  margin: '0 auto',
 });

@@ -21,7 +21,7 @@ export default class Document extends NextDocument {
             dangerouslySetInnerHTML={{ __html: getCssText() }}
           />
         </Head>
-        <body>
+        <body style={{ position: 'relative' }}>
           <Main />
           <NextScript />
         </body>
