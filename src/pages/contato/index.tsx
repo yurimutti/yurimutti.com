@@ -3,50 +3,156 @@ import { BsTelephone } from 'react-icons/bs';
 import { Container } from '@/components/layouts/container';
 import { Layout } from '@/components/layouts/layout';
 
-import * as S from './styles';
+import { styled } from '@/libs/stitches';
+
+export const Form = styled('form', {
+  display: 'flex',
+  flexDirection: 'column',
+  maxWidth: '400px',
+  color: '$slate12',
+  h2: {
+    marginBottom: '$3',
+  },
+});
+
+export const FormGroup = styled('div', {
+  display: 'flex',
+  flexDirection: 'column',
+  marginBottom: '$3',
+  gap: '$3',
+});
+
+export const Label = styled('label', {
+  color: '$slate12',
+  textTransform: 'uppercase',
+  fontSize: '12px',
+  fontWeight: '500',
+});
+
+export const Input = styled('input', {
+  color: '$slate12',
+  background: 'none',
+  border: '1px solid $slate12',
+  borderRadius: '$default',
+  padding: '$2',
+  '&:focus': { outline: 'none', borderColor: '$pink8' },
+});
+
+export const Textarea = styled('textarea', {
+  color: '$slate12',
+  background: 'none',
+  border: '1px solid $slate12',
+  borderRadius: '$default',
+  padding: '$2',
+  '&:focus': { outline: 'none', borderColor: '$pink8' },
+});
+
+export const Button = styled('button', {
+  textTransform: 'uppercase',
+  color: '$slate1',
+  background: '$white',
+  border: '1px solid $white',
+  borderRadius: '$default',
+  cursor: 'pointer',
+  padding: '16px',
+  marginTop: '4px',
+  transition: 'all 0.2s ease-in-out',
+  '&:hover': {
+    background: 'transparent',
+    borderColor: '$pink8',
+    color: '$pink8',
+  },
+  '&:focus': {
+    background: 'transparent',
+    borderColor: '$pink8',
+    color: '$pink8',
+    outline: 'none',
+  },
+});
+
+export const Telephone = styled('a', {
+  maxWidth: '400px',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  padding: '$3',
+  margin: '$4 0',
+  backgroundColor: '$indigo1',
+  border: '1px solid $white',
+  borderRadius: '$default',
+  transition: 'all 0.2s ease-in-out',
+  background: 'transparent',
+  borderColor: '$pink8',
+  color: '$pink8',
+
+  '&:hover': {
+    background: '$white',
+    border: '1px solid $white',
+    color: '$slate1',
+  },
+});
+
+export const TelephoneNumber = styled('div', {
+  a: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    gap: '$2',
+  },
+});
+
+export const PageTitle = styled('h1', {
+  color: 'transparent',
+  backgroundClip: 'text',
+  backgroundImage:
+    'linear-gradient(135deg, var(--colors-pink8) 0%, var(--colors-slate8) 100% )',
+  fontSize: '48px',
+  lineHeight: '50px',
+  margin: '$3 0',
+});
 
 const Contact = () => {
   return (
     <Layout>
       <Container>
-        <S.PageTitle>Entre em contato comigo.</S.PageTitle>
-        <S.Form>
+        <PageTitle>Entre em contato comigo.</PageTitle>
+        <Form>
           <h2>Envie um email</h2>
-          <S.FormGroup>
-            <S.Label htmlFor="name">Nome</S.Label>
-            <S.Input id="name" type="text" placeholder="Seu Nome" required />
-          </S.FormGroup>
-          <S.FormGroup>
-            <S.Label htmlFor="email">Email</S.Label>
-            <S.Input
+          <FormGroup>
+            <Label htmlFor="name">Nome</Label>
+            <Input id="name" type="text" placeholder="Seu Nome" required />
+          </FormGroup>
+          <FormGroup>
+            <Label htmlFor="email">Email</Label>
+            <Input
               id="email"
               type="email"
               placeholder="seunome@seuemail.com"
               required
             />
-          </S.FormGroup>
-          <S.FormGroup>
-            <S.Label htmlFor="message">Mensagem</S.Label>
-            <S.Textarea
+          </FormGroup>
+          <FormGroup>
+            <Label htmlFor="message">Mensagem</Label>
+            <Textarea
               id="message"
               placeholder="Como posso te ajudar?"
               required
               rows={5}
             />
-          </S.FormGroup>
-          <S.FormGroup>
-            <S.Button type="submit">Enviar</S.Button>
-          </S.FormGroup>
-        </S.Form>
-        <S.Telephone
+          </FormGroup>
+          <FormGroup>
+            <Button type="submit">Enviar</Button>
+          </FormGroup>
+        </Form>
+        <Telephone
           href="https://api.whatsapp.com/send?phone=557131904989"
           target="_blank"
           rel="noreferrer"
         >
-          <S.TelephoneNumber>
+          <TelephoneNumber>
             <BsTelephone /> +55 71 3190-4989
-          </S.TelephoneNumber>
-        </S.Telephone>
+          </TelephoneNumber>
+        </Telephone>
       </Container>
     </Layout>
   );
