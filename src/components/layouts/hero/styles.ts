@@ -5,9 +5,9 @@ export const Section = styled('section', {
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
-  flex: 1,
   position: 'relative',
   textAlign: 'center',
+  flex: 1,
 });
 
 export const Text = styled('h1', {

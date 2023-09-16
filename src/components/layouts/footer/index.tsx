@@ -6,7 +6,7 @@ export const Footer = () => {
   return (
     <S.Footer>
       <S.Container>
-        <span>Connect with me online 👋</span>
+        <span>Conecte-se comigo online 👋</span>
         <SocialIcons />
       </S.Container>
     </S.Footer>
