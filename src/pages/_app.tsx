@@ -18,7 +18,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
       }}
     >
       <Radial />
-      <Component {...pageProps} />;
+      <Component {...pageProps} />
     </ThemeProvider>
   );
 };
