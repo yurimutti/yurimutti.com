@@ -1,6 +1,4 @@
-import { globalCss, createTheme, keyframes } from '@/libs/stitches';
-
-export const darkTheme = createTheme({});
+import { globalCss, keyframes } from '@/libs/stitches';
 
 export const globalStyles = globalCss({
   '*': {
@@ -11,7 +9,7 @@ export const globalStyles = globalCss({
   },
 
   'body, html': {
-    background: '$indigo1',
+    backgroundColor: '$indigo1',
 
     a: {
       color: '$slate12',
@@ -34,8 +32,12 @@ export const globalStyles = globalCss({
       fontFamily: '$heading',
     },
 
-    [`.${darkTheme} &`]: {
+    '.light &': {
       backgroundColor: '$slate12',
+    },
+
+    '.dark &': {
+      backgroundColor: '$indigo1',
     },
   },
 });

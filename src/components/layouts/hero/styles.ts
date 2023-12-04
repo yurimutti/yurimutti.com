@@ -1,5 +1,5 @@
 import { styled } from '@/libs/stitches';
-import { backgroundGradient, darkTheme } from '@/libs/stitches/global';
+import { backgroundGradient } from '@/libs/stitches/global';
 
 export const Section = styled('section', {
   display: 'flex',
@@ -11,7 +11,7 @@ export const Section = styled('section', {
 });
 
 export const Text = styled('h1', {
-  color: '$slate12',
+  color: '$slate1',
   fontSize: '80px',
   fontWeight: 700,
 
@@ -23,8 +23,8 @@ export const Text = styled('h1', {
     fontSize: '32px',
   },
 
-  [`.${darkTheme} &`]: {
-    color: '$slate1',
+  '.dark &': {
+    color: '$slate12',
   },
 });
 

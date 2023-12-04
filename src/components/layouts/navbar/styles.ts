@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion';
 
 import { styled } from '@/libs/stitches';
-import { darkTheme } from '@/libs/stitches/global';
 
 export const Header = styled('header', {
   padding: '$4 0',
@@ -33,11 +32,11 @@ export const Anchor = styled(motion.a, {
   height: '40px',
   zIndex: 1,
   padding: '$2',
-  color: '$slate12',
+  color: '$slate1',
   cursor: 'pointer',
 
-  [`.${darkTheme} &`]: {
-    color: '$slate1',
+  '.dark &': {
+    color: '$slate12',
   },
 });
 

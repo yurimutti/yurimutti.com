@@ -1,8 +1,7 @@
 import { styled } from '@/libs/stitches';
-import { darkTheme } from '@/libs/stitches/global';
 
 export const Logo = styled('span', {
-  color: '$slate12',
+  color: '$slate1',
   fontSize: 'x-large',
   fontFamily: '$heading',
   fontWeight: 'bold',
@@ -21,7 +20,7 @@ export const Logo = styled('span', {
     fontSize: 'medium',
   },
 
-  [`.${darkTheme} &`]: {
-    color: '$slate1',
+  '.dark &': {
+    color: '$slate12',
   },
 });

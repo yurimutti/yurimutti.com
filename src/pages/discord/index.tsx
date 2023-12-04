@@ -63,6 +63,7 @@ export const Button = styled('a', {
   borderRadius: '32px',
   cursor: 'pointer',
   padding: '16px',
+  margin: '$1 0',
   transition: 'all $durations ease',
   maxWidth: '250px',
   '&:hover': {
@@ -91,9 +92,11 @@ const Discord = () => {
             <PageTitle>Faça amigos em nosso servidor de discord.</PageTitle>
             <Subtitle>
               Programadores de vários níveis e lugares para uma troca de
-              experiências e conhecimento
+              experiências e conhecimento.
             </Subtitle>
-            <Button href="##">Entrar no Discord</Button>
+            <Button href={process.env.NEXT_PUBLIC_DISCORD_URL} target="_blank">
+              Entrar no Discord
+            </Button>
           </Info>
 
           <Image>

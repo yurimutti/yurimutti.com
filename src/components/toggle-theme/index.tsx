@@ -13,10 +13,8 @@ export const ToggleTheme = () => {
 
   return (
     <AnimatePresence>
-      <S.Theme>
-        <S.ToggleButton onClick={handleToggleTheme}>
-          {theme === 'dark' ? <MdNightlight /> : <MdWbSunny />}
-        </S.ToggleButton>
+      <S.Theme onClick={handleToggleTheme}>
+        {theme === 'dark' ? <MdNightlight /> : <MdWbSunny />}
       </S.Theme>
     </AnimatePresence>
   );

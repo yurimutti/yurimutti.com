@@ -1,9 +1,6 @@
-import { motion } from 'framer-motion';
-
 import { styled } from '@/libs/stitches';
-import { darkTheme } from '@/libs/stitches/global';
 
-export const Theme = styled('div', {
+export const Theme = styled('button', {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
@@ -14,8 +11,12 @@ export const Theme = styled('div', {
   transition: 'all $durations ease',
   borderRadius: '$default',
 
+  backgroundColor: 'transparent',
+  border: 'none',
+  gap: '$2',
+
   svg: {
-    color: '$slate12',
+    color: '$slate1',
     width: '$4',
     height: '$4',
   },
@@ -28,17 +29,9 @@ export const Theme = styled('div', {
     border: '1px solid $slate12',
   },
 
-  [`.${darkTheme} &`]: {
+  '.dark &': {
     svg: {
-      color: '$slate1',
+      color: '$slate12',
     },
   },
-});
-
-export const ToggleButton = styled(motion.button, {
-  backgroundColor: 'transparent',
-  border: 'none',
-  display: 'flex',
-  gap: '$2',
-  alignItems: 'center',
 });

@@ -1,13 +1,12 @@
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 
 import { styled } from '@/libs/stitches';
-import { darkTheme } from '@/libs/stitches/global';
 
 export const ToggleLang = styled('div', {
   borderRadius: '$default',
 
   svg: {
-    color: '$slate12',
+    color: '$slate1',
     width: '$4',
     height: '$4',
   },
@@ -20,9 +19,9 @@ export const ToggleLang = styled('div', {
     border: '1px solid $slate12',
   },
 
-  [`.${darkTheme} &`]: {
+  '.dark &': {
     svg: {
-      color: '$slate1',
+      color: '$slate12',
     },
   },
 });
@@ -34,13 +33,13 @@ export const DropdownMenuTriggerStyled = styled(DropdownMenu.Trigger, {
   gap: '$2',
   backgroundColor: 'transparent',
   border: 'none',
-  color: '$slate12',
+  color: '$slate1',
   padding: '$2',
   height: '40px',
   transition: 'all $durations ease',
 
-  [`.${darkTheme} &`]: {
-    color: '$slate1',
+  '.dark &': {
+    color: '$slate12',
   },
 });
 
@@ -55,7 +54,7 @@ export const DropdownMenuContentStyled = styled(DropdownMenu.Content, {
 
 export const DropdownMenuItemStyled = styled(DropdownMenu.Item, {
   cursor: 'pointer',
-  color: '$slate12',
+  color: '$slate1',
   outline: 'none',
   padding: '$2',
   borderRadius: '$default',
@@ -65,9 +64,9 @@ export const DropdownMenuItemStyled = styled(DropdownMenu.Item, {
     backgroundColor: '$slate6',
   },
 
-  [`.${darkTheme} &`]: {
+  '.dark &': {
     svg: {
-      color: '$slate1',
+      color: '$slate12',
     },
   },
 });

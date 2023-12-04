@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion';
 
 import { styled } from '@/libs/stitches';
-import { darkTheme } from '@/libs/stitches/global';
 
 export const SocialIconsList = styled(motion.ul, {
   display: 'flex',
@@ -23,7 +22,7 @@ export const SocialIconsLink = styled(motion.a, {
   zIndex: 1,
 
   svg: {
-    color: '$slate12',
+    color: '$slate1',
     width: '$4',
     height: '$4',
   },
@@ -35,9 +34,9 @@ export const SocialIconsLink = styled(motion.a, {
     },
   },
 
-  [`.${darkTheme} &`]: {
+  '.dark &': {
     svg: {
-      color: '$slate1',
+      color: '$slate12',
     },
   },
 });
