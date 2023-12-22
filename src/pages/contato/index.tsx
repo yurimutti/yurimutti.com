@@ -5,6 +5,11 @@ import { Layout } from '@/components/layouts/layout';
 
 import { styled } from '@/libs/stitches';
 
+export const Wrapper = styled('div', {
+  margin: '$3 0',
+  height: 'calc(100vh - 241px)',
+});
+
 export const Form = styled('form', {
   display: 'flex',
   flexDirection: 'column',
@@ -115,44 +120,46 @@ const Contact = () => {
   return (
     <Layout>
       <Container>
-        <PageTitle>Entre em contato comigo.</PageTitle>
-        <Form>
-          <h2>Envie um email</h2>
-          <FormGroup>
-            <Label htmlFor="name">Nome</Label>
-            <Input id="name" type="text" placeholder="Seu Nome" required />
-          </FormGroup>
-          <FormGroup>
-            <Label htmlFor="email">Email</Label>
-            <Input
-              id="email"
-              type="email"
-              placeholder="seunome@seuemail.com"
-              required
-            />
-          </FormGroup>
-          <FormGroup>
-            <Label htmlFor="message">Mensagem</Label>
-            <Textarea
-              id="message"
-              placeholder="Como posso te ajudar?"
-              required
-              rows={5}
-            />
-          </FormGroup>
-          <FormGroup>
-            <Button type="submit">Enviar</Button>
-          </FormGroup>
-        </Form>
-        <Telephone
-          href="https://api.whatsapp.com/send?phone=557131904989"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <TelephoneNumber>
-            <BsTelephone /> +55 71 3190-4989
-          </TelephoneNumber>
-        </Telephone>
+        <Wrapper>
+          <PageTitle>Entre em contato comigo.</PageTitle>
+          <Form>
+            <h2>Envie um email</h2>
+            <FormGroup>
+              <Label htmlFor="name">Nome</Label>
+              <Input id="name" type="text" placeholder="Seu Nome" required />
+            </FormGroup>
+            <FormGroup>
+              <Label htmlFor="email">Email</Label>
+              <Input
+                id="email"
+                type="email"
+                placeholder="seunome@seuemail.com"
+                required
+              />
+            </FormGroup>
+            <FormGroup>
+              <Label htmlFor="message">Mensagem</Label>
+              <Textarea
+                id="message"
+                placeholder="Como posso te ajudar?"
+                required
+                rows={5}
+              />
+            </FormGroup>
+            <FormGroup>
+              <Button type="submit">Enviar</Button>
+            </FormGroup>
+          </Form>
+          <Telephone
+            href="https://api.whatsapp.com/send?phone=557131904989"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <TelephoneNumber>
+              <BsTelephone /> +55 71 3190-4989
+            </TelephoneNumber>
+          </Telephone>
+        </Wrapper>
       </Container>
     </Layout>
   );

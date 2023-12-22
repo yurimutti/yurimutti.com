@@ -14,7 +14,7 @@ export const ToggleTheme = () => {
   return (
     <AnimatePresence>
       <S.Theme onClick={handleToggleTheme}>
-        {theme === 'dark' ? <MdNightlight /> : <MdWbSunny />}
+        {theme === 'dark' ? <MdWbSunny /> : <MdNightlight />}
       </S.Theme>
     </AnimatePresence>
   );

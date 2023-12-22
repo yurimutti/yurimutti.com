@@ -11,6 +11,7 @@ export const Wrapper = styled('div', {
   justifyContent: 'space-between',
   alignItems: 'center',
   margin: '$3 0',
+  height: 'calc(100vh - 241px)',
 });
 
 export const DiscordWrapper = styled('div', {
