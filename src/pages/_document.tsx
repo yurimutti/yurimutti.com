@@ -6,6 +6,10 @@ export default class Document extends NextDocument {
   render() {
     return (
       <Html lang="en">
+        <meta charSet="utf-8" />
+        <meta content="Yuri Mutti" name="author" />
+        <meta property="og:type" content="website" />
+        <meta content="summary_large_image" name="twitter:card" />
         <Head>
           <link
             href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap"
