@@ -1,5 +1,3 @@
-import { BsTelephone } from 'react-icons/bs';
-
 import { Container } from '@/components/layouts/container';
 import { Layout } from '@/components/layouts/layout';
 
@@ -74,29 +72,6 @@ export const Textarea = styled('textarea', {
 });
 
 export const Button = styled('button', {
-  textTransform: 'uppercase',
-  color: '$slate1',
-  background: '$white',
-  border: '1px solid $white',
-  borderRadius: '$default',
-  cursor: 'pointer',
-  padding: '16px',
-  marginTop: '4px',
-  transition: 'all 0.2s ease-in-out',
-  '&:hover': {
-    background: 'transparent',
-    borderColor: 'teal8',
-    color: 'teal8',
-  },
-  '&:focus': {
-    background: 'transparent',
-    borderColor: 'teal8',
-    color: 'teal8',
-    outline: 'none',
-  },
-});
-
-export const Telephone = styled('a', {
   maxWidth: '400px',
   display: 'flex',
   justifyContent: 'center',
@@ -119,15 +94,6 @@ export const Telephone = styled('a', {
 
   '@md': {
     maxWidth: '100%',
-  },
-});
-
-export const TelephoneNumber = styled('div', {
-  a: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    gap: '$2',
   },
 });
 
@@ -180,15 +146,6 @@ const Contact = () => {
               <Button type="submit">Enviar</Button>
             </FormGroup>
           </Form>
-          <Telephone
-            href="https://api.whatsapp.com/send?phone=557131904989"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <TelephoneNumber>
-              <BsTelephone /> +55 71 3190-4989
-            </TelephoneNumber>
-          </Telephone>
         </Wrapper>
       </Container>
     </Layout>
