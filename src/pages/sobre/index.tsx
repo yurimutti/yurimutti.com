@@ -13,6 +13,11 @@ const PageTitle = styled('h1', {
   fontSize: '48px',
   lineHeight: '50px',
   margin: '$3 0',
+
+  '@md': {
+    fontSize: '32px',
+    lineHeight: '32px',
+  },
 });
 
 const AboutMe = styled('div', {
