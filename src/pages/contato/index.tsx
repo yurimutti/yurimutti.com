@@ -6,6 +6,10 @@ import { styled } from '@/libs/stitches';
 export const Wrapper = styled('div', {
   margin: '$3 0',
   height: 'calc(100vh - 241px)',
+
+  '@md': {
+    height: '100%',
+  },
 });
 
 export const Form = styled('form', {
