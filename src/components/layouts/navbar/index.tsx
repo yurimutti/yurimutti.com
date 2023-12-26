@@ -1,5 +1,6 @@
 import { useState } from 'react';
 
+import { useTheme } from 'next-themes';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
@@ -16,6 +17,8 @@ const pages = ['Sobre', 'Projetos', 'Contato', 'Discord'];
 export const Navbar = () => {
   const router = useRouter();
   const [hovered, setHovered] = useState('');
+
+  const { theme } = useTheme();
 
   return (
     <Container>
@@ -43,7 +46,8 @@ export const Navbar = () => {
                       width: '32px',
                       height: '1px',
                       margin: '4px auto 0 auto',
-                      backgroundColor: '$white',
+                      backgroundColor:
+                        theme === 'dark' ? '$slate12' : '$slate1',
                     },
                   }}
                 >

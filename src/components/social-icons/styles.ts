@@ -27,6 +27,14 @@ export const SocialIconsLink = styled(motion.a, {
     height: '$4',
   },
 
+  '&:hover': {
+    backgroundColor: '$slate6',
+
+    svg: {
+      color: '$slate12',
+    },
+  },
+
   '@sm': {
     svg: {
       width: '$3',

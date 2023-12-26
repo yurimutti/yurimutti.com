@@ -25,7 +25,11 @@ export const List = styled(motion.ul, {
   gap: '$6',
 });
 
-export const ListItem = styled('li', {});
+export const ListItem = styled('li', {
+  'a:hover': {
+    color: '$slate12',
+  },
+});
 
 export const Anchor = styled(motion.a, {
   position: 'relative',

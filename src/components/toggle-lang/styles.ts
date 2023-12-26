@@ -13,10 +13,22 @@ export const ToggleLang = styled('div', {
 
   '&:hover': {
     backgroundColor: '$slate6',
+
+    svg: {
+      color: '$slate12',
+    },
+
+    button: {
+      color: '$slate12',
+    },
   },
 
-  '@sm': {
+  '@md': {
     border: '1px solid $slate12',
+
+    '.light &': {
+      border: '1px solid $slate1',
+    },
   },
 
   '.dark &': {

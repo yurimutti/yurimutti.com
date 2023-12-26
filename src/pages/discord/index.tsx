@@ -12,6 +12,12 @@ export const Wrapper = styled('div', {
   alignItems: 'center',
   margin: '$3 0',
   height: 'calc(100vh - 241px)',
+
+  '@md': {
+    margin: '$1 0',
+    display: 'block',
+    textAlign: 'center',
+  },
 });
 
 export const DiscordWrapper = styled('div', {
@@ -21,12 +27,24 @@ export const DiscordWrapper = styled('div', {
   alignItems: 'center',
   fontWeight: '$bold',
   gap: '$2',
+
+  '.light &': {
+    color: '$slate3',
+  },
+
+  '@md': {
+    margin: '0 auto',
+  },
 });
 
 export const Info = styled('div', {
   display: 'flex',
   flexDirection: 'column',
   gap: '$2',
+
+  '@md': {
+    gap: '$3',
+  },
 });
 
 export const Image = styled('div', {
@@ -35,6 +53,16 @@ export const Image = styled('div', {
     height: '420px',
     color: '$white',
   },
+
+  '.light &': {
+    svg: {
+      color: '$purple8',
+    },
+  },
+
+  '@md': {
+    display: 'none',
+  },
 });
 
 export const PageTitle = styled('h1', {
@@ -42,16 +70,28 @@ export const PageTitle = styled('h1', {
   color: 'transparent',
   backgroundClip: 'text',
   backgroundImage:
-    'linear-gradient(135deg, var(--colors-teal10) 0%, var(--colors-teal2) 100% )',
+    'linear-gradient(135deg, var(--colors-purple8) 0%, var(--colors-slate8) 100% )',
   fontSize: '48px',
   lineHeight: '50px',
-  marginBottom: '$3',
+
+  '@md': {
+    fontSize: '32px',
+    lineHeight: '32px',
+  },
 });
 
 export const Subtitle = styled('h1', {
   maxWidth: '800px',
   color: '$slate10',
   fontWeight: 'lighter',
+
+  '.light &': {
+    color: '$slate6',
+  },
+
+  '@md': {
+    fontSize: 'large',
+  },
 });
 
 export const Button = styled('a', {
@@ -69,14 +109,18 @@ export const Button = styled('a', {
   maxWidth: '250px',
   '&:hover': {
     background: 'transparent',
-    borderColor: '$teal10',
-    color: '$teal10',
+    borderColor: '$purple8',
+    color: '$purple8',
   },
   '&:focus': {
     background: 'transparent',
-    borderColor: '$teal10',
-    color: '$teal10',
+    borderColor: '$purple8',
+    color: '$purple8',
     outline: 'none',
+  },
+
+  '@md': {
+    margin: '0 auto',
   },
 });
 

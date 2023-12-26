@@ -14,6 +14,7 @@ export const Logo = styled('span', {
 
   '&:hover': {
     backgroundColor: '$slate6',
+    color: '$slate12',
   },
 
   '@sm': {

@@ -23,10 +23,18 @@ export const Theme = styled('button', {
 
   '&:hover': {
     backgroundColor: '$slate6',
+
+    svg: {
+      color: '$slate12',
+    },
   },
 
   '@md': {
     border: '1px solid $slate12',
+
+    '.light &': {
+      border: '1px solid $slate1',
+    },
   },
 
   '.dark &': {

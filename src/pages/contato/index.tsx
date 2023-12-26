@@ -18,6 +18,14 @@ export const Form = styled('form', {
   h2: {
     marginBottom: '$3',
   },
+
+  '.light &': {
+    color: '$slate6',
+  },
+
+  '@md': {
+    maxWidth: '100%',
+  },
 });
 
 export const FormGroup = styled('div', {
@@ -32,6 +40,10 @@ export const Label = styled('label', {
   textTransform: 'uppercase',
   fontSize: '12px',
   fontWeight: '500',
+
+  '.light &': {
+    color: '$slate2',
+  },
 });
 
 export const Input = styled('input', {
@@ -40,7 +52,12 @@ export const Input = styled('input', {
   border: '1px solid $slate12',
   borderRadius: '$default',
   padding: '$2',
-  '&:focus': { outline: 'none', borderColor: '$pink8' },
+  '&:focus': { outline: 'none', borderColor: '$teal8' },
+
+  '.light &': {
+    color: '$slate4',
+    borderColor: '$slate8',
+  },
 });
 
 export const Textarea = styled('textarea', {
@@ -49,7 +66,11 @@ export const Textarea = styled('textarea', {
   border: '1px solid $slate12',
   borderRadius: '$default',
   padding: '$2',
-  '&:focus': { outline: 'none', borderColor: '$pink8' },
+  '&:focus': { outline: 'none', borderColor: '$teal8' },
+
+  '.light &': {
+    borderColor: '$slate8',
+  },
 });
 
 export const Button = styled('button', {
@@ -64,13 +85,13 @@ export const Button = styled('button', {
   transition: 'all 0.2s ease-in-out',
   '&:hover': {
     background: 'transparent',
-    borderColor: '$pink8',
-    color: '$pink8',
+    borderColor: 'teal8',
+    color: 'teal8',
   },
   '&:focus': {
     background: 'transparent',
-    borderColor: '$pink8',
-    color: '$pink8',
+    borderColor: 'teal8',
+    color: 'teal8',
     outline: 'none',
   },
 });
@@ -87,13 +108,17 @@ export const Telephone = styled('a', {
   borderRadius: '$default',
   transition: 'all 0.2s ease-in-out',
   background: 'transparent',
-  borderColor: '$pink8',
-  color: '$pink8',
+  borderColor: '$teal8',
+  color: '$teal8',
 
   '&:hover': {
     background: '$white',
     border: '1px solid $white',
     color: '$slate1',
+  },
+
+  '@md': {
+    maxWidth: '100%',
   },
 });
 
@@ -110,10 +135,15 @@ export const PageTitle = styled('h1', {
   color: 'transparent',
   backgroundClip: 'text',
   backgroundImage:
-    'linear-gradient(135deg, var(--colors-pink8) 0%, var(--colors-slate8) 100% )',
+    'linear-gradient(135deg, var(--colors-teal10) 0%, var(--colors-teal2) 100% )',
   fontSize: '48px',
   lineHeight: '50px',
   margin: '$3 0',
+
+  '@md': {
+    fontSize: '32px',
+    margin: '$1 0',
+  },
 });
 
 const Contact = () => {

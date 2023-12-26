@@ -5,7 +5,7 @@ import { Layout } from '@/components/layouts/layout';
 
 import { styled } from '@/libs/stitches';
 
-export const PageTitle = styled('h1', {
+const PageTitle = styled('h1', {
   color: 'transparent',
   backgroundClip: 'text',
   backgroundImage:
@@ -15,19 +15,25 @@ export const PageTitle = styled('h1', {
   margin: '$3 0',
 });
 
-export const AboutMe = styled('div', {
+const AboutMe = styled('div', {
   display: 'flex',
   justifyContent: 'space-between',
   marginBottom: '$3',
+
+  '@md': {
+    flexDirection: 'column',
+  },
 });
 
-export const AboutMeImage = styled('div', {
+const AboutMeImage = styled('div', {
+  width: '100%',
+
   img: {
     borderRadius: '$default',
   },
 });
 
-export const AboutMeText = styled('div', {
+const AboutMeText = styled('div', {
   color: '$slate9',
   maxWidth: '500px',
   h2: {
@@ -46,7 +52,7 @@ export const AboutMeText = styled('div', {
   },
 });
 
-export const Carreer = styled('div', {
+const Carreer = styled('div', {
   h3: {
     color: '$slate12',
     marginBottom: '$3',
@@ -58,6 +64,10 @@ const Title = styled('h2', {
   fontSize: '$3',
   fontWeight: 'lighter',
   marginBottom: '$1',
+
+  '.light &': {
+    color: '$slate1',
+  },
 });
 
 const Subtitle = styled('h3', {
@@ -65,15 +75,19 @@ const Subtitle = styled('h3', {
   fontSize: '$3',
   fontWeight: 'lighter',
   marginBottom: '$2',
+
+  '.light &': {
+    color: '$slate3',
+  },
 });
 
-export const CarreerList = styled('ul', {
+const CarreerList = styled('ul', {
   marginBottom: '$3',
   displayFlex: 'column',
   gap: '$2',
 });
 
-export const CarreerItem = styled('li', {
+const CarreerItem = styled('li', {
   borderRadius: '$default',
   padding: '$3',
   transition: 'all $durations ease',
@@ -97,10 +111,33 @@ export const CarreerItem = styled('li', {
     borderColor: '$slate8',
     background: '$hover',
   },
+
+  '.light &': {
+    h3: {
+      color: '$slate8',
+    },
+  },
+
+  '@sm': {
+    a: {
+      gap: '$1',
+    },
+    padding: '$1',
+    h3: {
+      fontSize: '$2',
+    },
+    span: {
+      fontSize: 'smaller',
+    },
+  },
 });
 
 const PositionInfos = styled('div', {
   textAlign: 'right',
+
+  '@sm': {
+    maxWidth: '180px',
+  },
 });
 
 const carreerItems = [

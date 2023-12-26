@@ -34,6 +34,9 @@ export const globalStyles = globalCss({
 
     '.light &': {
       backgroundColor: '$slate12',
+      a: {
+        color: '$slate1',
+      },
     },
 
     '.dark &': {

@@ -23,6 +23,12 @@ export const NavMobile = styled('div', {
   '@md': {
     display: 'flex',
   },
+
+  '.light &': {
+    svg: {
+      color: '$slate1',
+    },
+  },
 });
 
 export const NavMobileOverlay = styled(motion.div, {
@@ -57,5 +63,9 @@ export const NavMobileOverlay = styled(motion.div, {
     right: '$4',
     border: 'none',
     backgroundColor: 'transparent',
+  },
+
+  '.light &': {
+    backgroundColor: '$indigo12',
   },
 });

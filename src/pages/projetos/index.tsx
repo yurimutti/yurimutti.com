@@ -23,6 +23,11 @@ export const ProjectsWrapper = styled('div', {
   img: {
     borderRadius: '$default',
   },
+
+  '@md': {
+    gap: '$1',
+    marginBottom: '$2',
+  },
 });
 
 export const ProjectList = styled('ul', {
@@ -55,6 +60,20 @@ export const ProjectItem = styled('li', {
     borderColor: '$slate8',
     background: '$hover',
   },
+
+  '.light &': {
+    h3: {
+      color: '$slate8',
+    },
+  },
+
+  '@md': {
+    padding: '$2',
+    a: {
+      flexDirection: 'column',
+      gap: '$1',
+    },
+  },
 });
 
 export const Tech = styled('div', {
@@ -74,36 +93,48 @@ export const Badge = styled('div', {
     alignItems: 'center',
     color: '$indigo9',
   },
+
+  '.light &': {
+    backgroundColor: '$indigo2',
+    span: {
+      color: '$slate12',
+    },
+  },
 });
 
 const projects = [
   {
     name: 'Makes',
     link: 'https://www.makes.ai/',
+    thumb: 'https://placehold.co/144x88',
     tech: ['React', 'JavaScript'],
     text: 'Developed, maintained, and shipped production code for client websites. Clients included JetBlue, Lovesac, U.S. Cellular, U.S. Department of Defense, and more.',
   },
   {
     name: 'Propulmão',
     link: 'https://propulmao.com.br/',
+    thumb: 'https://placehold.co/144x88',
     tech: ['React', 'JavaScript'],
     text: 'Developed, maintained, and shipped production code for client websites. Clients included JetBlue, Lovesac, U.S. Cellular, U.S. Department of Defense, and more.',
   },
   {
     name: 'Mnz Tecnologia',
     link: 'https://mnztecnologia.com.br/',
+    thumb: 'https://placehold.co/144x88',
     tech: ['React', 'JavaScript'],
     text: 'Developed, maintained, and shipped production code for client websites. Clients included JetBlue, Lovesac, U.S. Cellular, U.S. Department of Defense, and more.',
   },
   {
     name: 'MeStream',
     link: 'https://mestream.com.br/',
+    thumb: 'https://placehold.co/144x88',
     tech: ['React', 'JavaScript'],
     text: 'Developed, maintained, and shipped production code for client websites. Clients included JetBlue, Lovesac, U.S. Cellular, U.S. Department of Defense, and more.',
   },
   {
     name: 'Projeto Cria',
     link: 'https://projetocria.org.br',
+    thumb: 'https://placehold.co/144x88',
     tech: ['React', 'JavaScript'],
     text: 'Developed, maintained, and shipped production code for client websites. Clients included JetBlue, Lovesac, U.S. Cellular, U.S. Department of Defense, and more.',
   },
@@ -121,7 +152,7 @@ const Projects = () => {
               <ProjectItem key={item.name}>
                 <a href={item.link} target="_blank" rel="noreferrer">
                   <div>
-                    <img src="https://placehold.co/144x88" alt={item.name} />
+                    <img src={item.thumb} alt={item.name} />
                   </div>
                   <div>
                     <h3>{item.name}</h3>
