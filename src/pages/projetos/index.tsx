@@ -1,3 +1,5 @@
+import Head from 'next/head';
+
 import { Container } from '@/components/layouts/container';
 import { Layout } from '@/components/layouts/layout';
 
@@ -148,6 +150,23 @@ const projects = [
 const Projects = () => {
   return (
     <Layout>
+      <Head>
+        <title>Yuri Mutti - Projetos</title>
+        <meta content="Yuri Mutti - Sobre" property="og:title" />
+        <meta
+          content="Lista com todos projetos desenvolvido por Yuri Mutti."
+          name="description"
+        />
+        <meta
+          content="Lista com todos projetos desenvolvido por Yuri Mutti."
+          property="og:description"
+        />
+        <meta content="https://yurimutti.com/projetos" property="og:url" />
+        <meta
+          content="https://yurimutti.com/assets/images/banner.jpg"
+          property="og:image"
+        />
+      </Head>
       <Container>
         <PageTitle>Todos Projetos</PageTitle>
 

@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import Image from 'next/image';
 
 import { Container } from '@/components/layouts/container';
@@ -194,6 +195,33 @@ const carreerItems = [
 const About = () => {
   return (
     <Layout>
+      <Head>
+        <title>Yuri Mutti - Sobre</title>
+        <meta content="Yuri Mutti - Sobre" property="og:title" />
+        <meta
+          content="Com base em JavaScript, TypeScript, bibliotecas e frameworks
+              populares como React.js e Next.js. Experiência em diversas
+              startups, agências e empresas de tecnologia, destacando
+              habilidades versáteis e adaptabilidade em diferentes contextos
+              profissionais. Apaixonado por contribuir para projetos de código
+              aberto e por se destacar em ambientes de equipe."
+          name="description"
+        />
+        <meta
+          content="Com base em JavaScript, TypeScript, bibliotecas e frameworks
+              populares como React.js e Next.js. Experiência em diversas
+              startups, agências e empresas de tecnologia, destacando
+              habilidades versáteis e adaptabilidade em diferentes contextos
+              profissionais. Apaixonado por contribuir para projetos de código
+              aberto e por se destacar em ambientes de equipe."
+          property="og:description"
+        />
+        <meta content="https://yurimutti.com/sobre" property="og:url" />
+        <meta
+          content="https://yurimutti.com/assets/images/banner.jpg"
+          property="og:image"
+        />
+      </Head>
       <Container>
         <PageTitle>Sobre mim</PageTitle>
 

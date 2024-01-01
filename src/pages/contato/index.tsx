@@ -1,3 +1,5 @@
+import Head from 'next/head';
+
 import { Container } from '@/components/layouts/container';
 import { Layout } from '@/components/layouts/layout';
 
@@ -119,6 +121,17 @@ export const PageTitle = styled('h1', {
 const Contact = () => {
   return (
     <Layout>
+      <Head>
+        <title>Yuri Mutti - Contato</title>
+        <meta content="Yuri Mutti - Contato" property="og:title" />
+        <meta content="Entre em contato comigo." name="description" />
+        <meta content="Entre em contato comigo." property="og:description" />
+        <meta content="https://yurimutti.com/contato" property="og:url" />
+        <meta
+          content="https://yurimutti.com/assets/images/banner.jpg"
+          property="og:image"
+        />
+      </Head>
       <Container>
         <Wrapper>
           <PageTitle>Entre em contato comigo.</PageTitle>

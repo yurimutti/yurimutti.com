@@ -1,6 +1,8 @@
 import { AiOutlineCodepen } from 'react-icons/ai';
 import { FaDiscord } from 'react-icons/fa';
 
+import Head from 'next/head';
+
 import { Container } from '@/components/layouts/container';
 import { Layout } from '@/components/layouts/layout';
 
@@ -127,6 +129,23 @@ export const Button = styled('a', {
 const Discord = () => {
   return (
     <Layout>
+      <Head>
+        <title>Yuri Mutti - Discord</title>
+        <meta content="Yuri Mutti - Discord" property="og:title" />
+        <meta
+          content="Faça amigos em nosso servidor de discord."
+          name="description"
+        />
+        <meta
+          content="Faça amigos em nosso servidor de discord."
+          property="og:description"
+        />
+        <meta content="https://yurimutti.com/discord" property="og:url" />
+        <meta
+          content="https://yurimutti.com/assets/images/banner.jpg"
+          property="og:image"
+        />
+      </Head>
       <Container>
         <Wrapper>
           <Info>
