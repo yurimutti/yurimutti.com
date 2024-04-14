@@ -23,6 +23,7 @@ export const NavMobile = ({ pages }: { pages: string[] }) => {
           >
             <button
               type="button"
+              aria-label="menu close button mobile"
               className="closeNavMobile"
               onClick={() => setIsOpen(false)}
             >
@@ -49,6 +50,7 @@ export const NavMobile = ({ pages }: { pages: string[] }) => {
       <button
         type="button"
         className="openNavMobile"
+        aria-label="menu close button"
         onClick={() => setIsOpen(!isOpen)}
       >
         <MdMenu />
