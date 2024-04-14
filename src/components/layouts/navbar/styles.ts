@@ -10,7 +10,7 @@ export const Header = styled('header', {
   flexWrap: 'wrap',
 });
 
-export const ButtonLogo = styled('a', {
+export const ButtonLogo = styled('div', {
   cursor: 'pointer',
 });
 
@@ -31,7 +31,7 @@ export const ListItem = styled('li', {
   },
 });
 
-export const Anchor = styled(motion.a, {
+export const Anchor = styled(motion.div, {
   position: 'relative',
   height: '40px',
   zIndex: 1,

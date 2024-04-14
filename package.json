@@ -27,11 +27,13 @@
     "@radix-ui/react-dropdown-menu": "^2.0.4",
     "@stitches/react": "^1.2.8",
     "@tanstack/react-query": "^4.2.3",
-    "next": "12.2.5",
+    "next": "14.2.1",
     "next-themes": "^0.2.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.4.0",
+    "react-toastify": "10.0.5",
+    "resend": "3.2.0",
     "zustand": "^4.1.1"
   },
   "devDependencies": {
@@ -68,5 +70,8 @@
   },
   "resolutions": {
     "webpack": "^5"
+  },
+  "overrides": {
+    "string-width": "4.2.3"
   }
 }

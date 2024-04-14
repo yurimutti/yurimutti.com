@@ -1,3 +1,6 @@
+import { FormEvent, useState } from 'react';
+import { toast } from 'react-toastify';
+
 import Head from 'next/head';
 
 import { Container } from '@/components/layouts/container';
@@ -118,7 +121,52 @@ export const PageTitle = styled('h1', {
   },
 });
 
+interface FormType {
+  name?: string;
+  email?: string;
+  message?: string;
+}
+
 const Contact = () => {
+  const [form, setForm] = useState<FormType>({
+    name: '',
+    email: '',
+    message: '',
+  });
+
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch('/api/emails/send', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(form),
+      });
+
+      if (!response.ok) {
+        toast.error('Erro ao enviar email!');
+      }
+
+      if (response.ok) {
+        toast.success('Email enviado com sucesso!');
+      }
+    } catch (error) {
+      toast.error('Erro ao enviar email!');
+    }
+  };
+
+  const handleForm = (
+    e: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setForm((prev) => ({
+      ...prev,
+      [e.currentTarget?.id]: e.currentTarget?.value,
+    }));
+  };
+
   return (
     <Layout>
       <Head>
@@ -135,11 +183,17 @@ const Contact = () => {
       <Container>
         <Wrapper>
           <PageTitle>Entre em contato comigo.</PageTitle>
-          <Form>
+          <Form onSubmit={handleSubmit}>
             <h2>Envie um email</h2>
             <FormGroup>
               <Label htmlFor="name">Nome</Label>
-              <Input id="name" type="text" placeholder="Seu Nome" required />
+              <Input
+                id="name"
+                type="text"
+                placeholder="Seu Nome"
+                required
+                onChange={handleForm}
+              />
             </FormGroup>
             <FormGroup>
               <Label htmlFor="email">Email</Label>
@@ -148,6 +202,7 @@ const Contact = () => {
                 type="email"
                 placeholder="seunome@seuemail.com"
                 required
+                onChange={handleForm}
               />
             </FormGroup>
             <FormGroup>
@@ -157,6 +212,7 @@ const Contact = () => {
                 placeholder="Como posso te ajudar?"
                 required
                 rows={5}
+                onChange={handleForm}
               />
             </FormGroup>
             <FormGroup>

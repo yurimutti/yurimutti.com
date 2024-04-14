@@ -154,7 +154,7 @@ const carreerItems = [
     link: 'https://www.usezapay.com.br',
   },
   {
-    date: 'Jan 2023 - Present',
+    date: 'Jan 2023 -  Mar 2024',
     position: 'Senior Frontend Engineer',
     company: 'Makes - Goiás, Brazil (Remote)',
     link: 'https://makes.ai/',
@@ -243,8 +243,11 @@ const About = () => {
               populares como React.js e Next.js. Experiência em diversas
               startups, agências e empresas de tecnologia, destacando
               habilidades versáteis e adaptabilidade em diferentes contextos
-              profissionais. Apaixonado por contribuir para projetos de código
-              aberto e por se destacar em ambientes de equipe.
+              profissionais.
+            </p>
+            <p>
+              Apaixonado por contribuir para projetos de código aberto e por se
+              destacar em ambientes de equipe.
             </p>
             <p>
               Quando não estou no computador, gosto de ir para academia, brincar

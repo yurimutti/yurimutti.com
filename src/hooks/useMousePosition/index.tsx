@@ -6,8 +6,7 @@ const useMousePosition = () => {
     clientY: 0,
   });
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const updatePosition = (event: any) => {
+  const updatePosition = (event: MouseEvent) => {
     const { clientX, clientY } = event;
 
     setPosition({

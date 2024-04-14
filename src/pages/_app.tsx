@@ -1,3 +1,6 @@
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import { ThemeProvider } from 'next-themes';
 import type { AppProps } from 'next/app';
 import Script from 'next/script';
@@ -19,12 +22,13 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
          window.dataLayer = window.dataLayer || [];
            function gtag(){dataLayer.push(arguments);}
            gtag('js', new Date());
-         
+
            gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}');
         `}
       </Script>
       <Radial />
       <Component {...pageProps} />
+      <ToastContainer />
     </ThemeProvider>
   );
 };
