@@ -1,8 +1,4 @@
-import { useState } from 'react';
-
-import { useTheme } from 'next-themes';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 
 import { Container } from '@/components/layouts/container';
 import { Logo } from '@/components/logo';
@@ -12,13 +8,13 @@ import { ToggleTheme } from '@/components/toggle-theme';
 import { NavMobile } from './nav-mobile';
 import * as S from './styles';
 
-const pages = ['Sobre', 'Projetos', 'Contato', 'Discord'];
+// const pages = [];
 
 export const Navbar = () => {
-  const router = useRouter();
-  const [hovered, setHovered] = useState('');
+  // const router = useRouter();
+  // const [hovered, setHovered] = useState('');
 
-  const { theme } = useTheme();
+  // const { theme } = useTheme();
 
   return (
     <Container>
@@ -28,9 +24,9 @@ export const Navbar = () => {
             <Logo />
           </S.ButtonLogo>
         </Link>
-        <NavMobile pages={pages} />
+        <NavMobile pages={[]} />
         <S.Nav>
-          <S.List onHoverEnd={() => setHovered('')}>
+          {/* <S.List onHoverEnd={() => setHovered('')}>
             {pages.map((page) => {
               const isHovered = hovered === page;
               const path = `/${page.toLowerCase()}`;
@@ -67,7 +63,7 @@ export const Navbar = () => {
                 </S.ListItem>
               );
             })}
-          </S.List>
+          </S.List> */}
         </S.Nav>
         <S.ToggleArea>
           <ToggleTheme />
