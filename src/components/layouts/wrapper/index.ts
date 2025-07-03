@@ -1,3 +1,5 @@
+'use client';
+
 import { styled } from '@/libs/stitches';
 
 export const Wrapper = styled('div', {

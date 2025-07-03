@@ -1,3 +1,5 @@
+'use client';
+
 import { SocialIcons } from '@/components/social-icons';
 
 import * as S from './styles';

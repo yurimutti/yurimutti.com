@@ -1,0 +1,4 @@
+# .eslintignore
+commitlint.config.cjs
+*.config.cjs
+*.config.js
