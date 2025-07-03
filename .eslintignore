@@ -2,3 +2,4 @@
 commitlint.config.cjs
 *.config.cjs
 *.config.js
+*.config.mjs
