@@ -5,7 +5,10 @@ export const Footer = () => {
   return (
     <footer className="container flex items-center justify-between w-full gap-1 px-4 py-6 mx-auto">
       <div className="flex items-center gap-4">
-        <span className="text-sm font-bold tracking-wider uppercase text-slate-700 dark:text-slate-300 font-heading">
+        <span
+          className="text-sm font-bold tracking-wider uppercase transition-colors duration-300 font-heading"
+          style={{ color: 'hsl(var(--foreground))' }}
+        >
           Yuri Mutti
         </span>
         <SocialIcons />
@@ -13,7 +16,7 @@ export const Footer = () => {
 
       <Link
         href="https://github.com/yurimutti/yurimutti.com"
-        className="px-2 py-1 underline text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white"
+        className="px-2 py-1 transition-colors duration-200 hover:text-primary"
       >
         Source
       </Link>

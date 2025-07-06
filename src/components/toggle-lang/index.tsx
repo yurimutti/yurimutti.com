@@ -5,14 +5,8 @@ import { MdLanguage } from 'react-icons/md';
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 
 const languages = [
-  {
-    name: 'English',
-    code: 'en',
-  },
-  {
-    name: 'Português (Brasil)',
-    code: 'pt-BR',
-  },
+  { name: 'English', code: 'en' },
+  { name: 'Português (Brasil)', code: 'pt-BR' },
 ];
 
 export const ToggleLang = () => {
@@ -21,8 +15,15 @@ export const ToggleLang = () => {
   return (
     <DropdownMenu.Root>
       <DropdownMenu.Trigger asChild>
-        <button className="flex items-center justify-center w-10 h-10 gap-2 p-2 transition-colors duration-300 bg-transparent rounded-md hover:bg-slate-400 dark:hover:bg-slate-400">
-          <MdLanguage className="w-6 h-6 text-slate-100 dark:text-slate-100" />
+        <button
+          className="
+            flex items-center justify-center w-10 h-10 gap-2 p-2 rounded-md cursor-pointer
+            transition-colors duration-300
+            hover:bg-[hsl(var(--accent)/0.15)]
+          "
+          style={{ color: 'hsl(var(--foreground))' }}
+        >
+          <MdLanguage className="w-6 h-6" />
         </button>
       </DropdownMenu.Trigger>
 
@@ -30,8 +31,8 @@ export const ToggleLang = () => {
         <DropdownMenu.Content
           sideOffset={8}
           className="
-            z-50 min-w-[180px] rounded-md border border-slate-200 dark:border-slate-700
-            bg-white dark:bg-slate-900 p-1 shadow-md focus:outline-none
+            z-50 min-w-[180px] rounded-md border p-1 shadow-md focus:outline-none
+            border-[hsl(var(--border))] bg-[hsl(var(--card))] text-[hsl(var(--card-foreground))]
           "
         >
           {languages.map((language) => (
@@ -39,10 +40,14 @@ export const ToggleLang = () => {
               key={language.code}
               onClick={() => setActiveLanguage(language.code)}
               className={`
-                w-full px-3 py-2 text-sm text-slate-900 dark:text-slate-100
-                rounded-md cursor-pointer transition-colors duration-200
-                hover:bg-slate-100 dark:hover:bg-slate-700
-                ${activeLanguage === language.code ? 'bg-slate-100 dark:bg-slate-700' : ''}
+                w-full px-3 py-2 text-sm rounded-md cursor-pointer
+                transition-colors duration-200
+                hover:bg-[hsl(var(--muted)/0.08)]
+                ${
+                  activeLanguage === language.code
+                    ? 'bg-[hsl(var(--muted)/0.12)]'
+                    : ''
+                }
               `}
             >
               {language.name}

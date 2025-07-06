@@ -13,27 +13,27 @@ import {
 const socialNetworks = [
   {
     name: 'linkedin',
-    icon: <SiLinkedin className="w-6 h-6" />,
+    icon: SiLinkedin,
     link: 'https://www.linkedin.com/in/yuri-mutti-0418bb1aa',
   },
   {
     name: 'github',
-    icon: <SiGithub className="w-6 h-6" />,
+    icon: SiGithub,
     link: 'https://github.com/yurimutti',
   },
   {
     name: 'youtube',
-    icon: <SiYoutube className="w-6 h-6" />,
+    icon: SiYoutube,
     link: 'https://www.youtube.com/@muttiyuri',
   },
   {
     name: 'twitter',
-    icon: <SiTwitter className="w-6 h-6" />,
+    icon: SiTwitter,
     link: 'https://twitter.com/muttiyuri',
   },
   {
     name: 'instagram',
-    icon: <SiInstagram className="w-6 h-6" />,
+    icon: SiInstagram,
     link: 'https://www.instagram.com/yurimutti',
   },
 ];
@@ -42,8 +42,8 @@ export const SocialIcons = () => {
   const [hovered, setHovered] = useState('');
 
   return (
-    <motion.ul className="flex items-center gap-4">
-      {socialNetworks.map(({ name, icon, link }) => {
+    <motion.ul className="flex items-center gap-3">
+      {socialNetworks.map(({ name, icon: Icon, link }) => {
         const isHovered = hovered === name;
 
         return (
@@ -54,7 +54,11 @@ export const SocialIcons = () => {
               rel="noreferrer"
               onMouseEnter={() => setHovered(name)}
               onMouseLeave={() => setHovered('')}
-              className="relative z-10 flex items-center justify-center w-10 h-10 gap-2 transition-colors duration-300 bg-transparent"
+              className={`
+                relative z-10 flex items-center justify-center w-10 h-10 p-2 rounded-md
+                transition-colors duration-300
+                hover:bg-[hsl(var(--accent)/0.15)]
+              `}
               initial={false}
               whileHover={{}}
               transition={{ duration: 0.3, ease: 'easeInOut' }}
@@ -67,19 +71,14 @@ export const SocialIcons = () => {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    transition={{ duration: 0.3, ease: 'easeInOut' }}
-                    className="absolute inset-0 rounded-md bg-slate-400 -z-10"
+                    transition={{ duration: 0.3 }}
+                    className="absolute inset-0 rounded-md -z-10"
+                    style={{ backgroundColor: 'hsl(var(--accent) / 0.15)' }}
                   />
                 )}
               </AnimatePresence>
 
-              <span
-                className={`transition-colors duration-300 text-slate-100 dark:text-slate-100 ${
-                  isHovered ? 'text-slate-900 dark:text-slate-900' : ''
-                }`}
-              >
-                {icon}
-              </span>
+              <Icon className="w-6 h-6" />
             </motion.a>
           </li>
         );

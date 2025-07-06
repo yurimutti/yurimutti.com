@@ -14,16 +14,19 @@ export const ToggleTheme = () => {
       <motion.button
         key={theme}
         onClick={handleToggleTheme}
-        className="flex items-center justify-center w-10 h-10 p-2 transition-colors duration-300 bg-transparent rounded-md hover:bg-slate-400 dark:hover:bg-slate-400"
+        className="cursor-pointer flex items-center justify-center w-10 h-10 p-2 transition-colors duration-300 rounded-md hover:bg-[hsl(var(--accent)/0.15)]"
         initial={{ rotate: -90, opacity: 0 }}
         animate={{ rotate: 0, opacity: 1 }}
         exit={{ rotate: 90, opacity: 0 }}
         transition={{ duration: 0.3 }}
+        style={{
+          color: 'hsl(var(--foreground))',
+        }}
       >
         {isDark ? (
-          <MdWbSunny className="w-6 h-6 text-slate-100" />
+          <MdWbSunny className="w-6 h-6" />
         ) : (
-          <MdNightlight className="w-6 h-6 text-slate-100" />
+          <MdNightlight className="w-6 h-6" />
         )}
       </motion.button>
     </AnimatePresence>

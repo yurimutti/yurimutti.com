@@ -23,8 +23,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} dark h-full `}>
-      <body className="min-h-screen bg-[linear-gradient(to_bottom,_#1c1e26,_#2a1f2f,_#332232)] text-foreground">
+    <html lang="en" className={inter.variable}>
+      <body className="min-h-screen text-foreground">
         <Providers>{children}</Providers>
       </body>
     </html>

@@ -1,1 +1,81 @@
 @import 'tailwindcss';
+
+:root {
+  --background: 0 0% 100%;
+  --foreground: 240 10% 10%;
+  --card: 0 0% 98%;
+  --card-foreground: 240 10% 10%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 240 10% 10%;
+  --primary: 245 20% 50%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 228 40% 18%;
+  --secondary-foreground: 0 0% 100%;
+  --muted: 214 30% 35%;
+  --muted-foreground: 225 60% 11%;
+  --accent: 179 45% 55%;
+  --accent-foreground: 225 60% 11%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 214 30% 35%;
+  --input: 214 30% 35%;
+  --ring: 171 100% 72%;
+  --radius: 0.5rem;
+  --gradient-background: linear-gradient(to bottom, #ffffff, #f9f9f9);
+}
+
+.dark {
+  --background: 270 20% 10%;
+  --foreground: 0 0% 98%;
+  --card: 228 40% 18%;
+  --card-foreground: 0 0% 98%;
+  --popover: 228 40% 18%;
+  --popover-foreground: 0 0% 98%;
+  --primary: 245 25% 65%;
+  --primary-foreground: 0 0% 10%;
+  --secondary: 214 30% 35%;
+  --secondary-foreground: 0 0% 98%;
+  --muted: 214 30% 35%;
+  --muted-foreground: 0 0% 80%;
+  --accent: 179 45% 55%;
+  --accent-foreground: 225 60% 11%;
+  --destructive: 0 62% 30%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 228 40% 18%;
+  --input: 228 40% 18%;
+  --ring: 171 100% 72%;
+  --gradient-background: linear-gradient(to bottom, #1c1e26, #2a1f2f, #332232);
+}
+
+@theme inline {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+}
+
+@layer base {
+  html {
+    color-scheme: light dark;
+  }
+
+  body {
+    @apply font-sans text-foreground;
+    background-image: var(--gradient-background);
+  }
+}
