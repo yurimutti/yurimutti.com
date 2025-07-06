@@ -1,7 +1,5 @@
-import { Ellipses } from '@/components/layouts/ellipses';
-import { Hero } from '@/components/layouts/hero';
-import { Layout } from '@/components/layouts/layout';
-import { Wrapper } from '@/components/layouts/wrapper';
+import { Footer } from '@/components/footer';
+import { Header } from '@/components/header';
 
 export const metadata = {
   title: 'Yuri Mutti',
@@ -22,11 +20,9 @@ export const metadata = {
 
 export default function Home() {
   return (
-    <Wrapper>
-      <Ellipses />
-      <Layout>
-        <Hero />
-      </Layout>
-    </Wrapper>
+    <main>
+      <Header />
+      <Footer />
+    </main>
   );
 }

@@ -1,8 +1,14 @@
-import { ReactNode } from 'react';
-
+import { Inter } from 'next/font/google';
 import { Providers } from '@/components/providers';
 
-import { getCssText } from '@/libs/stitches';
+import '@/styles/globals.css';
+
+const inter = Inter({
+  subsets: ['latin'],
+  weight: ['400', '600', '700'],
+  variable: '--font-inter',
+  display: 'swap',
+});
 
 export const metadata = {
   title: 'Yuri Mutti',
@@ -11,30 +17,14 @@ export const metadata = {
   icons: [{ rel: 'icon', url: '/favicon.svg' }],
 };
 
-export default function RootLayout({ children }: { children: ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <head>
-        <meta charSet="utf-8" />
-
-        {/* TODO: update next font */}
-        <link
-          href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap"
-          rel="stylesheet"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
-          rel="stylesheet"
-        />
-
-        {/* TODO: remove this */}
-        <style
-          id="stitches"
-          dangerouslySetInnerHTML={{ __html: getCssText() }}
-        />
-      </head>
-
-      <body style={{ position: 'relative' }}>
+    <html lang="en" className={`${inter.variable} dark h-full `}>
+      <body className="min-h-screen bg-[linear-gradient(to_bottom,_#1c1e26,_#2a1f2f,_#332232)] text-foreground">
         <Providers>{children}</Providers>
       </body>
     </html>

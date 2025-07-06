@@ -1,21 +1,31 @@
+'use client';
+
 import { MdNightlight, MdWbSunny } from 'react-icons/md';
-
 import { useTheme } from 'next-themes';
-
-import { AnimatePresence } from 'framer-motion';
-
-import * as S from './styles';
+import { AnimatePresence, motion } from 'framer-motion';
 
 export const ToggleTheme = () => {
   const { theme, setTheme } = useTheme();
-  const invertedTheme = theme === 'dark' ? 'light' : 'dark';
-  const handleToggleTheme = () => setTheme(invertedTheme);
+  const isDark = theme === 'dark';
+  const handleToggleTheme = () => setTheme(isDark ? 'light' : 'dark');
 
   return (
-    <AnimatePresence>
-      <S.Theme onClick={handleToggleTheme}>
-        {theme === 'dark' ? <MdWbSunny /> : <MdNightlight />}
-      </S.Theme>
+    <AnimatePresence mode="wait" initial={false}>
+      <motion.button
+        key={theme}
+        onClick={handleToggleTheme}
+        className="flex items-center justify-center w-10 h-10 p-2 transition-colors duration-300 bg-transparent rounded-md hover:bg-slate-400 dark:hover:bg-slate-400"
+        initial={{ rotate: -90, opacity: 0 }}
+        animate={{ rotate: 0, opacity: 1 }}
+        exit={{ rotate: 90, opacity: 0 }}
+        transition={{ duration: 0.3 }}
+      >
+        {isDark ? (
+          <MdWbSunny className="w-6 h-6 text-slate-100" />
+        ) : (
+          <MdNightlight className="w-6 h-6 text-slate-100" />
+        )}
+      </motion.button>
     </AnimatePresence>
   );
 };
