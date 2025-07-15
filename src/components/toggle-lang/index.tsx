@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { MdLanguage } from 'react-icons/md';
-import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
+import { DropdownMenu } from '@/components/ui/dropdown-menu';
 
 const languages = [
   { name: 'English', code: 'en' },
@@ -21,7 +21,6 @@ export const ToggleLang = () => {
             transition-colors duration-300
             hover:bg-[hsl(var(--accent)/0.15)]
           "
-          style={{ color: 'hsl(var(--foreground))' }}
         >
           <MdLanguage className="w-6 h-6" />
         </button>
