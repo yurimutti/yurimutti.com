@@ -1,10 +1,10 @@
-import { SocialIcons } from '@/components/social-icons';
 import Link from 'next/link';
+import { SocialIcons } from '../social-icons';
 
 export const Footer = () => {
   return (
-    <footer className="max-w-screen-md w-full px-4 py-6 mx-auto flex flex-col items-center justify-center gap-4 sm:flex-row sm:justify-between sm:items-center">
-      <div className="flex flex-col items-center gap-2 sm:flex-row sm:gap-4">
+    <footer className="container flex items-center justify-between w-full gap-1 px-4 py-6 mx-auto">
+      <div className="flex items-center gap-4">
         <span
           className="text-sm font-bold tracking-wider uppercase transition-colors duration-300 font-heading"
           style={{ color: 'hsl(var(--foreground))' }}
@@ -16,7 +16,7 @@ export const Footer = () => {
 
       <Link
         href="https://github.com/yurimutti/yurimutti.com"
-        className="text-sm underline transition-colors duration-200 hover:text-primary"
+        className="px-2 py-1 transition-colors duration-200 hover:text-primary"
       >
         Source
       </Link>
