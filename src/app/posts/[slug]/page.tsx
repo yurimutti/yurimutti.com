@@ -1,33 +1,61 @@
-// import { notFound } from 'next/navigation';
+import path from 'path';
+import fs from 'fs';
+import { notFound } from 'next/navigation';
+import { BlogPost } from '../blog-post';
 
-// TODO: look this need to be dynamic or not
-export const dynamicParams = false;
+const META = /export\s+const\s+meta\s+=\s+(\{[\s\S]*?\})/;
 
-const posts = {
-  'my-first-post': () => import('../my-first-post/page.mdx'),
+export type Metadata = {
+  title: string;
+  publishedAt: string;
+  updatedAt?: string;
+  summary: string;
+  state: 'draft' | 'published' | 'archived';
+  views: number;
+  image?: string;
+  slug?: string;
 };
 
-export async function generateStaticParams() {
-  return Object.keys(posts).map((slug) => ({ slug }));
+function parseFrontmatter(fileContent: string): Metadata {
+  const match = META.exec(fileContent);
+  if (!match || typeof match[1] !== 'string') {
+    throw new Error('Missing `export const meta = {}` in MDX file');
+  }
+
+  const meta = eval('(' + match[1] + ')');
+  return { views: 0, ...meta };
 }
 
-// TODO: look if a way to improve this
-type PostSlug = keyof typeof posts;
+export async function generateStaticParams() {
+  const basePath = path.join(process.cwd(), 'app/posts');
+  const slugs = fs
+    .readdirSync(basePath, { withFileTypes: true })
+    .filter((entry) => entry.isDirectory())
+    .map((entry) => ({ slug: entry.name }));
+  return slugs;
+}
 
-export default async function PostPage(
-  {
-    // params,
-  }: {
-    params: { slug: PostSlug };
-  }
-) {
-  // const Post = posts[params.slug];
-  // if (!Post) return notFound();
-  // const { default: MDXContent } = await Post();
+export default async function BlogPostPage({
+  params,
+}: {
+  params: { slug: string };
+}) {
+  const postPath = path.join(
+    process.cwd(),
+    'app/posts',
+    params.slug,
+    'page.mdx'
+  );
+  if (!fs.existsSync(postPath)) notFound();
+
+  const fileContent = fs.readFileSync(postPath, 'utf8');
+  const metadata = parseFrontmatter(fileContent);
+
+  const MDXContent = (await import(`../${params.slug}/page.mdx`)).default;
 
   return (
-    <main className="max-w-screen-md mx-auto px-4 py-8">
-      {/* <MDXContent /> */}
-    </main>
+    <BlogPost meta={{ ...metadata, slug: params.slug }}>
+      <MDXContent />
+    </BlogPost>
   );
 }

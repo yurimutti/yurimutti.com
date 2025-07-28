@@ -1,0 +1,53 @@
+export type Metadata = {
+  title: string;
+  publishedAt: string;
+  updatedAt?: string;
+  summary: string;
+  state: 'draft' | 'published' | 'archived';
+  views: number;
+  image?: string;
+  slug?: string;
+};
+
+function formatDate(date: string) {
+  return new Date(date).toLocaleDateString('en-us', {
+    month: 'short',
+    day: '2-digit',
+    year: 'numeric',
+  });
+}
+
+export function BlogPost({
+  meta,
+  children,
+}: {
+  meta: Metadata;
+  children: React.ReactNode;
+}) {
+  return (
+    <section className="px-4 sm:px-6 md:px-8 max-w-screen-md mx-auto my-10">
+      <h1 className="text-4xl font-bold mb-3">{meta.title}</h1>
+      <p className="text-muted-foreground text-sm mb-6">
+        {formatDate(meta.publishedAt)}
+      </p>
+      {meta.summary && (
+        <p className="text-muted-foreground mb-6">{meta.summary}</p>
+      )}
+      {meta.state !== 'published' && (
+        <div className="bg-yellow-100 dark:bg-yellow-900 text-yellow-900 dark:text-yellow-100 p-4 rounded-lg mb-8">
+          <p className="font-bold">
+            This post is {meta.state === 'archived' ? 'archived' : 'a draft'}.
+          </p>
+          <p>
+            {meta.state === 'draft'
+              ? 'Please do not share this post yet.'
+              : 'This post may contain outdated info and is preserved for reference.'}
+          </p>
+        </div>
+      )}
+      <article className="prose prose-neutral dark:prose-invert mx-auto px-4 sm:px-6 md:px-8 my-6 sm:my-8 max-w-screen-md">
+        {children}
+      </article>
+    </section>
+  );
+}

@@ -3,10 +3,6 @@ import remarkSmartypants from 'remark-smartypants';
 
 /** @type {import('next').NextConfig} */
 const baseConfig = {
-  reactStrictMode: true,
-  experimental: {
-    serverActions: true,
-  },
   pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
 };
 
