@@ -1,11 +1,11 @@
 'use client';
 
 import { Sandpack } from '@codesandbox/sandpack-react';
+import { dracula } from '@codesandbox/sandpack-themes';
 
 interface SandpackWrapperProps {
   files?: Record<string, string>;
   template?: string;
-  theme?: 'light' | 'dark' | 'auto';
   customSetup?: {
     dependencies?: Record<string, string>;
   };
@@ -18,7 +18,6 @@ export function SandpackWrapper({
 }`,
   },
   template = 'react',
-  theme = 'auto',
   customSetup,
 }: SandpackWrapperProps) {
   return (
@@ -26,7 +25,7 @@ export function SandpackWrapper({
       <Sandpack
         template={template as 'react'}
         files={files}
-        theme={theme}
+        theme={dracula}
         customSetup={customSetup}
         options={{
           showNavigator: true,
