@@ -12,6 +12,34 @@ export const meta = {
 
 # My MDX Post Title
 
-This is my second post written in MDX.
+This is my first post written in MDX.
+
+Here's some JavaScript code:
+
+```javascript
+function greetUser(name) {
+  console.log(`Hello, ${name}! Welcome to my blog.`);
+}
+
+const user = 'Yuri';
+greetUser(user);
+```
+
+And here's some TypeScript:
+
+```typescript
+interface User {
+  id: number;
+  name: string;
+  email: string;
+}
+
+const createUser = (userData: Omit<User, 'id'>): User => {
+  return {
+    id: Date.now(),
+    ...userData,
+  };
+};
+```
 
 </BlogPost>
