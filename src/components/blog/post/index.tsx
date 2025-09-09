@@ -1,4 +1,4 @@
-import { prodUrl } from '../sitemap';
+import { prodUrl } from '@/app/sitemap';
 
 export type Metadata = {
   title: string;
@@ -9,6 +9,7 @@ export type Metadata = {
   views: number;
   image?: string;
   slug?: string;
+  tags?: string[];
 };
 
 function formatDate(date: string) {
@@ -27,7 +28,7 @@ export function BlogPost({
   children: React.ReactNode;
 }) {
   return (
-    <section className="px-4 sm:px-6 md:px-8 max-w-screen-md mx-auto my-10">
+    <section className="px-4 max-w-screen-md mx-auto my-10">
       <script
         type="application/ld+json"
         suppressHydrationWarning
@@ -56,9 +57,21 @@ export function BlogPost({
         }}
       />
       <h1 className="text-4xl font-bold mb-3">{meta.title}</h1>
-      <p className="text-muted-foreground text-sm mb-6">
+      <p className="text-muted-foreground text-sm mb-4">
         {formatDate(meta.publishedAt)}
       </p>
+      {meta.tags && (
+        <div className="flex flex-wrap gap-2 mb-6">
+          {meta.tags.map((tag) => (
+            <span
+              key={tag}
+              className="text-xs font-medium bg-accent/10 text-accent px-2 py-0.5 rounded-md"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+      )}
       {meta.summary && (
         <p className="text-muted-foreground mb-6">{meta.summary}</p>
       )}
@@ -74,7 +87,7 @@ export function BlogPost({
           </p>
         </div>
       )}
-      <article className="prose prose-neutral dark:prose-invert mx-auto px-4 sm:px-6 md:px-8 my-6 sm:my-8 max-w-screen-md">
+      <article className="prose prose-neutral dark:prose-invert mx-auto px-4 my-6 sm:my-8 max-w-screen-md">
         {children}
       </article>
     </section>

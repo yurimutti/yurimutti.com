@@ -9,6 +9,7 @@ const GITHUB_AVATAR_URL =
 
 const NAV_LINKS = [
   { label: 'Blog', href: '/posts' },
+  { label: 'Tags', href: '/tags' },
   { label: 'RSS', href: '/rss' },
 ];
 

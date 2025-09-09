@@ -48,16 +48,17 @@ export default function Home() {
           ]),
         }}
       />
-      <section className="max-w-screen-md mx-auto grid gap-6 sm:gap-8 px-4 sm:px-6 md:px-8 my-6 sm:my-8">
+      <section className="max-w-screen-md mx-auto grid gap-6 sm:gap-8 px-4 my-6 sm:my-8">
         <section className="grid gap-2">
           <h1 className="text-accent text-xl sm:text-md md:text-lg font-semibold tracking-tight mb-2">
             About
           </h1>
           <p className="text-muted-foreground leading-relaxed text-base">
             I’m a Software Engineer who solves problems with code. Over the past
-            few years, I’ve been working in fintech. I’m also a co-founder,
-            active in the tech community, and I enjoy sharing what I learn and
-            contributing to open source.
+            few years, I’ve been building reliable, high-performance UIs for
+            fintech products. I’m also a founder and co-founder, active in the
+            tech community, and I share what I learn through talks and open
+            source.
           </p>
         </section>
 
@@ -68,22 +69,36 @@ export default function Home() {
 
           <section className="grid gap-2">
             {posts.map((post) => (
-              <Link href={post.slug} key={post.slug} className="block group">
-                <section className="mx-auto px-4 py-8 transition-colors duration-200 hover:bg-muted/20 rounded-md">
-                  <p className="text-sm text-muted-foreground mb-1 group-hover:text-foreground">
-                    {new Date(post.publishedAt).toLocaleDateString('en-US', {
-                      year: 'numeric',
-                      month: 'long',
-                      day: 'numeric',
-                    })}
-                  </p>
-                  <h3 className="text-lg font-semibold tracking-tight text-foreground group-hover:underline">
-                    {post.title}
-                  </h3>
-                  <p className="text-base text-muted-foreground leading-relaxed group-hover:text-foreground">
-                    {post.summary}
-                  </p>
-                </section>
+              <Link
+                href={post.slug}
+                key={post.slug}
+                className="block group transition-colors duration-200 hover:bg-muted/30 rounded-md px-4 py-6"
+              >
+                <p className="text-sm text-muted-foreground mb-1 group-hover:text-foreground">
+                  {new Date(post.publishedAt).toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                  })}
+                </p>
+                <h3 className="text-lg font-semibold tracking-tight text-foreground group-hover:underline">
+                  {post.title}
+                </h3>
+
+                <div className="flex flex-wrap gap-2 mt-2 mb-3">
+                  {post.tags?.map((tag) => (
+                    <span
+                      key={tag}
+                      className="text-xs font-medium bg-accent/10 text-accent px-2 py-0.5 rounded-md"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                <p className="text-base text-muted-foreground leading-relaxed group-hover:text-foreground">
+                  {post.summary}
+                </p>
               </Link>
             ))}
           </section>

@@ -1,8 +1,7 @@
 import path from 'path';
 import fs from 'fs';
 import { notFound } from 'next/navigation';
-import { BlogPost } from '../blog-post';
-import { type PageProps } from '.next/types/app/layout';
+import { BlogPost } from '@/components/blog/post';
 
 const META = /export\s+const\s+meta\s+=\s+(\{[\s\S]*?\})/;
 
@@ -27,7 +26,7 @@ function parseFrontmatter(fileContent: string): Metadata {
 }
 
 export async function generateStaticParams() {
-  const basePath = path.join(process.cwd(), 'src/app/posts');
+  const basePath = path.join(process.cwd(), 'app/posts');
   return fs
     .readdirSync(basePath, { withFileTypes: true })
     .filter((entry) => entry.isDirectory())
@@ -36,12 +35,10 @@ export async function generateStaticParams() {
 
 type Params = { slug: string };
 
-export default async function BlogPostPage({
-  params,
-}: PageProps & { params: Params }) {
+export default async function BlogPostPage({ params }: { params: Params }) {
   const { slug } = await params;
 
-  const postPath = path.join(process.cwd(), 'src/app/posts', slug, 'page.mdx');
+  const postPath = path.join(process.cwd(), 'app/posts', slug, 'page.mdx');
   if (!fs.existsSync(postPath)) notFound();
 
   const fileContent = fs.readFileSync(postPath, 'utf8');

@@ -6,7 +6,7 @@ export default function Blog() {
 
   return (
     <main>
-      <section className="max-w-screen-md mx-auto grid gap-4 sm:gap-6 px-3 sm:px-4 md:px-6 my-4 sm:my-6">
+      <section className="max-w-screen-md mx-auto grid gap-4 sm:gap-6 px-4 my-4 sm:my-6">
         <h1 className="text-xl sm:text-md md:text-lg font-bold tracking-tight text-accent">
           Writing
         </h1>

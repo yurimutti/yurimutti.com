@@ -1,4 +1,4 @@
-import { BlogPost } from '../blog-post';
+import { BlogPost } from '@/components/blog/post';
 
 export const meta = {
   title: 'My Post',
@@ -6,6 +6,7 @@ export const meta = {
   publishedAt: '2025-07-01',
   state: 'published',
   views: 123,
+  tags: ['React', 'JavaScript', 'MDX', 'Sandpack'],
 };
 
 <BlogPost meta={meta}>
@@ -64,22 +65,17 @@ setData({ message: 'Hello from API!' });
 }, []);
 
 return (
+
 <div style={{ padding: '20px' }}>
-<h1>Blog Post Demo</h1>
-{data ? (
-<p>{data.message}</p>
-) : (
-<p>Loading...</p>
-)}
+  <h1>Blog Post Demo</h1>
+  {data ? <p>{data.message}</p> : <p>Loading...</p>}
 </div>
-);
-}`
+); }` }} customSetup=
+{{
+  dependencies: {
+    axios: '^1.0.0',
+  },
 }}
-customSetup={{
-    dependencies: {
-      'axios': '^1.0.0'
-    }
-  }}
 />
 
 </BlogPost>
