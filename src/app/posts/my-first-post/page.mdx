@@ -42,4 +42,44 @@ const createUser = (userData: Omit<User, 'id'>): User => {
 };
 ```
 
+## Interactive Example
+
+Here's an interactive React component you can edit:
+
+## Advanced Example with Custom Setup
+
+<SandpackWrapper
+  files={{
+    '/App.js': `import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+
+export default function App() {
+  const [data, setData] = useState(null);
+
+useEffect(() => {
+// Simulated API call
+setTimeout(() => {
+setData({ message: 'Hello from API!' });
+}, 1000);
+}, []);
+
+return (
+<div style={{ padding: '20px' }}>
+<h1>Blog Post Demo</h1>
+{data ? (
+<p>{data.message}</p>
+) : (
+<p>Loading...</p>
+)}
+</div>
+);
+}`
+}}
+customSetup={{
+    dependencies: {
+      'axios': '^1.0.0'
+    }
+  }}
+/>
+
 </BlogPost>

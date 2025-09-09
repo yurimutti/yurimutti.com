@@ -2,11 +2,14 @@ import type { MDXComponents } from 'mdx/types';
 import Image from 'next/image';
 import React from 'react';
 import { CodeBlock } from './src/components/code/code-block';
+import { SandpackWrapper, CodeSandbox } from './src/components/code/sandpack';
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
     ...components,
     Image,
+    SandpackWrapper,
+    CodeSandbox,
     h1: (props: React.HTMLProps<HTMLHeadingElement>) => (
       <h1 className="text-3xl font-bold mt-8 mb-4" {...props} />
     ),
