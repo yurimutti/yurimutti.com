@@ -1,6 +1,6 @@
 import { Inter } from 'next/font/google';
 import { Providers } from '@/components/providers';
-// import Script from 'next/script';
+import Script from 'next/script';
 
 import '@/styles/globals.css';
 import { Footer } from '@/components/layouts/footer';
@@ -28,12 +28,12 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.variable}>
       <head>
-        {/* <Script
+        <Script
           src="https://cloud.umami.is/script.js"
           data-website-id="85e641a5-a4b5-4af0-ad1b-0f7b15dc61f9"
           strategy="afterInteractive"
           defer
-        /> */}
+        />
       </head>
       <body className="min-h-screen text-foreground">
         <Providers>
