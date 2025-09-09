@@ -3,12 +3,10 @@ import type { SatoriOptions } from 'next/dist/compiled/@vercel/og/satori';
 
 export const runtime = 'edge';
 
-export const size = {
+const size = {
   width: 1200,
   height: 630,
 };
-
-export const contentType = 'image/png';
 
 async function getFonts(): Promise<SatoriOptions['fonts']> {
   const [interRegular, interBold] = await Promise.all([
