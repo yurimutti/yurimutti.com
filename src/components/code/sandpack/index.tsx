@@ -24,7 +24,7 @@ export function SandpackWrapper({
   return (
     <div className="my-6">
       <Sandpack
-        template={template as any}
+        template={template as 'react'}
         files={files}
         theme={theme}
         customSetup={customSetup}

@@ -26,7 +26,7 @@ function parseFrontmatter(fileContent: string): Metadata {
 }
 
 export async function generateStaticParams() {
-  const basePath = path.join(process.cwd(), 'app/posts');
+  const basePath = path.join(process.cwd(), 'src/app/posts');
   return fs
     .readdirSync(basePath, { withFileTypes: true })
     .filter((entry) => entry.isDirectory())
@@ -35,10 +35,14 @@ export async function generateStaticParams() {
 
 type Params = { slug: string };
 
-export default async function BlogPostPage({ params }: { params: Params }) {
+export default async function BlogPostPage({
+  params,
+}: {
+  params: Promise<Params>;
+}) {
   const { slug } = await params;
 
-  const postPath = path.join(process.cwd(), 'app/posts', slug, 'page.mdx');
+  const postPath = path.join(process.cwd(), 'src/app/posts', slug, 'page.mdx');
   if (!fs.existsSync(postPath)) notFound();
 
   const fileContent = fs.readFileSync(postPath, 'utf8');
