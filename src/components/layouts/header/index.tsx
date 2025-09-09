@@ -7,11 +7,14 @@ import { ToggleTheme } from '../../toggle-theme';
 const GITHUB_AVATAR_URL =
   'https://avatars.githubusercontent.com/u/66539821?v=4&size=64';
 
-const NAV_LINKS = [{ label: 'Blog', href: '/posts' }];
+const NAV_LINKS = [
+  { label: 'Blog', href: '/posts' },
+  { label: 'RSS', href: '/rss' },
+];
 
 export const Header = () => {
   return (
-    <header className="w-full shadow-sm text-foreground">
+    <header className="w-full text-foreground">
       <div className="max-w-screen-md px-4 mx-auto">
         <div className="flex flex-wrap items-center justify-between gap-4 py-4">
           <div className="flex flex-wrap items-center gap-4">
