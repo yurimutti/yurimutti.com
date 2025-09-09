@@ -19,13 +19,17 @@ export const Header = () => {
       <div className="max-w-screen-md px-4 mx-auto">
         <div className="flex flex-wrap items-center justify-between gap-4 py-4">
           <div className="flex flex-wrap items-center gap-4">
-            <Link href="/" className="flex items-center gap-2 cursor-pointer">
+            <Link
+              href="/"
+              className="flex items-center gap-2 cursor-pointer"
+              aria-label="Go to homepage"
+            >
               <div className="flex gap-5">
                 <Avatar.Root className="inline-flex size-[32px] select-none items-center justify-center overflow-hidden rounded-full bg-foreground/10">
                   <Avatar.Image
                     className="size-full rounded-[inherit] object-cover"
                     src={GITHUB_AVATAR_URL}
-                    alt="Yuri Mutti"
+                    alt="Yuri Mutti profile photo"
                   />
                   <Avatar.Fallback
                     className="leading-1 flex size-full items-center justify-center bg-background text-[15px] font-medium text-foreground"

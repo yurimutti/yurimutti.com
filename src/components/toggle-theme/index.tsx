@@ -22,6 +22,8 @@ export const ToggleTheme = () => {
         style={{
           color: 'hsl(var(--foreground))',
         }}
+        aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+        title={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
       >
         {isDark ? (
           <MdWbSunny className="w-6 h-6" />

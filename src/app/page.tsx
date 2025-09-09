@@ -63,9 +63,9 @@ export default function Home() {
         </section>
 
         <section className="grid gap-2">
-          <h1 className="text-accent text-xl sm:text-md md:text-lg font-semibold tracking-tight mb-2">
+          <h2 className="text-accent text-xl sm:text-md md:text-lg font-semibold tracking-tight mb-2">
             Recent Blog Posts
-          </h1>
+          </h2>
 
           <section className="grid gap-2">
             {posts.map((post) => (
