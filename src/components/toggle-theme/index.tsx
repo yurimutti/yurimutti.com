@@ -5,9 +5,13 @@ import { useTheme } from 'next-themes';
 import { AnimatePresence, motion } from 'framer-motion';
 
 export const ToggleTheme = () => {
-  const { theme, setTheme } = useTheme();
-  const isDark = theme === 'dark';
+  const { theme, setTheme, resolvedTheme } = useTheme();
+  const isDark = resolvedTheme === 'dark';
   const handleToggleTheme = () => setTheme(isDark ? 'light' : 'dark');
+
+  if (!resolvedTheme) {
+    return <div className="w-10 h-10 p-2" />;
+  }
 
   return (
     <AnimatePresence mode="wait" initial={false}>
