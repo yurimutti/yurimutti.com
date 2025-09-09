@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { getBlogPosts, PostMetadata } from '@/utils/blog';
+import { PostCard } from '@/components/blog/post-card';
 
 async function getPostsByTag(tag: string): Promise<PostMetadata[]> {
   const allPosts = getBlogPosts();
@@ -53,38 +54,7 @@ export default async function TagPage({ params }: PageProps) {
 
         <div className="grid gap-4 sm:gap-6">
           {posts.map((post) => (
-            <Link
-              key={post.slug}
-              href={post.slug}
-              className="block group transition-colors duration-200 hover:bg-muted/30 rounded-md px-4 py-6"
-            >
-              <p className="text-sm text-muted-foreground mb-1 group-hover:text-foreground">
-                {new Date(post.publishedAt).toLocaleDateString('en-US', {
-                  year: 'numeric',
-                  month: 'long',
-                  day: 'numeric',
-                })}
-              </p>
-
-              <h2 className="text-xl font-semibold tracking-tight text-foreground group-hover:underline">
-                {post.title}
-              </h2>
-
-              <div className="flex flex-wrap gap-2 mt-2 mb-3">
-                {post.tags?.map((tagName) => (
-                  <span
-                    key={tagName}
-                    className="text-xs font-medium bg-accent/10 text-accent px-2 py-0.5 rounded-md"
-                  >
-                    {tagName}
-                  </span>
-                ))}
-              </div>
-
-              <p className="text-base text-muted-foreground leading-relaxed group-hover:text-foreground">
-                {post.summary}
-              </p>
-            </Link>
+            <PostCard key={post.slug} post={post} titleSize="xl" />
           ))}
         </div>
       </section>

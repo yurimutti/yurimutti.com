@@ -1,6 +1,7 @@
 import { getBlogPosts } from '@/utils/blog';
 import Link from 'next/link';
 import { prodUrl } from './sitemap';
+import { PostCard } from '@/components/blog/post-card';
 
 export const metadata = {
   title: 'Yuri Mutti',
@@ -69,37 +70,7 @@ export default function Home() {
 
           <section className="grid gap-2">
             {posts.map((post) => (
-              <Link
-                href={post.slug}
-                key={post.slug}
-                className="block group transition-colors duration-200 hover:bg-muted/30 rounded-md px-4 py-6"
-              >
-                <p className="text-sm text-muted-foreground mb-1 group-hover:text-foreground">
-                  {new Date(post.publishedAt).toLocaleDateString('en-US', {
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric',
-                  })}
-                </p>
-                <h3 className="text-lg font-semibold tracking-tight text-foreground group-hover:underline">
-                  {post.title}
-                </h3>
-
-                <div className="flex flex-wrap gap-2 mt-2 mb-3">
-                  {post.tags?.map((tag) => (
-                    <span
-                      key={tag}
-                      className="text-xs font-medium bg-accent/10 text-accent px-2 py-0.5 rounded-md"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-
-                <p className="text-base text-muted-foreground leading-relaxed group-hover:text-foreground">
-                  {post.summary}
-                </p>
-              </Link>
+              <PostCard key={post.slug} post={post} />
             ))}
           </section>
 

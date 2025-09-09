@@ -28,17 +28,17 @@ export default async function TagsPage() {
           Tags
         </h1>
 
-        <div className="grid gap-2">
+        <div className="space-y-1">
           {tagsWithCounts.map(({ name, count }) => (
-            <Link
-              key={name}
-              href={`/tags/${encodeURIComponent(name.toLowerCase())}`}
-              className="block group transition-colors duration-200 hover:bg-muted/30 rounded-md px-4 py-3"
-            >
-              <span className="text-foreground group-hover:text-accent">
-                {name} ({count})
-              </span>
-            </Link>
+            <div key={name} className="text-foreground">
+              <Link
+                href={`/tags/${encodeURIComponent(name.toLowerCase())}`}
+                className="hover:text-primary transition-colors duration-200"
+              >
+                {name}
+              </Link>
+              <span className="text-muted-foreground"> ({count})</span>
+            </div>
           ))}
         </div>
 
