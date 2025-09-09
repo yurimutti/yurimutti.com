@@ -1,3 +1,5 @@
+import { prodUrl } from '../sitemap';
+
 export type Metadata = {
   title: string;
   publishedAt: string;
@@ -26,6 +28,33 @@ export function BlogPost({
 }) {
   return (
     <section className="px-4 sm:px-6 md:px-8 max-w-screen-md mx-auto my-10">
+      <script
+        type="application/ld+json"
+        suppressHydrationWarning
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'BlogPosting',
+            mainEntityOfPage: {
+              '@type': 'WebPage',
+              '@id': `${prodUrl}/posts/${meta.slug}`,
+            },
+            headline: meta.title,
+            description: meta.summary || undefined,
+            image: meta.image
+              ? [`${prodUrl}${meta.image}`]
+              : [`${prodUrl}/og?title=${encodeURIComponent(meta.title)}`],
+            author: { '@type': 'Person', name: 'Yuri Mutti', url: prodUrl },
+            publisher: { '@type': 'Person', name: 'Yuri Mutti', url: prodUrl },
+            datePublished: new Date(meta.publishedAt).toISOString(),
+            dateModified: new Date(
+              meta.updatedAt ?? meta.publishedAt
+            ).toISOString(),
+            inLanguage: 'en',
+            url: `${prodUrl}/posts/${meta.slug}`,
+          }),
+        }}
+      />
       <h1 className="text-4xl font-bold mb-3">{meta.title}</h1>
       <p className="text-muted-foreground text-sm mb-6">
         {formatDate(meta.publishedAt)}

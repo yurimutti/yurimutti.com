@@ -1,5 +1,6 @@
 import { getBlogPosts } from '@/utils/blog';
 import Link from 'next/link';
+import { prodUrl } from './sitemap';
 
 export const metadata = {
   title: 'Yuri Mutti',
@@ -23,6 +24,30 @@ export default function Home() {
 
   return (
     <main>
+      <script
+        type="application/ld+json"
+        suppressHydrationWarning
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify([
+            {
+              '@context': 'https://schema.org',
+              '@type': 'WebSite',
+              name: 'Yuri Mutti',
+              url: prodUrl,
+            },
+            {
+              '@context': 'https://schema.org',
+              '@type': 'Person',
+              name: 'Yuri Mutti',
+              url: prodUrl,
+              sameAs: [
+                'https://github.com/yurimutti',
+                'https://www.linkedin.com/in/yurimutti',
+              ],
+            },
+          ]),
+        }}
+      />
       <section className="max-w-screen-md mx-auto grid gap-6 sm:gap-8 px-4 sm:px-6 md:px-8 my-6 sm:my-8">
         <section className="grid gap-2">
           <h1 className="text-accent text-xl sm:text-md md:text-lg font-semibold tracking-tight mb-2">
