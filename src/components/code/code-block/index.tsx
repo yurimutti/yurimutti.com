@@ -1,46 +1,38 @@
 import { CopyButton } from '@/components/copy-button';
-import { codeToHtml } from 'shiki';
-
-interface CodeBlockProps {
-  children: string;
-  language?: string;
-  filename?: string;
-}
+import { BundledLanguage, BundledTheme, codeToHtml } from 'shiki';
+import { transformerNotationHighlight } from '@shikijs/transformers';
 
 export async function CodeBlock({
-  children,
-  language = 'text',
+  code,
+  language = 'javascript',
+  theme = 'dracula',
   filename,
-}: CodeBlockProps) {
-  const html = await codeToHtml(children, {
+}: {
+  code: string;
+  language?: BundledLanguage;
+  theme?: BundledTheme;
+  filename?: string;
+}) {
+  const html = await codeToHtml(code, {
     lang: language,
-    theme: 'dracula',
-    transformers: [
-      {
-        pre(node) {
-          node.properties.style =
-            'white-space: pre-wrap; word-break: break-all; overflow-wrap: anywhere; background: transparent !important; padding: 1rem; font-size: 0.875rem; line-height: 1.25rem;';
-        },
-      },
-    ],
+    theme,
+    transformers: [transformerNotationHighlight()],
   });
 
   return (
     <div className="my-6">
-      <div className="relative">
+      <div className="bg-neutral-800">
         {filename && (
-          <div className="bg-[#21222c] px-4 py-2 text-sm text-[#f8f8f2] border border-b-0 border-[#44475a] rounded-t-lg flex items-center justify-between">
-            <span>{filename}</span>
-            <CopyButton code={children} />
+          <div className="inline-flex bg-neutral-900 px-4 py-2 text-sm">
+            {filename}
           </div>
         )}
-        <div
-          className={`overflow-x-auto bg-[#282a36] border border-[#44475a] relative ${filename ? 'rounded-b-lg border-t-0' : 'rounded-lg'}`}
-          dangerouslySetInnerHTML={{ __html: html }}
-        />
+      </div>
+      <div className="relative">
+        <div dangerouslySetInnerHTML={{ __html: html }} />
         {!filename && (
-          <div className="absolute top-2 right-2">
-            <CopyButton code={children} />
+          <div className="absolute top-2 right-2 z-10">
+            <CopyButton code={code} />
           </div>
         )}
       </div>

@@ -1351,6 +1351,16 @@
     domhandler "^5.0.3"
     selderee "^0.11.0"
 
+"@shikijs/core@3.12.2":
+  version "3.12.2"
+  resolved "https://registry.npmjs.org/@shikijs/core/-/core-3.12.2.tgz"
+  integrity sha512-L1Safnhra3tX/oJK5kYHaWmLEBJi1irASwewzY3taX5ibyXyMkkSDZlq01qigjryOBwrXSdFgTiZ3ryzSNeu7Q==
+  dependencies:
+    "@shikijs/types" "3.12.2"
+    "@shikijs/vscode-textmate" "^10.0.2"
+    "@types/hast" "^3.0.4"
+    hast-util-to-html "^9.0.5"
+
 "@shikijs/core@3.8.0":
   version "3.8.0"
   resolved "https://registry.npmjs.org/@shikijs/core/-/core-3.8.0.tgz"
@@ -1391,6 +1401,22 @@
   integrity sha512-yaZiLuyO23sXe16JFU76KyUMTZCJi4EMQKIrdQt7okoTzI4yAaJhVXT2Uy4k8yBIEFRiia5dtD7gC1t8m6y3oQ==
   dependencies:
     "@shikijs/types" "3.8.0"
+
+"@shikijs/transformers@3.12.2":
+  version "3.12.2"
+  resolved "https://registry.npmjs.org/@shikijs/transformers/-/transformers-3.12.2.tgz"
+  integrity sha512-+z1aMq4N5RoNGY8i7qnTYmG2MBYzFmwkm/yOd6cjEI7OVzcldVvzQCfxU1YbIVgsyB0xHVc2jFe1JhgoXyUoSQ==
+  dependencies:
+    "@shikijs/core" "3.12.2"
+    "@shikijs/types" "3.12.2"
+
+"@shikijs/types@3.12.2":
+  version "3.12.2"
+  resolved "https://registry.npmjs.org/@shikijs/types/-/types-3.12.2.tgz"
+  integrity sha512-K5UIBzxCyv0YoxN3LMrKB9zuhp1bV+LgewxuVwHdl4Gz5oePoUFrr9EfgJlGlDeXCU1b/yhdnXeuRvAnz8HN8Q==
+  dependencies:
+    "@shikijs/vscode-textmate" "^10.0.2"
+    "@types/hast" "^3.0.4"
 
 "@shikijs/types@3.8.0":
   version "3.8.0"

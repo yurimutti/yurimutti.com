@@ -32,7 +32,6 @@ export function SandpackWrapper({
           showTabs: true,
           showLineNumbers: true,
           editorHeight: 400,
-          editorWidthPercentage: 60,
         }}
       />
     </div>

@@ -36,7 +36,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         const language = className.replace('language-', '') || 'text';
 
         if (typeof child === 'string') {
-          return <CodeBlock language={language}>{child.trim()}</CodeBlock>;
+          return <CodeBlock language={language} code={child.trim()} />;
         }
       }
 

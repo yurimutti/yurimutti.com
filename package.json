@@ -52,6 +52,7 @@
   "devDependencies": {
     "@commitlint/cli": "19.8.1",
     "@commitlint/config-conventional": "19.8.1",
+    "@shikijs/transformers": "3.12.2",
     "@tailwindcss/postcss": "4.1.11",
     "@types/node": "^20.11.30",
     "@types/react": "^18.2.67",

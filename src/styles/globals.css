@@ -82,7 +82,7 @@
 
 @layer components {
   .shiki {
-    @apply rounded-lg border border-gray-200 dark:border-gray-700;
+    @apply rounded-lg border border-gray-200 dark:border-gray-700 overflow-auto;
   }
 
   .shiki code {
@@ -90,25 +90,9 @@
     counter-reset: line;
   }
 
-  .shiki .line {
-    @apply block;
-  }
-
   .shiki .line::before {
     counter-increment: line;
     content: counter(line);
     @apply inline-block w-8 text-right pr-4 text-gray-500 dark:text-gray-400 select-none;
-  }
-
-  .shiki[data-theme*='dark'] {
-    @apply hidden;
-  }
-
-  .dark .shiki[data-theme*='light'] {
-    @apply hidden;
-  }
-
-  .dark .shiki[data-theme*='dark'] {
-    @apply block;
   }
 }

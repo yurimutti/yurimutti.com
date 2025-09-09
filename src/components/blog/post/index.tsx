@@ -92,7 +92,7 @@ export function BlogPost({
             </p>
           </div>
         )}
-        <article className="prose prose-neutral dark:prose-invert mx-auto px-4 my-6 sm:my-8 max-w-screen-md">
+        <article className="prose prose-neutral dark:prose-invert mx-auto my-6 sm:my-8 max-w-screen-md">
           {children}
         </article>
       </section>
