@@ -1,7 +1,7 @@
 import { getBlogPosts } from '@/utils/blog';
 import Link from 'next/link';
 import { prodUrl } from './sitemap';
-import { PostCard } from '@/components/blog/post-card';
+import { PostCard } from '@/components/blog/post/post-card';
 
 export const metadata = {
   title: 'Yuri Mutti',

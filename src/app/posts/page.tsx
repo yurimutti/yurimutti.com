@@ -1,5 +1,5 @@
 import { getBlogPosts } from '@/utils/blog';
-import { PostCard } from '@/components/blog/post-card';
+import { PostCard } from '@/components/blog/post/post-card';
 
 export default function Blog() {
   const posts = getBlogPosts();

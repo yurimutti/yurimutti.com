@@ -29,7 +29,7 @@ export function BlogPost({
 }) {
   return (
     <main>
-      <section className="px-4 max-w-screen-md mx-auto my-10">
+      <section className="px-4 max-w-screen-md mx-auto my-8">
         <script
           type="application/ld+json"
           suppressHydrationWarning

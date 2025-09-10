@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { getBlogPosts, PostMetadata } from '@/utils/blog';
-import { PostCard } from '@/components/blog/post-card';
+import { PostCard } from '@/components/blog/post/post-card';
 
 async function getPostsByTag(tag: string): Promise<PostMetadata[]> {
   const allPosts = getBlogPosts();
