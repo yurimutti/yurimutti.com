@@ -1,6 +1,6 @@
 import { prodUrl } from '@/app/sitemap';
 
-export type Metadata = {
+export type PostMeta = {
   title: string;
   publishedAt: string;
   updatedAt?: string;
@@ -24,7 +24,7 @@ export function BlogPost({
   meta,
   children,
 }: {
-  meta: Metadata;
+  meta: PostMeta;
   children: React.ReactNode;
 }) {
   return (
