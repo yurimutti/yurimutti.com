@@ -46,6 +46,10 @@ export async function GET(request: Request) {
     ),
     {
       ...size,
+      headers: {
+        'Cache-Control': 'public, max-age=31536000, immutable',
+        'Content-Type': 'image/png',
+      },
     }
   );
 }

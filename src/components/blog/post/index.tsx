@@ -45,7 +45,9 @@ export function BlogPost({
               description: meta.summary || undefined,
               image: meta.image
                 ? [`${prodUrl}${meta.image}`]
-                : [`${prodUrl}/og?title=${encodeURIComponent(meta.title)}`],
+                : [
+                    `${prodUrl}/og?title=${encodeURIComponent(meta.title)}&subtitle=${encodeURIComponent(meta.summary || 'Blog Post')}`,
+                  ],
               author: { '@type': 'Person', name: 'Yuri Mutti', url: prodUrl },
               publisher: {
                 '@type': 'Person',
