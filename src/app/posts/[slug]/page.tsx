@@ -41,7 +41,7 @@ export async function generateMetadata({
 
   const ogImageUrl = metadata.image
     ? `${prodUrl}${metadata.image}`
-    : `${prodUrl}/og?title=${encodeURIComponent(metadata.title)}`;
+    : `${prodUrl}/og?title=${encodeURIComponent(metadata.title)}&subtitle=${encodeURIComponent(metadata.summary || 'Blog Post')}`;
 
   return {
     title: metadata.title,
