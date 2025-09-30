@@ -39,9 +39,10 @@ export async function generateMetadata({
   const fileContent = fs.readFileSync(postPath, 'utf8');
   const metadata = parseFrontmatter(fileContent);
 
-  const ogImageUrl = metadata.image
-    ? `${prodUrl}${metadata.image}`
-    : `${prodUrl}/og?title=${encodeURIComponent(metadata.title)}&subtitle=${encodeURIComponent(metadata.summary || 'Blog Post')}`;
+  const ogImageUrl =
+    metadata.image && metadata.image.trim()
+      ? `${prodUrl}${metadata.image}`
+      : `${prodUrl}/og?title=${encodeURIComponent(metadata.title)}&subtitle=${encodeURIComponent(metadata.summary || 'Blog Post')}`;
 
   return {
     title: metadata.title,
