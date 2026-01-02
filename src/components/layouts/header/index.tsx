@@ -8,10 +8,11 @@ const GITHUB_AVATAR_URL =
   'https://avatars.githubusercontent.com/u/66539821?v=4&size=64';
 
 const NAV_LINKS = [
-  { label: 'Blog', href: '/posts' },
-  { label: 'Tags', href: '/tags' },
-  { label: 'RSS', href: '/rss' },
-];
+  // TODO: implement
+  //   { label: 'Blog', href: '/posts' },
+  //   { label: 'Tags', href: '/tags' },
+  //   { label: 'RSS', href: '/rss' },
+] as const;
 
 export const Header = () => {
   return (
@@ -47,7 +48,7 @@ export const Header = () => {
 
             <nav>
               <ul className="flex items-center gap-3">
-                {NAV_LINKS.map(({ label, href }) => (
+                {NAV_LINKS?.map(({ label, href }) => (
                   <li key={href}>
                     <Link
                       href={href}

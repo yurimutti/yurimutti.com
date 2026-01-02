@@ -1,7 +1,7 @@
-import { getBlogPosts } from '@/utils/blog';
-import Link from 'next/link';
+// import { getBlogPosts } from '@/utils/blog';
+// import Link from 'next/link';
 import { prodUrl } from './sitemap';
-import { PostCard } from '@/components/blog/post/post-card';
+// import { PostCard } from '@/components/blog/post/post-card';
 
 export const metadata = {
   title: 'Yuri Mutti',
@@ -21,7 +21,7 @@ export const metadata = {
 };
 
 export default function Home() {
-  const posts = getBlogPosts().slice(0, 5);
+  // const posts = getBlogPosts().slice(0, 5);
 
   return (
     <main>
@@ -51,21 +51,21 @@ export default function Home() {
       />
       <section className="max-w-screen-md mx-auto grid gap-6 sm:gap-8 px-4 my-6 sm:my-8">
         <section className="grid gap-2">
-          <h1 className="text-accent text-xl sm:text-md md:text-lg font-semibold tracking-tight mb-2">
-            About
-          </h1>
           <p className="text-muted-foreground leading-relaxed text-base">
-            I’m a Software Engineer who solves problems with code. Over the past
-            few years, I’ve been building reliable, high-performance UIs for
-            fintech products. I’m also a founder and co-founder, active in the
-            tech community, and I share what I learn through talks and open
-            source.
+            I&apos;m a passionate Software Engineer dedicated to solving
+            problems with code and building software that makes a positive
+            impact. As an open source enthusiast, I believe in the power of
+            collaboration and contribution to drive innovation and improve
+            software quality. I&apos;m always eager to work with fellow
+            developers on new projects, contribute to the community, and share
+            what I learn along the way.
           </p>
         </section>
 
-        <section className="grid gap-2">
+        {/* // TODO: implementing */}
+        {/* <section className="grid gap-2">
           <h2 className="text-accent text-xl sm:text-md md:text-lg font-semibold tracking-tight mb-2">
-            Recent Blog Posts
+            Recent Posts
           </h2>
 
           <section className="grid gap-2">
@@ -81,6 +81,18 @@ export default function Home() {
             View all posts →
           </Link>
         </section>
+
+        <section className="grid gap-2">
+          <h2 className="text-accent text-xl sm:text-md md:text-lg font-semibold tracking-tight mb-2">
+            Featured Repositories
+          </h2>
+        </section>
+
+        <section className="grid gap-2">
+          <h2 className="text-accent text-xl sm:text-md md:text-lg font-semibold tracking-tight mb-2">
+            Recent Projects
+          </h2>
+        </section> */}
       </section>
     </main>
   );
