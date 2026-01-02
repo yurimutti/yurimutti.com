@@ -14,7 +14,7 @@ const socialNetworks = [
   {
     name: 'linkedin',
     icon: SiLinkedin,
-    link: 'https://www.linkedin.com/in/yuri-mutti-0418bb1aa',
+    link: 'https://www.linkedin.com/in/yurimutti/',
   },
   {
     name: 'github',
