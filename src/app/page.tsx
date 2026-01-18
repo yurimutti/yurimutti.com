@@ -51,21 +51,21 @@ export default function Home() {
       />
       <section className="max-w-screen-md mx-auto grid gap-6 sm:gap-8 px-4 my-6 sm:my-8">
         <section className="grid gap-2">
+          <h2 className="text-accent text-xl sm:text-md md:text-lg font-semibold tracking-tight mb-2">
+            About me
+          </h2>
+
           <p className="text-muted-foreground leading-relaxed text-base">
-            I&apos;m a passionate Software Engineer dedicated to solving
-            problems with code and building software that makes a positive
-            impact. As an open source enthusiast, I believe in the power of
-            collaboration and contribution to drive innovation and improve
-            software quality. I&apos;m always eager to work with fellow
-            developers on new projects, contribute to the community, and share
-            what I learn along the way.
+            Hi, I&apos;m Yuri. I&apos;m a software engineer who likes building
+            things and solving problems with code. I enjoy working on open
+            source projects and sharing what I learn along the way. This is my
+            corner of the internet where I share these things.
           </p>
         </section>
 
-        {/* // TODO: implementing */}
-        {/* <section className="grid gap-2">
+        {/*  TODO: WIP <section className="grid gap-2">
           <h2 className="text-accent text-xl sm:text-md md:text-lg font-semibold tracking-tight mb-2">
-            Recent Posts
+            Writing
           </h2>
 
           <section className="grid gap-2">
@@ -73,16 +73,9 @@ export default function Home() {
               <PostCard key={post.slug} post={post} />
             ))}
           </section>
+        </section> */}
 
-          <Link
-            href="/posts"
-            className="py-1 underline transition-colors duration-200 hover:text-primary ml-auto"
-          >
-            View all posts →
-          </Link>
-        </section>
-
-        <section className="grid gap-2">
+        {/*  TODO: WIP <section className="grid gap-2">
           <h2 className="text-accent text-xl sm:text-md md:text-lg font-semibold tracking-tight mb-2">
             Featured Repositories
           </h2>

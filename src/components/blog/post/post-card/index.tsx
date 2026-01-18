@@ -10,7 +10,7 @@ export function PostCard({ post, titleSize = 'lg' }: PostCardProps) {
   return (
     <Link
       href={post.slug}
-      className="block group transition-colors duration-200 hover:bg-muted/30 rounded-md px-4 py-6"
+      className="block group transition-colors duration-200 hover:bg-muted/30 rounded-md px-4 py-6 border border-border"
     >
       <p className="text-sm text-muted-foreground mb-1 group-hover:text-foreground">
         {new Date(post.publishedAt).toLocaleDateString('en-US', {

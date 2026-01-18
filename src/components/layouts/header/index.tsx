@@ -22,11 +22,11 @@ export const Header = () => {
           <div className="flex flex-wrap items-center gap-4">
             <Link
               href="/"
-              className="flex items-center gap-2 cursor-pointer"
+              className="flex items-center gap-4 cursor-pointer"
               aria-label="Go to homepage"
             >
-              <div className="flex gap-5">
-                <Avatar.Root className="inline-flex size-[32px] select-none items-center justify-center overflow-hidden rounded-full bg-foreground/10">
+              <div className="flex gap-6">
+                <Avatar.Root className="inline-flex size-[48px] select-none items-center justify-center overflow-hidden rounded-full bg-foreground/10">
                   <Avatar.Image
                     className="size-full rounded-[inherit] object-cover"
                     src={GITHUB_AVATAR_URL}
