@@ -24,7 +24,7 @@ const socialNetworks = [
   {
     name: 'youtube',
     icon: SiYoutube,
-    link: 'https://www.youtube.com/@muttiyuri',
+    link: 'https://www.youtube.com/@yuri-mutti',
   },
   {
     name: 'twitter',

@@ -1,7 +1,6 @@
-// import { getBlogPosts } from '@/utils/blog';
-// import Link from 'next/link';
+import { getBlogPosts } from '@/utils/blog';
 import { prodUrl } from './sitemap';
-// import { PostCard } from '@/components/blog/post/post-card';
+import { PostCard } from '@/components/blog/post/post-card';
 
 export const metadata = {
   title: 'Yuri Mutti',
@@ -21,7 +20,7 @@ export const metadata = {
 };
 
 export default function Home() {
-  // const posts = getBlogPosts().slice(0, 5);
+  const posts = getBlogPosts().slice(0, 5);
 
   return (
     <main>
@@ -63,7 +62,7 @@ export default function Home() {
           </p>
         </section>
 
-        {/*  TODO: WIP <section className="grid gap-2">
+        <section className="grid gap-2">
           <h2 className="text-accent text-xl sm:text-md md:text-lg font-semibold tracking-tight mb-2">
             Writing
           </h2>
@@ -73,19 +72,7 @@ export default function Home() {
               <PostCard key={post.slug} post={post} />
             ))}
           </section>
-        </section> */}
-
-        {/*  TODO: WIP <section className="grid gap-2">
-          <h2 className="text-accent text-xl sm:text-md md:text-lg font-semibold tracking-tight mb-2">
-            Featured Repositories
-          </h2>
         </section>
-
-        <section className="grid gap-2">
-          <h2 className="text-accent text-xl sm:text-md md:text-lg font-semibold tracking-tight mb-2">
-            Recent Projects
-          </h2>
-        </section> */}
       </section>
     </main>
   );
