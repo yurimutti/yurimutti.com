@@ -1,4 +1,5 @@
 import { Inter } from 'next/font/google';
+import type { Metadata } from 'next';
 import { Providers } from '@/components/providers';
 import Script from 'next/script';
 
@@ -13,8 +14,11 @@ const inter = Inter({
   display: 'swap',
 });
 
-export const metadata = {
-  title: 'Yuri Mutti',
+export const metadata: Metadata = {
+  title: {
+    default: 'Yuri Mutti',
+    template: '%s | Yuri Mutti',
+  },
   description:
     'Personal website of Yuri Mutti, a software engineer and open-source enthusiast.',
   icons: [{ rel: 'icon', url: '/favicon.png' }],
@@ -26,7 +30,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={inter.variable}>
+    <html lang="en" className={inter.variable} suppressHydrationWarning>
       <head>
         <Script
           src="https://cloud.umami.is/script.js"

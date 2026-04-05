@@ -45,8 +45,11 @@ export async function generateMetadata({
       : `${prodUrl}/og?title=${encodeURIComponent(metadata.title)}&subtitle=${encodeURIComponent(metadata.summary || 'Blog Post')}`;
 
   return {
-    title: metadata.title,
+    title: `${metadata.title} | Yuri Mutti`,
     description: metadata.summary,
+    alternates: {
+      canonical: `${prodUrl}/posts/${slug}`,
+    },
     openGraph: {
       title: metadata.title,
       description: metadata.summary,

@@ -3,7 +3,9 @@ import { prodUrl } from './sitemap';
 import { PostCard } from '@/components/blog/post/post-card';
 
 export const metadata = {
-  title: 'Yuri Mutti',
+  title: {
+    absolute: 'Yuri Mutti',
+  },
   authors: [{ name: 'Yuri Mutti' }],
   description:
     'I am a software engineer with a passion for building products and solving problems with code.',

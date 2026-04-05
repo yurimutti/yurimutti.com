@@ -1,0 +1,157 @@
+import { BlogPost } from '@/components/blog/post';
+
+export const meta = {
+  title: 'Estruturando Logging em Aplicacoes Next.js com LogLayer e Edge-ready',
+  summary:
+    'Um guia pratico para implementar logging estruturado em Next.js (server, edge e client) usando traceId, JSON e LogLayer.',
+  publishedAt: '2026-04-05',
+  state: 'published',
+  views: 0,
+  tags: ['Next.js', 'Observability', 'Logging', 'LogLayer', 'Edge'],
+};
+
+export const metadata = {
+  title: `${meta.title} | Yuri Mutti`,
+  description: meta.summary,
+};
+
+<BlogPost meta={meta}>
+
+# Estruturando Logging em Aplicacoes Next.js com LogLayer e Edge-ready
+
+## Por que precisamos falar de logging no Next.js?
+
+Se voce ja tentou adicionar logging estruturado em um projeto Next.js moderno (App Router, server/client components, edge middleware), provavelmente percebeu que o framework nao oferece muito suporte nativo. Cada ambiente - client, server, edge - tem seu proprio runtime e limitacoes, e integrar uma solucao unificada de observabilidade e menos trivial do que parece.
+
+Este artigo e uma tentativa direta de consolidar os aprendizados que tivemos ao implementar logging com LogLayer, Pino e outros utilitarios de trace em uma aplicacao Next.js moderna, rodando em ambiente serverless na AWS.
+
+---
+
+## O desafio: ambientes fragmentados, logs dispersos
+
+O Next.js roda codigo em contextos muito diferentes:
+
+- Client-side: `console.log()` padrao no browser, sem persistencia.
+- Server-side (SSR, API Routes, Server Actions): ambiente Node.js, mas sem request context.
+- Edge middleware: runtime baseado em V8/Web APIs, sem acesso a Node internals.
+
+Cada um desses ambientes precisa de uma estrategia de logging separada - e o problema real e como fazer correlacao entre eles.
+
+## A estrategia: traceId, contexto minimo, JSON
+
+Para tornar os logs correlacionaveis, usamos um identificador unico por requisicao (`traceId` ou `requestId`), que:
+
+- e gerado no middleware (ou em um handler de entrada em ambientes serverful)
+- e propagado como header HTTP (`x-request-id`)
+- e lido em Server Actions, rotas API e ate no client (se necessario)
+
+Os logs seguem o formato JSON estruturado com pelo menos:
+
+```json
+{
+  "timestamp": "...",
+  "level": "info",
+  "traceId": "...",
+  "message": "...",
+  "extra": { "...": "..." }
+}
+```
+
+Isso torna os logs legiveis por humanos, mas principalmente filtraveis por ferramentas como Datadog, Sentry e CloudWatch.
+
+## Usando LogLayer
+
+[LogLayer](https://github.com/loglayer/loglayer) oferece uma abordagem funcional e flexivel, com suporte a contextos, enrichers e multiplos destinos (transports).
+
+### 1) Setup basico no server
+
+```ts
+// logger.ts
+import { createLogger } from 'loglayer/pino';
+
+export const logger = createLogger({
+  level: 'info',
+  enrichers: [() => ({ env: process.env.NODE_ENV })],
+  transports: ['console'],
+});
+```
+
+### 2) Em middleware.ts
+
+```ts
+import { nanoid } from 'nanoid';
+import { NextResponse } from 'next/server';
+
+export function middleware() {
+  const requestId = nanoid();
+  const res = NextResponse.next();
+  res.headers.set('x-request-id', requestId);
+  return res;
+}
+```
+
+### 3) Em handlers e Server Actions
+
+```ts
+import { headers } from 'next/headers';
+import { NextResponse } from 'next/server';
+import { logger } from '@/lib/logger';
+
+export async function GET() {
+  const traceId = (await headers()).get('x-request-id');
+  logger.with({ traceId }).info('Handling GET request');
+  return NextResponse.json({ ok: true });
+}
+```
+
+## Edge runtime: console como fallback
+
+Em `middleware.ts`, nao da para usar bibliotecas baseadas em Node. Nesse caso, usamos:
+
+```ts
+const traceId = `edge-${crypto.randomUUID()}`;
+console.log(
+  JSON.stringify({
+    level: 'info',
+    traceId,
+    msg: 'Edge middleware triggered',
+  })
+);
+```
+
+Opcionalmente, voce pode usar `loglayer/browser` com um transport customizado para o console.
+
+## Client logging (opcional, com moderacao)
+
+Erros no client podem ser enviados para o backend ou para plataformas como Sentry:
+
+```ts
+// lib/log-client.ts
+export async function logClientError(err: Error, traceId?: string) {
+  await fetch('/api/log', {
+    method: 'POST',
+    headers: { 'content-type': 'application/json' },
+    body: JSON.stringify({ message: err.message, traceId }),
+  });
+}
+```
+
+## Integracao com Sentry e Datadog
+
+O `traceId` tambem pode ser enviado para o Sentry como tag:
+
+```ts
+import * as Sentry from '@sentry/nextjs';
+
+Sentry.setTag('traceId', traceId);
+```
+
+Para Datadog, garanta logs em JSON com o campo `dd.trace_id` se quiser linkar com APM.
+
+## Conclusao
+
+Logging estruturado no Next.js exige estrategia. Com ferramentas como LogLayer e um pouco de engenharia, da para criar uma fundacao robusta, observavel e que respeita as particularidades dos runtimes do framework.
+
+Nao e sobre logar tudo - e sobre logar o que importa, com contexto. E fazer isso funcionar de forma coesa entre server, edge e client e o que transforma logs em sinal, nao em ruido.
+
+</BlogPost>

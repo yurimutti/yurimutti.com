@@ -82,7 +82,13 @@
 
 @layer components {
   .shiki {
-    @apply rounded-lg border border-gray-200 dark:border-gray-700 overflow-auto;
+    @apply overflow-auto;
+  }
+
+  .dark .shiki,
+  .dark .shiki span {
+    color: var(--shiki-dark) !important;
+    background-color: var(--shiki-dark-bg) !important;
   }
 
   .shiki code {
@@ -93,6 +99,36 @@
   .shiki .line::before {
     counter-increment: line;
     content: counter(line);
-    @apply inline-block w-8 text-right pr-4 text-gray-500 dark:text-gray-400 select-none;
+    @apply inline-block w-8 text-right pr-4 text-muted-foreground/70 select-none;
+  }
+
+  .code-sandbox .sp-wrapper,
+  .code-sandbox .sp-layout,
+  .code-sandbox .sp-stack,
+  .code-sandbox .sp-cm {
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: hsl(var(--card)) !important;
+  }
+
+  .code-sandbox .sp-cm pre,
+  .code-sandbox .sp-cm code {
+    font-size: 0.875rem;
+    line-height: 1.6;
+  }
+
+  .code-sandbox button[title*='CodeSandbox'],
+  .code-sandbox button[title*='CodeSandbox'] span,
+  .code-sandbox button[title*='CodeSandbox'] svg {
+    color: hsl(var(--foreground)) !important;
+  }
+
+  .code-sandbox button[title*='CodeSandbox']:hover,
+  .code-sandbox button[title*='CodeSandbox']:hover span,
+  .code-sandbox button[title*='CodeSandbox']:hover svg,
+  .code-sandbox button[title*='CodeSandbox']:focus-visible,
+  .code-sandbox button[title*='CodeSandbox']:focus-visible span,
+  .code-sandbox button[title*='CodeSandbox']:focus-visible svg {
+    color: hsl(var(--foreground)) !important;
   }
 }
