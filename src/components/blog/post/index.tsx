@@ -10,6 +10,7 @@ export type PostMeta = {
   image?: string;
   slug?: string;
   tags?: string[];
+  readingTime?: string;
 };
 
 function formatDate(date: string) {
@@ -64,9 +65,11 @@ export function BlogPost({
             }),
           }}
         />
-        <h1 className="text-4xl font-bold mb-3">{meta.title}</h1>
+        <h1 className="text-4xl font-bold mb-3 text-foreground">
+          {meta.title}
+        </h1>
         <p className="text-muted-foreground text-sm mb-4">
-          {formatDate(meta.publishedAt)}
+          {formatDate(meta.publishedAt)} • {meta.readingTime ?? '3 min read'}
         </p>
         {meta.tags && (
           <div className="flex flex-wrap gap-2 mb-6">
@@ -95,7 +98,7 @@ export function BlogPost({
             </p>
           </div>
         )}
-        <article className="prose prose-neutral dark:prose-invert mx-auto my-6 sm:my-8 max-w-screen-md">
+        <article className="prose mx-auto my-6 sm:my-8 max-w-screen-md text-muted-foreground [&_p]:text-muted-foreground [&_li]:text-muted-foreground [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:text-muted-foreground [&_ol]:list-decimal [&_ol]:pl-6 [&_ol]:text-muted-foreground [&_ol>li]:text-muted-foreground [&_ol>li]:marker:text-foreground [&_ol>li]:marker:font-bold [&_blockquote]:text-muted-foreground [&_hr]:my-8 [&_hr]:border-0 [&_hr]:border-t [&_hr]:border-border [&_h1]:text-foreground [&_h2]:text-foreground [&_h3]:text-foreground [&_h4]:text-foreground [&_h5]:text-foreground [&_h6]:text-foreground [&_strong]:text-foreground">
           {children}
         </article>
       </section>

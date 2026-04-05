@@ -1,13 +1,13 @@
 import { BlogPost } from '@/components/blog/post';
 
 export const meta = {
-  title: 'Estruturando Logging em Aplicacoes Next.js com LogLayer e Edge-ready',
+  title: 'Observabilidade em Next.js: Logging Consistente com LogLayer',
   summary:
-    'Um guia pratico para implementar logging estruturado em Next.js (server, edge e client) usando traceId, JSON e LogLayer.',
+    'Como estruturar logging consistente em Next.js com LogLayer, Pino e Datadog em ambientes server, client e edge.',
   publishedAt: '2026-04-05',
   state: 'published',
   views: 0,
-  tags: ['Next.js', 'Observability', 'Logging', 'LogLayer', 'Edge'],
+  tags: ['Next.js', 'Observability', 'Logging', 'LogLayer', 'Datadog'],
 };
 
 export const metadata = {
@@ -17,141 +17,180 @@ export const metadata = {
 
 <BlogPost meta={meta}>
 
-# Estruturando Logging em Aplicacoes Next.js com LogLayer e Edge-ready
+# Observabilidade em Next.js: Logging Consistente com LogLayer
 
 ## Por que precisamos falar de logging no Next.js?
 
 Se voce ja tentou adicionar logging estruturado em um projeto Next.js moderno (App Router, server/client components, edge middleware), provavelmente percebeu que o framework nao oferece muito suporte nativo. Cada ambiente - client, server, edge - tem seu proprio runtime e limitacoes, e integrar uma solucao unificada de observabilidade e menos trivial do que parece.
 
-Este artigo e uma tentativa direta de consolidar os aprendizados que tivemos ao implementar logging com LogLayer, Pino e outros utilitarios de trace em uma aplicacao Next.js moderna, rodando em ambiente serverless na AWS.
+Este artigo e uma tentativa direta de consolidar os aprendizados que tivemos ao implementar logging com **LogLayer**, **Pino** e integracao com **Datadog**, resolvendo os desafios reais de ambientes hibridos e serverless.
 
 ---
 
-## O desafio: ambientes fragmentados, logs dispersos
+### Por que LogLayer?
 
-O Next.js roda codigo em contextos muito diferentes:
+A escolha do LogLayer se fundamenta em tres pilares: abstracao unificada, extensibilidade e reducao de manutencao.
 
-- Client-side: `console.log()` padrao no browser, sem persistencia.
-- Server-side (SSR, API Routes, Server Actions): ambiente Node.js, mas sem request context.
-- Edge middleware: runtime baseado em V8/Web APIs, sem acesso a Node internals.
+- Suporte nativo para multiplos transports (Pino, Datadog, Console)
+- API unica e segura para server/client
+- Detecta automaticamente o runtime
+- Serializacao consistente de erros e stack traces
+- Sistema de plugins e suporte a OpenTelemetry
 
-Cada um desses ambientes precisa de uma estrategia de logging separada - e o problema real e como fazer correlacao entre eles.
+Resultado: reducao de centenas de linhas de codigo customizado, menor custo de manutencao e integracao pronta para ambientes observaveis.
 
-## A estrategia: traceId, contexto minimo, JSON
+Beneficios mensuraveis:
 
-Para tornar os logs correlacionaveis, usamos um identificador unico por requisicao (`traceId` ou `requestId`), que:
+- Troca de providers sem refatoracao
+- Conformidade com OpenTelemetry e padroes de mercado
+- Implementacao em horas (nao semanas)
+- Observabilidade real desde o dia zero
 
-- e gerado no middleware (ou em um handler de entrada em ambientes serverful)
-- e propagado como header HTTP (`x-request-id`)
-- e lido em Server Actions, rotas API e ate no client (se necessario)
+---
 
-Os logs seguem o formato JSON estruturado com pelo menos:
+### Limitacoes do Next.js
 
-```json
-{
-  "timestamp": "...",
-  "level": "info",
-  "traceId": "...",
-  "message": "...",
-  "extra": { "...": "..." }
+- Nao ha abstracao oficial de logging
+- `console.*` nao e estruturado, nem serializa erros corretamente
+- Nao ha correlacao com APM (Datadog) ou RUM
+- Codigo server/client compartilham modulos - imports condicionais quebram build
+- Transports diferentes por runtime precisam de orquestracao
+- Importacoes de dependencias Node.js no client causam erros de hydration
+
+---
+
+### Abordagem adotada
+
+- Substituicao completa de `console.*` por LogLayer
+- Uso de `getLogger()` com runtime detection
+- Transports controlados por `enabled: boolean`
+- Nenhum import condicional baseado em `process.browser` ou `typeof window`
+- Garantia de que codigo Node nunca vai para o client
+- Logging orientado a metadata (`withMetadata()`)
+
+---
+
+### Implementacao pratica com LogLayer
+
+```ts
+// src/shared/libs/logger/index.ts
+import { LogLayer } from 'loglayer';
+import { PinoTransport } from '@loglayer/transport-pino';
+import { DataDogTransport } from '@loglayer/transport-datadog';
+import { DataDogBrowserLogsTransport } from '@loglayer/transport-datadog-browser-logs';
+import { getSimplePrettyTerminal } from '@loglayer/transport-simple-pretty-terminal';
+import { isClient, isServer } from '@/shared/utils/runtime';
+import { serializeError } from 'serialize-error';
+
+const log = new LogLayer({
+  errorFieldName: 'error',
+  errorSerializer: serializeError,
+  transport: [
+    getSimplePrettyTerminal({
+      enabled: process.env.NODE_ENV === 'development',
+      runtime: isServer ? 'node' : 'browser',
+      viewMode: isServer ? 'inline' : 'message-only',
+      includeDataInBrowserConsole: isClient,
+    }),
+    new PinoTransport({
+      enabled: isServer && process.env.NODE_ENV === 'production',
+      logger: pino({ level: 'trace' }),
+    }),
+    new DataDogBrowserLogsTransport({
+      enabled: isClient,
+      logger: datadogLogs.logger,
+    }),
+    new DataDogTransport({
+      enabled:
+        isServer &&
+        process.env.NODE_ENV === 'production' &&
+        !!process.env.DD_API_KEY,
+      options: {
+        ddClientConf: {
+          authMethods: { apiKeyAuth: process.env.DD_API_KEY || '' },
+        },
+        ddServerConf: {
+          site: process.env.DD_SITE || 'datadoghq.com',
+        },
+      },
+    }),
+  ],
+  plugins: [
+    {
+      onBeforeMessageOut(params) {
+        const tag = isServer ? 'Server' : 'Client';
+        if (params.messages?.length && typeof params.messages[0] === 'string') {
+          params.messages[0] = `[${tag}] ${params.messages[0]}`;
+        }
+        return params.messages;
+      },
+    },
+  ],
+});
+
+export function getLogger() {
+  return log.withContext({ isServer });
 }
 ```
 
-Isso torna os logs legiveis por humanos, mas principalmente filtraveis por ferramentas como Datadog, Sentry e CloudWatch.
+---
 
-## Usando LogLayer
-
-[LogLayer](https://github.com/loglayer/loglayer) oferece uma abordagem funcional e flexivel, com suporte a contextos, enrichers e multiplos destinos (transports).
-
-### 1) Setup basico no server
+### Substituindo `console.*`
 
 ```ts
-// logger.ts
-import { createLogger } from 'loglayer/pino';
+// src/shared/libs/logger/register.ts
+if (process.env.NEXT_RUNTIME === 'nodejs') {
+  console.error = createConsoleMethod(log, 'error');
+  console.log = createConsoleMethod(log, 'log');
+  console.info = createConsoleMethod(log, 'info');
+  console.warn = createConsoleMethod(log, 'warn');
+  console.debug = createConsoleMethod(log, 'debug');
+}
+```
 
-export const logger = createLogger({
-  level: 'info',
-  enrichers: [() => ({ env: process.env.NODE_ENV })],
-  transports: ['console'],
+---
+
+### Integracao com Datadog
+
+- `dd-trace` com `logInjection: true` habilita correlacao entre APM e logs
+- Os campos `trace_id`, `span_id` e `session_id` sao propagados para Datadog Logs
+- Para o browser, `@datadog/browser-logs` e RUM fazem o link via `session_id`
+
+```ts
+// Datadog APM init
+import ddTrace from 'dd-trace';
+
+const tracer = ddTrace.init({
+  env: process.env.DD_ENV,
+  service: process.env.DD_SERVICE,
+  version: process.env.DD_VERSION,
+  runtimeMetrics: true,
+  logInjection: true,
 });
 ```
 
-### 2) Em middleware.ts
+---
 
-```ts
-import { nanoid } from 'nanoid';
-import { NextResponse } from 'next/server';
+### Conclusao
 
-export function middleware() {
-  const requestId = nanoid();
-  const res = NextResponse.next();
-  res.headers.set('x-request-id', requestId);
-  return res;
-}
-```
+O Next.js nao oferece uma solucao nativa de logging estruturado para ambientes hibridos. Adotar LogLayer resolve esse gap de forma segura, extensivel e com padroes da industria. Com isso, transformamos `console.*` em uma base real de observabilidade, sem riscos de hydration, e com total integracao a plataformas como Datadog.
 
-### 3) Em handlers e Server Actions
+<hr />
 
-```ts
-import { headers } from 'next/headers';
-import { NextResponse } from 'next/server';
-import { logger } from '@/lib/logger';
-
-export async function GET() {
-  const traceId = (await headers()).get('x-request-id');
-  logger.with({ traceId }).info('Handling GET request');
-  return NextResponse.json({ ok: true });
-}
-```
-
-## Edge runtime: console como fallback
-
-Em `middleware.ts`, nao da para usar bibliotecas baseadas em Node. Nesse caso, usamos:
-
-```ts
-const traceId = `edge-${crypto.randomUUID()}`;
-console.log(
-  JSON.stringify({
-    level: 'info',
-    traceId,
-    msg: 'Edge middleware triggered',
-  })
-);
-```
-
-Opcionalmente, voce pode usar `loglayer/browser` com um transport customizado para o console.
-
-## Client logging (opcional, com moderacao)
-
-Erros no client podem ser enviados para o backend ou para plataformas como Sentry:
-
-```ts
-// lib/log-client.ts
-export async function logClientError(err: Error, traceId?: string) {
-  await fetch('/api/log', {
-    method: 'POST',
-    headers: { 'content-type': 'application/json' },
-    body: JSON.stringify({ message: err.message, traceId }),
-  });
-}
-```
-
-## Integracao com Sentry e Datadog
-
-O `traceId` tambem pode ser enviado para o Sentry como tag:
-
-```ts
-import * as Sentry from '@sentry/nextjs';
-
-Sentry.setTag('traceId', traceId);
-```
-
-Para Datadog, garanta logs em JSON com o campo `dd.trace_id` se quiser linkar com APM.
-
-## Conclusao
-
-Logging estruturado no Next.js exige estrategia. Com ferramentas como LogLayer e um pouco de engenharia, da para criar uma fundacao robusta, observavel e que respeita as particularidades dos runtimes do framework.
-
-Nao e sobre logar tudo - e sobre logar o que importa, com contexto. E fazer isso funcionar de forma coesa entre server, edge e client e o que transforma logs em sinal, nao em ruido.
+<ol>
+  <li>
+    <a href="https://loglayer.dev/example-integrations/nextjs.html">
+      LogLayer Examples
+    </a>
+  </li>
+  <li>
+    <a href="https://github.com/vercel/next.js/discussions/63787">
+      Vercel Next.js Issues
+    </a>
+  </li>
+  <li>
+    <a href="https://docs.datadoghq.com/logs/">Datadog Logging Docs</a>
+  </li>
+</ol>
 
 </BlogPost>

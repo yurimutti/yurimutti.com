@@ -1,15 +1,22 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import { MdNightlight, MdWbSunny } from 'react-icons/md';
 import { useTheme } from 'next-themes';
 import { AnimatePresence, motion } from 'framer-motion';
 
 export const ToggleTheme = () => {
   const { theme, setTheme, resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   const isDark = resolvedTheme === 'dark';
   const handleToggleTheme = () => setTheme(isDark ? 'light' : 'dark');
 
-  if (!resolvedTheme) {
+  if (!mounted) {
     return <div className="w-10 h-10 p-2" />;
   }
 
