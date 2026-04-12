@@ -14,6 +14,7 @@
     "lint:fix": "eslint . --ext .ts,.tsx,.js,.jsx --fix",
     "format": "prettier --write .",
     "prepare": "husky install",
+    "postinstall": "playwright install --with-deps chromium",
     "find-deadcode": "ts-prune"
   },
   "lint-staged": {
