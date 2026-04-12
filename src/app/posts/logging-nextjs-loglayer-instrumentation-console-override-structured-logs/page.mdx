@@ -369,6 +369,8 @@ This repository keeps the example focused, but the shape scales cleanly.
 
 If you later want log shipping to Datadog, this is where `@loglayer/transport-datadog` (server) and `@loglayer/transport-datadog-browser-logs` (browser) belong. If you want trace context on logs, the right primitive is `@loglayer/plugin-opentelemetry`, which stamps `trace_id` and `span_id` onto entries. If you already run an OpenTelemetry log processor pipeline, `@loglayer/transport-opentelemetry` fits instead.
 
+For Edge routes, you need a separate `LogLayer` instance. The Node.js logger imports Pino, which breaks the Edge bundle at build time. Use `@loglayer/transport-http` with `enableNextJsEdgeCompat: true` instead.
+
 The important rule is to keep vendor-specific concerns out of feature code and let LogLayer remain the stable API boundary.
 
 ---
