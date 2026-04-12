@@ -98,7 +98,7 @@ export function BlogPost({
             </p>
           </div>
         )}
-        <article className="prose mx-auto my-6 sm:my-8 max-w-screen-md text-muted-foreground [&_p]:text-muted-foreground [&_li]:text-muted-foreground [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:text-muted-foreground [&_ol]:list-decimal [&_ol]:pl-6 [&_ol]:text-muted-foreground [&_ol>li]:text-muted-foreground [&_ol>li]:marker:text-foreground [&_ol>li]:marker:font-bold [&_blockquote]:text-muted-foreground [&_hr]:my-8 [&_hr]:border-0 [&_hr]:border-t [&_hr]:border-border [&_h1]:text-foreground [&_h2]:text-foreground [&_h3]:text-foreground [&_h4]:text-foreground [&_h5]:text-foreground [&_h6]:text-foreground [&_strong]:text-foreground">
+        <article className="prose mx-auto my-6 sm:my-8 max-w-screen-md text-muted-foreground [&_p]:my-4 [&_p]:text-muted-foreground [&_li]:my-1 [&_li]:text-muted-foreground [&_ul]:my-4 [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:text-muted-foreground [&_ol]:my-4 [&_ol]:list-decimal [&_ol]:pl-6 [&_ol]:text-muted-foreground [&_ol>li]:text-muted-foreground [&_ol>li]:marker:text-foreground [&_ol>li]:marker:font-bold [&_blockquote]:text-muted-foreground [&_a]:text-foreground [&_a]:underline [&_a]:underline-offset-4 [&_a:visited]:text-foreground [&_a:hover]:text-foreground [&_a:focus-visible]:text-foreground [&_hr]:my-8 [&_hr]:border-0 [&_hr]:border-t [&_hr]:border-border [&_h1]:text-foreground [&_h2]:text-foreground [&_h3]:text-foreground [&_h4]:text-foreground [&_h5]:text-foreground [&_h6]:text-foreground [&_strong]:text-foreground">
           {children}
         </article>
       </section>

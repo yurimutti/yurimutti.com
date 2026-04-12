@@ -131,4 +131,19 @@
   .code-sandbox button[title*='CodeSandbox']:focus-visible svg {
     color: hsl(var(--foreground)) !important;
   }
+
+  article picture:has(img[id^='mermaid-']) {
+    display: block;
+    margin: 1.5rem 0;
+  }
+
+  article img[id^='mermaid-'] {
+    display: block;
+    width: 100%;
+    height: auto;
+    border: 1px solid hsl(var(--border));
+    border-radius: 0.5rem;
+    background: hsl(var(--card));
+    padding: 1rem;
+  }
 }
