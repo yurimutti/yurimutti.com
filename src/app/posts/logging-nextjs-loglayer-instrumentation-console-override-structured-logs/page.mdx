@@ -4,12 +4,12 @@ export const meta = {
   title:
     'Logging in Next.js with LogLayer: Instrumentation, Console Override, and Structured Logs',
   summary:
-    'How to centralize server and client logs with one logger, intercept console.* in instrumentation.ts, and use structured logging in Next.js.',
+    'How to centralize server, client, and edge logs with one logger, intercept console.* in instrumentation.ts, and use structured logging in Next.js.',
   publishedAt: '2026-04-12',
   state: 'published',
   views: 0,
-  readingTime: '8 min read',
-  tags: ['Next.js', 'Observability', 'Logging', 'LogLayer', 'Pino'],
+  readingTime: '10 min read',
+  tags: ['Next.js', 'Observability', 'Logging', 'LogLayer', 'Pino', 'Edge Runtime'],
 };
 
 export const metadata = {
@@ -85,7 +85,7 @@ flowchart LR
     D --> G["PinoTransport<br/>Production server runtime"]
 
     D -. optional .-> H["Datadog transport<br/>server or browser shipping"]
-    D -. optional .-> I["OpenTelemetry correlation<br/>logs + traces"]
+    D -. optional .-> I["OpenTelemetry plugin<br/>trace context injection"]
 
     style D fill:#0f172a,stroke:#38bdf8,color:#fff
     style E fill:#0b1324,stroke:#22c55e,color:#fff
@@ -125,7 +125,7 @@ This is the right place to intercept `console.*` in the Node.js runtime.
 
 Two details matter.
 
-First, the file must live in the correct root-level location. If Next.js does not pick it up, the override never runs.
+First, the file must live in the correct location. Next.js supports placing it at the project root or inside `src/` when your app uses that layout. If it is not found, the override never runs.
 
 Second, the runtime guard matters. The example only overrides `console.*` when `process.env.NEXT_RUNTIME === 'nodejs'`. That prevents Node-only behavior from leaking into unsupported runtimes.
 
@@ -331,7 +331,7 @@ Observed browser console output:
 
 ```txt
 Client console override demo { source: "useEffect", page: "/log-demo/client" }
-[21:50:40.595] ▶ INFO [Client] [yurimutti.com] Client mounted { isServer: "false", requestId: "client-abc", source: "useEffect", page: "/log-demo/client" }
+[21:50:40.595] ▶ INFO [Client] [yurimutti.com] Client mounted { isServer: false, requestId: "client-abc", source: "useEffect", page: "/log-demo/client" }
 ```
 
 This keeps the mental model consistent.
@@ -367,7 +367,7 @@ Both runtimes use the same logger. Both can attach context. Both can attach meta
 
 This repository keeps the example focused, but the shape scales cleanly.
 
-If you later want log shipping to Datadog, this is where Datadog transports fit. If you later want logs to line up with traces, this is where OpenTelemetry correlation belongs.
+If you later want log shipping to Datadog, this is where `@loglayer/transport-datadog` (server) and `@loglayer/transport-datadog-browser-logs` (browser) belong. If you want trace context on logs, the right primitive is `@loglayer/plugin-opentelemetry`, which stamps `trace_id` and `span_id` onto entries. If you already run an OpenTelemetry log processor pipeline, `@loglayer/transport-opentelemetry` fits instead.
 
 The important rule is to keep vendor-specific concerns out of feature code and let LogLayer remain the stable API boundary.
 
