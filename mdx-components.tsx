@@ -1,6 +1,7 @@
 import type { MDXComponents } from 'mdx/types';
 import Image from 'next/image';
 import React from 'react';
+import { Mermaid } from './src/components/blog/mermaid';
 import { CodeBlock } from './src/components/code/code-block';
 import { SandpackWrapper, CodeSandbox } from './src/components/code/sandpack';
 
@@ -39,20 +40,9 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
 
         if (typeof child === 'string') {
           if (language === 'mermaid') {
-            const preProps = { ...props };
-            delete preProps.className;
+            const source = child.trim();
 
-            return (
-              <div className="mermaid-shell">
-                <pre className="mermaid" {...preProps}>
-                  {child.trim()}
-                </pre>
-                <div
-                  aria-hidden="true"
-                  className="mermaid-skeleton absolute inset-4 animate-pulse rounded-md bg-muted/50"
-                />
-              </div>
-            );
+            return <Mermaid source={source} />;
           }
 
           return <CodeBlock language={language} code={child.trim()} />;
