@@ -32,13 +32,29 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       <h6 className="text-sm font-bold mt-2 mb-1 text-foreground" {...props} />
     ),
     pre: ({ children, ...props }: React.HTMLProps<HTMLPreElement>) => {
-      // Check if children is a React element with props
       if (React.isValidElement(children) && children.props) {
         const child = children.props.children;
         const className = children.props.className || '';
         const language = className.replace('language-', '') || 'text';
 
         if (typeof child === 'string') {
+          if (language === 'mermaid') {
+            const preProps = { ...props };
+            delete preProps.className;
+
+            return (
+              <div className="mermaid-shell">
+                <pre className="mermaid" {...preProps}>
+                  {child.trim()}
+                </pre>
+                <div
+                  aria-hidden="true"
+                  className="mermaid-skeleton absolute inset-4 animate-pulse rounded-md bg-muted/50"
+                />
+              </div>
+            );
+          }
+
           return <CodeBlock language={language} code={child.trim()} />;
         }
       }

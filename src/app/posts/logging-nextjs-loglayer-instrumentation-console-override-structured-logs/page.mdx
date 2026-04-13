@@ -9,7 +9,14 @@ export const meta = {
   state: 'published',
   views: 0,
   readingTime: '10 min read',
-  tags: ['Next.js', 'Observability', 'Logging', 'LogLayer', 'Pino', 'Edge Runtime'],
+  tags: [
+    'Next.js',
+    'Observability',
+    'Logging',
+    'LogLayer',
+    'Pino',
+    'Edge Runtime',
+  ],
 };
 
 export const metadata = {
@@ -86,13 +93,6 @@ flowchart LR
 
     D -. optional .-> H["Datadog transport<br/>server or browser shipping"]
     D -. optional .-> I["OpenTelemetry plugin<br/>trace context injection"]
-
-    style D fill:#0f172a,stroke:#38bdf8,color:#fff
-    style E fill:#0b1324,stroke:#22c55e,color:#fff
-    style F fill:#0b1324,stroke:#f59e0b,color:#fff
-    style G fill:#0b1324,stroke:#a78bfa,color:#fff
-    style H fill:#2A1F2F,stroke:#D65C99,color:#fff
-    style I fill:#2C2940,stroke:#B8C0FF,color:#fff
 ```
 
 The solid lines show what this repository implements today. The dotted lines show where optional transports and observability layers can plug in later.
@@ -109,8 +109,9 @@ The example places `instrumentation.ts` at the project root so Next.js can disco
 export async function register() {
   if (process.env.NEXT_RUNTIME === 'nodejs') {
     const { log } = await import('./src/lib/logger');
-    const { createConsoleMethod } =
-      await import('./src/lib/logger/utils/console');
+    const { createConsoleMethod } = await import(
+      './src/lib/logger/utils/console'
+    );
 
     console.error = createConsoleMethod(log, 'error');
     console.log = createConsoleMethod(log, 'log');

@@ -1,5 +1,4 @@
 import nextMDX from '@next/mdx';
-import rehypeMermaid from 'rehype-mermaid';
 import remarkSmartypants from 'remark-smartypants';
 
 /** @type {import('next').NextConfig} */
@@ -11,7 +10,6 @@ const withMDX = nextMDX({
   extension: /\.mdx?$/,
   options: {
     remarkPlugins: [remarkSmartypants],
-    rehypePlugins: [[rehypeMermaid, { strategy: 'pre-mermaid' }]],
   },
 });
 

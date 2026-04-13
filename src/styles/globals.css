@@ -132,18 +132,35 @@
     color: hsl(var(--foreground)) !important;
   }
 
-  article picture:has(img[id^='mermaid-']) {
+  article .mermaid-shell {
+    position: relative;
     display: block;
     margin: 1.5rem 0;
-  }
-
-  article img[id^='mermaid-'] {
-    display: block;
-    width: 100%;
-    height: auto;
     border: 1px solid hsl(var(--border));
     border-radius: 0.5rem;
     background: hsl(var(--card));
+  }
+
+  article pre.mermaid {
+    display: block;
+    margin: 0;
     padding: 1rem;
+    overflow-x: auto;
+    visibility: hidden;
+  }
+
+  article pre.mermaid[data-processed='true'] {
+    visibility: visible;
+  }
+
+  article pre.mermaid[data-processed='true'] + .mermaid-skeleton {
+    display: none;
+  }
+
+  article pre.mermaid svg {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
   }
 }
