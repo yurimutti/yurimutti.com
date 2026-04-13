@@ -6,6 +6,7 @@ import Script from 'next/script';
 import '@/styles/globals.css';
 import { Footer } from '@/components/layouts/footer';
 import { Header } from '@/components/layouts/header';
+import { prodUrl } from './sitemap';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -15,12 +16,20 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(prodUrl),
   title: {
     default: 'Yuri Mutti',
     template: '%s | Yuri Mutti',
   },
   description:
     'Personal website of Yuri Mutti, a software engineer and open-source enthusiast.',
+  alternates: {
+    types: {
+      'application/rss+xml': '/posts/feed/rss.xml',
+      'application/atom+xml': '/posts/feed/atom.xml',
+      'application/feed+json': '/posts/feed/articles.json',
+    },
+  },
   icons: [{ rel: 'icon', url: '/favicon.png' }],
 };
 

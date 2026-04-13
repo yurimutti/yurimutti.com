@@ -49,6 +49,11 @@ export async function generateMetadata({
     description: metadata.summary,
     alternates: {
       canonical: `${prodUrl}/posts/${slug}`,
+      types: {
+        'application/rss+xml': `${prodUrl}/posts/feed/rss.xml`,
+        'application/atom+xml': `${prodUrl}/posts/feed/atom.xml`,
+        'application/feed+json': `${prodUrl}/posts/feed/articles.json`,
+      },
     },
     openGraph: {
       title: metadata.title,
