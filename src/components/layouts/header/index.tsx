@@ -4,8 +4,7 @@ import Link from 'next/link';
 import { Avatar } from '@/components/ui/avatar';
 import { ToggleTheme } from '../../toggle-theme';
 
-const GITHUB_AVATAR_URL =
-  'https://avatars.githubusercontent.com/u/66539821?v=4&size=64';
+const AVATAR_SRC = '/assets/brand/yurimutti.jpeg';
 
 const NAV_LINKS = [
   // TODO: implement
@@ -29,7 +28,7 @@ export const Header = () => {
                 <Avatar.Root className="inline-flex size-[48px] select-none items-center justify-center overflow-hidden rounded-full bg-foreground/10">
                   <Avatar.Image
                     className="size-full rounded-[inherit] object-cover"
-                    src={GITHUB_AVATAR_URL}
+                    src={AVATAR_SRC}
                     alt="Yuri Mutti profile photo"
                   />
                   <Avatar.Fallback
