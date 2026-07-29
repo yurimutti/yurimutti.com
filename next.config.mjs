@@ -4,6 +4,7 @@ import remarkSmartypants from 'remark-smartypants';
 /** @type {import('next').NextConfig} */
 const baseConfig = {
   pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
+  productionBrowserSourceMaps: true,
   async headers() {
     return [
       {

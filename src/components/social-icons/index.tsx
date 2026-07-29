@@ -13,26 +13,31 @@ import {
 const socialNetworks = [
   {
     name: 'linkedin',
+    label: 'LinkedIn',
     icon: SiLinkedin,
     link: 'https://www.linkedin.com/in/yurimutti/',
   },
   {
     name: 'github',
+    label: 'GitHub',
     icon: SiGithub,
     link: 'https://github.com/yurimutti',
   },
   {
     name: 'youtube',
+    label: 'YouTube',
     icon: SiYoutube,
     link: 'https://www.youtube.com/@yuri-mutti',
   },
   {
     name: 'twitter',
+    label: 'Twitter',
     icon: SiTwitter,
     link: 'https://twitter.com/muttiyuri',
   },
   {
     name: 'instagram',
+    label: 'Instagram',
     icon: SiInstagram,
     link: 'https://www.instagram.com/yurimutti',
   },
@@ -43,7 +48,7 @@ export const SocialIcons = () => {
 
   return (
     <motion.ul className="flex items-center gap-3">
-      {socialNetworks.map(({ name, icon: Icon, link }) => {
+      {socialNetworks.map(({ name, label, icon: Icon, link }) => {
         const isHovered = hovered === name;
 
         return (
@@ -52,6 +57,7 @@ export const SocialIcons = () => {
               href={link}
               target="_blank"
               rel="noreferrer"
+              aria-label={label}
               onMouseEnter={() => setHovered(name)}
               onMouseLeave={() => setHovered('')}
               className={`
@@ -78,7 +84,7 @@ export const SocialIcons = () => {
                 )}
               </AnimatePresence>
 
-              <Icon className="w-6 h-6" />
+              <Icon className="w-6 h-6" title={label} />
             </motion.a>
           </li>
         );
