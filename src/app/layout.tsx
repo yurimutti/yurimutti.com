@@ -1,4 +1,4 @@
-import { Inter } from 'next/font/google';
+import localFont from 'next/font/local';
 import type { Metadata } from 'next';
 import { Providers } from '@/components/providers';
 import Script from 'next/script';
@@ -8,11 +8,13 @@ import { Footer } from '@/components/layouts/footer';
 import { Header } from '@/components/layouts/header';
 import { prodUrl } from './sitemap';
 
-const inter = Inter({
-  subsets: ['latin'],
-  weight: ['400', '600', '700'],
+// Self-hosted Inter (variable). Avoids a build-time fetch to Google Fonts,
+// which fails when fonts.gstatic.com is unreachable.
+const inter = localFont({
+  src: './fonts/inter-latin-wght-normal.woff2',
   variable: '--font-inter',
   display: 'swap',
+  weight: '100 900',
 });
 
 export const metadata: Metadata = {
