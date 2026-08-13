@@ -26,21 +26,13 @@ export const metadata = {
 
 <BlogPost meta={meta}>
 
-## Logging in Next.js with LogLayer: Instrumentation, Console Override, and Structured Logs
+Next.js gives you multiple runtimes, but not one logging model across them. Server code, client code, and raw `console.*` calls drift apart: output shape changes, errors serialize poorly, metadata gets lost.
 
-Next.js gives you multiple runtimes, but it does not give you one logging model across all of them. Server code, client code, and raw `console.*` calls quickly drift apart. Output shape changes. Errors serialize poorly. Metadata gets lost.
-
-This post shows a practical way to fix that with LogLayer.
-
-The demo repository, [`nextjs-loglayer`](https://github.com/yurimutti/nextjs-loglayer), uses one shared logger, overrides `console.*` on the Node.js runtime through `instrumentation.ts`, and keeps direct structured logging available in both server and client code.
-
-You end up with one mental model for logs across the app.
-
----
+The fix I use is LogLayer. The demo repository, [`nextjs-loglayer`](https://github.com/yurimutti/nextjs-loglayer), runs one shared logger, overrides `console.*` on the Node.js runtime through `instrumentation.ts`, and keeps direct structured logging in both server and client code. The result is one mental model for logs across the app.
 
 ### Why logging feels inconsistent in Next.js
 
-If you rely on `console.log` directly, the experience breaks down fast.
+Rely on `console.log` directly and the experience breaks down fast.
 
 - Output differs between server and browser
 - Logs have weak structure
@@ -49,9 +41,7 @@ If you rely on `console.log` directly, the experience breaks down fast.
 - Your app code and third-party code do not flow through one logging layer
 - Debugging gets harder when logs come from multiple runtimes
 
-This is the real problem. You do not just need more logs. You need logs that behave the same way.
-
----
+The problem is not the number of logs. It is that they do not behave the same way.
 
 ### Why use LogLayer
 
@@ -65,19 +55,15 @@ In this example, it provides:
 - Error serialization through `serialize-error`
 - Context, metadata, and error enrichment through the LogLayer API
 
-It also gives you a clean transport boundary.
-
-Your application code can stay pointed at LogLayer even if your output target changes later. You can start with terminal output and Pino, then add external platforms such as Datadog or OpenTelemetry-based pipelines later.
+It also gives you a clean transport boundary. Your application code can stay pointed at LogLayer even if the output target changes later. You can start with terminal output and Pino, then add external platforms such as Datadog or OpenTelemetry-based pipelines later.
 
 This demo does not implement those integrations. It shows the boundary where they would fit.
-
----
 
 ### Architecture overview
 
 The example uses one shared LogLayer instance across the app.
 
-On the server, `instrumentation.ts` intercepts `console.*` and routes those calls into the same logger instance that your application uses directly. That puts legacy logs, framework-adjacent logs, and explicit `log.info()` calls on one path.
+On the server, `instrumentation.ts` intercepts `console.*` and routes those calls into the same logger instance your application uses directly. That puts legacy logs, framework-adjacent logs, and explicit `log.info()` calls on one path.
 
 On the client, your components use the same logger API, but development output goes to the browser console, not the Node.js terminal. In production on the server, the logger switches from pretty output to `PinoTransport`.
 
@@ -97,9 +83,7 @@ flowchart LR
 
 The solid lines show what this repository implements today. The dotted lines show where optional transports and observability layers can plug in later.
 
-This repository keeps the baseline small. It implements console interception, one shared logger, `SimplePrettyTerminal`, `PinoTransport`, and structured enrichment through `withContext()`, `withMetadata()`, and `withError()`.
-
----
+The baseline stays small: console interception, one shared logger, `SimplePrettyTerminal`, `PinoTransport`, and structured enrichment through `withContext()`, `withMetadata()`, and `withError()`.
 
 ### `instrumentation.ts` and console override
 
@@ -122,17 +106,13 @@ export async function register() {
 }
 ```
 
-This is the right place to intercept `console.*` in the Node.js runtime.
-
 Two details matter.
 
-First, the file must live in the correct location. Next.js supports placing it at the project root or inside `src/` when your app uses that layout. If it is not found, the override never runs.
+First, the file must live in the correct location. Next.js supports the project root or inside `src/` when your app uses that layout. If it is not found, the override never runs.
 
-Second, the runtime guard matters. The example only overrides `console.*` when `process.env.NEXT_RUNTIME === 'nodejs'`. That prevents Node-only behavior from leaking into unsupported runtimes.
+Second, the runtime guard. The example only overrides `console.*` when `process.env.NEXT_RUNTIME === 'nodejs'`, which keeps Node-only behavior out of runtimes that cannot support it.
 
-This override is useful even if you already use structured logging directly. It captures logs from older code and libraries that still call `console.*`.
-
----
+This override is useful even if you already log through a structured API directly. It captures logs from older code and libraries that still call `console.*`.
 
 ### Main logger setup
 
@@ -190,25 +170,21 @@ export function getLogger() {
 This file sets the rules for the whole app.
 
 - One global logger instance
-- Prefix for every entry: `[yurimutti.com]`
+- Prefix on every entry: `[yurimutti.com]`
 - Runtime tag injected by plugin: `[Server]` or `[Client]`
 - `SimplePrettyTerminal` in development for readable output
 - `PinoTransport` in production on the server
 - `serialize-error` for consistent error payloads
 
-The persistent context is also important.
+One line is worth calling out.
 
 ```ts
 log.withContext({ isServer });
 ```
 
-`withContext()` persists. It sticks to the logger chain so you can carry stable fields across multiple messages.
+`withContext()` persists. It sticks to the logger chain, so you can carry stable fields across multiple messages. That is different from `withMetadata()` and `withError()`, which apply to a single entry.
 
-That is different from `withMetadata()` and `withError()`, which apply to a single log entry.
-
-The `transport` array is also the boundary for future backends. In this demo, it stays intentionally small: `SimplePrettyTerminal` for development and `PinoTransport` for production on the server. If you later want Datadog or other delivery backends, this is where they belong.
-
----
+The `transport` array is the boundary for future backends. In this demo it stays small: `SimplePrettyTerminal` for development and `PinoTransport` for production on the server. If you later want Datadog or another delivery backend, this is where it belongs.
 
 ### Console bridge utility
 
@@ -216,9 +192,9 @@ The console override works because `src/lib/logger/utils/console.ts` maps `conso
 
 This utility does more than forward strings.
 
-- `console.log` gets mapped to `info`
+- `console.log` maps to `info`
 - ANSI escape codes are stripped from terminal output
-- `Error` objects get routed through `withError()`
+- `Error` objects are routed through `withError()`
 - Plain objects become metadata
 - Mixed argument shapes are handled explicitly
 
@@ -254,8 +230,6 @@ if (error && hasData && messages.length > 0) {
 
 That logic matters because real `console.*` usage is messy. Sometimes you log a message and an error. Sometimes only an object. Sometimes only an `Error` instance. The bridge normalizes those cases so the output stays structured.
 
----
-
 ### Server demo
 
 The server example lives in `src/app/log-demo/server/page.tsx`.
@@ -266,7 +240,7 @@ It starts with this:
 export const dynamic = 'force-dynamic';
 ```
 
-That line is there for a reason. It forces the route to execute on every request, which makes the logging demo visible every time you refresh the page.
+That forces the route to run on every request, so the demo logs on every refresh.
 
 The route shows both styles side by side.
 
@@ -291,20 +265,16 @@ Observed terminal output:
 [21:49:12.581] ▶ ERROR [Server] [yurimutti.com] Request failed isServer=true requestId=abc duration=150 error.name=Error error.message=fail
 ```
 
-This is the most useful part of the demo.
+The output shows several things at once.
 
-It shows that:
-
-- `console.log` gets captured by the override
+- `console.log` is captured by the override
 - `withContext({ isServer: true })` on the shared logger shows up on every server entry
 - direct LogLayer calls stay available
 - `withContext()` persists through the child logger chain
 - `withMetadata()` adds per-entry fields
 - `withError()` attaches the error only to that specific entry
 
-That last chained example is the one to copy into real code.
-
----
+That chained example is the pattern to copy into real code.
 
 ### Client demo
 
@@ -335,21 +305,13 @@ Client console override demo { source: "useEffect", page: "/log-demo/client" }
 [21:50:40.595] ▶ INFO [Client] [yurimutti.com] Client mounted { isServer: false, requestId: "client-abc", source: "useEffect", page: "/log-demo/client" }
 ```
 
-This keeps the mental model consistent.
+Direct logger access still works in the browser, and you can still attach context and metadata. Comparing the raw `console.log` call with the direct `log.info()` call shows how each behaves.
 
-You still have direct logger access in the browser. You can still attach context and metadata. You can also compare the raw `console.log` call with the direct `log.info()` call and see how each behaves.
-
-One nuance matters here.
-
-Server logs appear in the terminal. Client logs appear in the browser console. In dev mode, Next.js can also replay a server `console.log` entry in the browser with a `Server` badge. The output destination changes, but the logger API and enrichment model stay the same.
-
----
+One nuance. Server logs appear in the terminal, client logs appear in the browser console. In dev mode, Next.js can also replay a server `console.log` entry in the browser with a `Server` badge. The output destination changes, but the logger API and enrichment model stay the same.
 
 ### Expected output
 
-In development, you should see readable logs from `SimplePrettyTerminal`, plus the shared prefix and runtime tag.
-
-Observed output looks like this:
+In development you should see readable logs from `SimplePrettyTerminal`, plus the shared prefix and runtime tag.
 
 ```text
 [21:49:12.580] ▶ INFO [Server] [yurimutti.com] Server console override demo isServer=true route=/log-demo/server
@@ -358,23 +320,17 @@ Observed output looks like this:
 [21:50:40.595] ▶ INFO [Client] [yurimutti.com] Client mounted { isServer: "false", requestId: "client-abc", source: "useEffect", page: "/log-demo/client" }
 ```
 
-That consistency is the main win.
-
-Both runtimes use the same logger. Both can attach context. Both can attach metadata. On the server, raw `console.*` also flows through the instrumentation override.
-
----
+Both runtimes use the same logger, both can attach context and metadata, and on the server raw `console.*` also flows through the instrumentation override.
 
 ### Future extension points
 
-This repository keeps the example focused, but the shape scales cleanly.
+The example stays focused, but the shape scales.
 
 If you later want log shipping to Datadog, this is where `@loglayer/transport-datadog` (server) and `@loglayer/transport-datadog-browser-logs` (browser) belong. If you want trace context on logs, the right primitive is `@loglayer/plugin-opentelemetry`, which stamps `trace_id` and `span_id` onto entries. If you already run an OpenTelemetry log processor pipeline, `@loglayer/transport-opentelemetry` fits instead.
 
 For Edge routes, you need a separate `LogLayer` instance. The Node.js logger imports Pino, which breaks the Edge bundle at build time. Use `@loglayer/transport-http` with `enableNextJsEdgeCompat: true` instead.
 
-The important rule is to keep vendor-specific concerns out of feature code and let LogLayer remain the stable API boundary.
-
----
+Keep vendor-specific concerns out of feature code and let LogLayer stay the stable API boundary.
 
 ### How to run the example
 
@@ -395,28 +351,13 @@ To verify the production build:
 npm run build
 ```
 
-### 👉 Find the code for this article on GitHub: [yurimutti/nextjs-loglayer](https://github.com/yurimutti/nextjs-loglayer)
-
----
-
-### Key takeaways
-
-1. `instrumentation.ts` is the right place to intercept `console.*` in the Node.js runtime
-2. One shared LogLayer instance gives you a consistent logging API across the app
-3. `withContext()` persists, while `withMetadata()` and `withError()` apply to one entry
-4. `PinoTransport` is the production server transport in this demo
-5. Datadog and OpenTelemetry fit naturally as future transport and correlation layers
-6. This pattern gives you a practical baseline before external log shipping
-
----
+The full code for this article is on GitHub: [yurimutti/nextjs-loglayer](https://github.com/yurimutti/nextjs-loglayer).
 
 ### Conclusion
 
-If your Next.js logs feel fragmented, the fix is not complicated. Put the console interception in `instrumentation.ts`, route server-side `console.*` into LogLayer, and keep one shared logger instance for direct structured logging.
+If your Next.js logs feel fragmented, the recipe is short. Put console interception in `instrumentation.ts`, route server-side `console.*` into LogLayer, and keep one shared logger instance for direct structured logging.
 
-That gives you a practical baseline.
-
-You get readable development logs, structured production server logs, cleaner error handling, and one consistent API across the app. You also keep a clean path open for optional transports and observability backends later.
+You get readable development logs, structured production server logs, cleaner error handling, and one consistent API across the app, with a clean path open for optional transports and observability backends later.
 
 <hr />
 
