@@ -20,16 +20,20 @@ export function CopyButton({ code }: CopyButtonProps) {
     }
   };
 
+  const label = copied ? 'Copied' : 'Copy code';
+
   return (
     <button
+      type="button"
       onClick={handleCopy}
-      className="cursor-pointer p-1.5 rounded hover:bg-gray-700 transition-colors duration-200 text-gray-400 hover:text-gray-200"
-      title={copied ? 'Copied!' : 'Copy code'}
+      aria-label={label}
+      title={label}
+      className="flex size-7 cursor-pointer items-center justify-center rounded-sm text-muted-foreground outline-none transition-colors duration-200 hover:bg-foreground/5 hover:text-foreground focus-visible:ring-2 focus-visible:ring-foreground/40 motion-reduce:transition-none"
     >
       {copied ? (
-        <MdCheck className="w-4 h-4 text-green-400" />
+        <MdCheck className="size-4" aria-hidden="true" />
       ) : (
-        <MdContentCopy className="w-4 h-4" />
+        <MdContentCopy className="size-4" aria-hidden="true" />
       )}
     </button>
   );

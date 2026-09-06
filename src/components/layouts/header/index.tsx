@@ -1,70 +1,54 @@
 'use client';
 
 import Link from 'next/link';
-import { Avatar } from '@/components/ui/avatar';
+import { usePathname } from 'next/navigation';
+import { cn } from '@/libs/utils';
 import { ToggleTheme } from '../../toggle-theme';
 
-const AVATAR_SRC = '/assets/brand/yurimutti.jpeg';
-
 const NAV_LINKS = [
-  // TODO: implement
-  //   { label: 'Blog', href: '/posts' },
-  //   { label: 'Tags', href: '/tags' },
-  //   { label: 'RSS', href: '/rss' },
+  { label: 'Writing', href: '/posts' },
+  { label: 'Projects', href: '/projects' },
 ] as const;
 
 export const Header = () => {
+  const pathname = usePathname();
+
   return (
-    <header className="w-full text-foreground">
-      <div className="max-w-screen-md px-4 mx-auto">
-        <div className="flex flex-wrap items-center justify-between gap-4 py-4">
-          <div className="flex flex-wrap items-center gap-4">
-            <Link
-              href="/"
-              className="flex items-center gap-4 cursor-pointer"
-              aria-label="Go to homepage"
-            >
-              <div className="flex gap-6">
-                <Avatar.Root className="inline-flex size-[48px] select-none items-center justify-center overflow-hidden rounded-full bg-foreground/10">
-                  <Avatar.Image
-                    className="size-full rounded-[inherit] object-cover"
-                    src={AVATAR_SRC}
-                    alt="Yuri Mutti profile photo"
-                  />
-                  <Avatar.Fallback
-                    className="leading-1 flex size-full items-center justify-center bg-background text-[15px] font-medium text-foreground"
-                    delayMs={600}
+    <header className="w-full">
+      <div className="mx-auto flex max-w-screen-md items-center justify-between px-4 py-8">
+        <Link
+          href="/"
+          className="rounded-sm font-medium text-foreground outline-none focus-visible:ring-2 focus-visible:ring-foreground/40"
+        >
+          Yuri Mutti
+        </Link>
+
+        <nav aria-label="Main">
+          <ul className="flex items-center gap-5 text-sm">
+            {NAV_LINKS.map(({ label, href }) => {
+              const active =
+                pathname === href || pathname.startsWith(`${href}/`);
+
+              return (
+                <li key={href}>
+                  <Link
+                    href={href}
+                    aria-current={active ? 'page' : undefined}
+                    className={cn(
+                      'rounded-sm outline-none transition-colors duration-200 hover:text-foreground focus-visible:ring-2 focus-visible:ring-foreground/40 motion-reduce:transition-none',
+                      active ? 'text-foreground' : 'text-muted-foreground'
+                    )}
                   >
-                    YM
-                  </Avatar.Fallback>
-                </Avatar.Root>
-              </div>
-
-              <span className="text-xl font-bold tracking-wider uppercase transition-all duration-300 ease-in-out rounded font-heading sm:text-base">
-                Yuri Mutti
-              </span>
-            </Link>
-
-            <nav>
-              <ul className="flex items-center gap-3">
-                {NAV_LINKS?.map(({ label, href }) => (
-                  <li key={href}>
-                    <Link
-                      href={href}
-                      className="px-2 py-1 transition-colors duration-200 hover:text-primary"
-                    >
-                      {label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </nav>
-          </div>
-
-          <div className="flex items-center gap-6">
-            <ToggleTheme />
-          </div>
-        </div>
+                    {label}
+                  </Link>
+                </li>
+              );
+            })}
+            <li className="flex">
+              <ToggleTheme />
+            </li>
+          </ul>
+        </nav>
       </div>
     </header>
   );

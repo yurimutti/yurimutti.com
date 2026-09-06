@@ -1,19 +1,26 @@
+import { Page } from '@/components/ui/page';
 import { getBlogPosts } from '@/utils/blog';
 import { prodUrl } from './sitemap';
-import { PostCard } from '@/components/blog/post/post-card';
+import { featuredProjects } from '@/content/projects';
+import { PostList } from '@/components/blog/post/post-row';
+import { ProjectRow } from '@/components/projects';
+import { TalkRow } from '@/components/talks';
+import { talks } from '@/content/talks';
+import { Section, SectionLink } from '@/components/ui/section';
+
+const description =
+  'Software engineer focused on frontend and product engineering. I build web and mobile products, contribute to open source, and write about the things I learn along the way.';
 
 export const metadata = {
   title: {
     absolute: 'Yuri Mutti',
   },
   authors: [{ name: 'Yuri Mutti' }],
-  description:
-    'I am a software engineer with a passion for building products and solving problems with code.',
+  description,
   openGraph: {
     type: 'website',
     title: 'Yuri Mutti',
-    description:
-      'I am a software engineer with a passion for building products and solving problems with code.',
+    description,
     images: ['https://yurimutti.com/assets/brand/yurimutti.jpg'],
   },
   twitter: {
@@ -22,7 +29,7 @@ export const metadata = {
 };
 
 export default function Home() {
-  const posts = getBlogPosts().slice(0, 5);
+  const posts = getBlogPosts().slice(0, 3);
 
   return (
     <main>
@@ -50,32 +57,54 @@ export default function Home() {
           ]),
         }}
       />
-      <section className="max-w-screen-md mx-auto grid gap-6 sm:gap-8 px-4 my-6 sm:my-8">
-        <section className="grid gap-2">
-          <h2 className="text-accent text-xl sm:text-md md:text-lg font-semibold tracking-tight mb-2">
-            About me
-          </h2>
 
-          <p className="text-muted-foreground leading-relaxed text-base">
-            Hi, I&apos;m Yuri. I&apos;m a software engineer who likes building
-            things and solving problems with code. I enjoy working on open
-            source projects and sharing what I learn along the way. This is my
-            corner of the internet where I share these things.
+      <Page>
+        <section>
+          {/* Visually hidden: the name is already in the header, but the page
+              still needs an h1 for assistive tech and the document outline. */}
+          <h1 className="sr-only">Yuri Mutti</h1>
+          <p className="max-w-prose leading-relaxed text-muted-foreground">
+            {description}
           </p>
         </section>
 
-        <section className="grid gap-2">
-          <h2 className="text-accent text-xl sm:text-md md:text-lg font-semibold tracking-tight mb-2">
-            Writing
-          </h2>
+        {featuredProjects.length > 0 && (
+          <Section
+            title="Projects"
+            action={
+              <SectionLink href="/projects">View all projects →</SectionLink>
+            }
+          >
+            <ul className="grid">
+              {featuredProjects.map((project) => (
+                <ProjectRow key={project.href} project={project} />
+              ))}
+            </ul>
+          </Section>
+        )}
 
-          <section className="grid gap-2">
-            {posts.map((post) => (
-              <PostCard key={post.slug} post={post} />
-            ))}
-          </section>
-        </section>
-      </section>
+        <Section
+          title="Writing"
+          action={<SectionLink href="/posts">View all posts →</SectionLink>}
+        >
+          <PostList posts={posts} />
+        </Section>
+
+        {talks.length > 0 && (
+          <Section
+            title="Speaking"
+            action={
+              <SectionLink href="/speaking">View all talks →</SectionLink>
+            }
+          >
+            <ul className="grid">
+              {talks.slice(0, 3).map((talk) => (
+                <TalkRow key={talk.title} talk={talk} />
+              ))}
+            </ul>
+          </Section>
+        )}
+      </Page>
     </main>
   );
 }

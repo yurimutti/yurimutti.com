@@ -1,25 +1,28 @@
-import { SocialIcons } from '@/components/social-icons';
-import Link from 'next/link';
+const LINKS = [
+  { label: 'GitHub', href: 'https://github.com/yurimutti' },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/yurimutti/' },
+  { label: 'Email', href: 'mailto:muttiyuri@gmail.com' },
+] as const;
 
 export const Footer = () => {
   return (
-    <footer className="max-w-screen-md w-full px-4 py-6 mx-auto flex flex-col items-center justify-center gap-4 sm:flex-row sm:justify-between sm:items-center">
-      <div className="flex flex-col items-center gap-2 sm:flex-row sm:gap-4">
-        <span
-          className="text-sm font-bold tracking-wider uppercase transition-colors duration-300 font-heading"
-          style={{ color: 'hsl(var(--foreground))' }}
-        >
-          Yuri Mutti
-        </span>
-        <SocialIcons />
-      </div>
-
-      <Link
-        href="https://github.com/yurimutti/yurimutti.com"
-        className="text-sm underline transition-colors duration-200 hover:text-primary"
-      >
-        Source
-      </Link>
+    <footer className="mx-auto w-full max-w-screen-md px-4 py-8">
+      <ul className="flex flex-wrap items-center gap-x-2 text-sm text-muted-foreground">
+        {LINKS.map(({ label, href }, index) => (
+          <li key={href} className="flex items-center gap-x-2">
+            {index > 0 && <span aria-hidden="true">·</span>}
+            <a
+              href={href}
+              {...(href.startsWith('http')
+                ? { target: '_blank', rel: 'noreferrer' }
+                : {})}
+              className="rounded-sm outline-none transition-colors duration-200 hover:text-foreground focus-visible:ring-2 focus-visible:ring-foreground/40 motion-reduce:transition-none"
+            >
+              {label}
+            </a>
+          </li>
+        ))}
+      </ul>
     </footer>
   );
 };

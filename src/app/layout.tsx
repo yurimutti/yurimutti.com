@@ -6,6 +6,7 @@ import Script from 'next/script';
 import '@/styles/globals.css';
 import { Footer } from '@/components/layouts/footer';
 import { Header } from '@/components/layouts/header';
+import { TopFade } from '@/components/layouts/top-fade';
 import { prodUrl } from './sitemap';
 
 // Self-hosted Inter (variable). Avoids a build-time fetch to Google Fonts,
@@ -32,7 +33,6 @@ export const metadata: Metadata = {
       'application/feed+json': '/posts/feed/articles.json',
     },
   },
-  icons: [{ rel: 'icon', url: '/favicon.png' }],
 };
 
 export default function RootLayout({
@@ -52,6 +52,7 @@ export default function RootLayout({
       </head>
       <body className="min-h-screen text-foreground">
         <Providers>
+          <TopFade />
           <Header />
           {children}
           <Footer />

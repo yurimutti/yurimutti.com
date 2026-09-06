@@ -1,7 +1,8 @@
+import { Page } from '@/components/ui/page';
 import { notFound } from 'next/navigation';
-import Link from 'next/link';
 import { getBlogPosts, PostMetadata } from '@/utils/blog';
-import { PostCard } from '@/components/blog/post/post-card';
+import { PostList } from '@/components/blog/post/post-row';
+import { Section, SectionLink } from '@/components/ui/section';
 
 async function getPostsByTag(tag: string): Promise<PostMetadata[]> {
   const allPosts = getBlogPosts();
@@ -39,25 +40,15 @@ export default async function TagPage({ params }: PageProps) {
 
   return (
     <main>
-      <section className="max-w-screen-md mx-auto px-4 my-4 sm:my-6">
-        <div className="flex justify-between items-center mb-6">
-          <h1 className="text-xl sm:text-md md:text-lg font-bold tracking-tight text-accent">
-            {capitalizedTag}
-          </h1>
-          <Link
-            href="/tags"
-            className="text-sm text-muted-foreground hover:text-accent transition-colors"
-          >
-            View all tags
-          </Link>
-        </div>
-
-        <div className="grid gap-4 sm:gap-6">
-          {posts.map((post) => (
-            <PostCard key={post.slug} post={post} titleSize="xl" />
-          ))}
-        </div>
-      </section>
+      <Page>
+        <Section
+          title={capitalizedTag}
+          as="h1"
+          action={<SectionLink href="/tags">All tags →</SectionLink>}
+        >
+          <PostList posts={posts} />
+        </Section>
+      </Page>
     </main>
   );
 }

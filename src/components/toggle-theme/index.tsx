@@ -1,12 +1,34 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { MdNightlight, MdWbSunny } from 'react-icons/md';
 import { useTheme } from 'next-themes';
-import { AnimatePresence, motion } from 'framer-motion';
+
+/**
+ * Half-filled circle. The same glyph is used in both modes: it is a control,
+ * not a status indicator, and the accessible name says what it will do.
+ */
+const HalfCircle = () => (
+  <svg
+    viewBox="0 0 16 16"
+    width="16"
+    height="16"
+    aria-hidden="true"
+    focusable="false"
+  >
+    <circle
+      cx="8"
+      cy="8"
+      r="6.25"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+    />
+    <path d="M8 1.75a6.25 6.25 0 0 1 0 12.5z" fill="currentColor" />
+  </svg>
+);
 
 export const ToggleTheme = () => {
-  const { theme, setTheme, resolvedTheme } = useTheme();
+  const { setTheme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -14,34 +36,22 @@ export const ToggleTheme = () => {
   }, []);
 
   const isDark = resolvedTheme === 'dark';
-  const handleToggleTheme = () => setTheme(isDark ? 'light' : 'dark');
+  const label = isDark ? 'Switch to light mode' : 'Switch to dark mode';
 
+  // Reserve the space before hydration so the header does not shift.
   if (!mounted) {
-    return <div className="w-10 h-10 p-2" />;
+    return <span className="inline-block size-6" aria-hidden="true" />;
   }
 
   return (
-    <AnimatePresence mode="wait" initial={false}>
-      <motion.button
-        key={theme}
-        onClick={handleToggleTheme}
-        className="cursor-pointer flex items-center justify-center w-10 h-10 p-2 transition-colors duration-300 rounded-md hover:bg-[hsl(var(--accent)/0.15)]"
-        initial={{ rotate: -90, opacity: 0 }}
-        animate={{ rotate: 0, opacity: 1 }}
-        exit={{ rotate: 90, opacity: 0 }}
-        transition={{ duration: 0.3 }}
-        style={{
-          color: 'hsl(var(--foreground))',
-        }}
-        aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
-        title={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
-      >
-        {isDark ? (
-          <MdWbSunny className="w-6 h-6" />
-        ) : (
-          <MdNightlight className="w-6 h-6" />
-        )}
-      </motion.button>
-    </AnimatePresence>
+    <button
+      type="button"
+      onClick={() => setTheme(isDark ? 'light' : 'dark')}
+      aria-label={label}
+      title={label}
+      className="flex size-6 cursor-pointer items-center justify-center rounded-sm text-muted-foreground outline-none transition-colors duration-200 hover:text-foreground focus-visible:ring-2 focus-visible:ring-foreground/40 motion-reduce:transition-none"
+    >
+      <HalfCircle />
+    </button>
   );
 };

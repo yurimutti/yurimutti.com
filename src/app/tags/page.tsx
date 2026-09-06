@@ -1,5 +1,7 @@
 import Link from 'next/link';
+import { Page } from '@/components/ui/page';
 import { getBlogPosts } from '@/utils/blog';
+import { Section } from '@/components/ui/section';
 
 async function getTagsWithCounts(): Promise<
   Array<{ name: string; count: number }>
@@ -23,29 +25,30 @@ export default async function TagsPage() {
 
   return (
     <main>
-      <section className="max-w-screen-md mx-auto px-4 my-4 sm:my-6">
-        <h1 className="text-xl sm:text-md md:text-lg font-bold tracking-tight text-accent mb-6">
-          Tags
-        </h1>
-
-        <div className="space-y-1">
-          {tagsWithCounts.map(({ name, count }) => (
-            <div key={name} className="text-foreground">
-              <Link
-                href={`/tags/${encodeURIComponent(name.toLowerCase())}`}
-                className="hover:text-primary transition-colors duration-200"
-              >
-                {name}
-              </Link>
-              <span className="text-muted-foreground"> ({count})</span>
-            </div>
-          ))}
-        </div>
-
-        {tagsWithCounts.length === 0 && (
-          <p className="text-muted-foreground">No tags found.</p>
-        )}
-      </section>
+      <Page>
+        <Section title="Tags" as="h1">
+          {tagsWithCounts.length > 0 ? (
+            <ul className="grid gap-1">
+              {tagsWithCounts.map(({ name, count }) => (
+                <li key={name}>
+                  <Link
+                    href={`/tags/${encodeURIComponent(name.toLowerCase())}`}
+                    className="rounded-sm text-foreground outline-none transition-colors duration-200 hover:text-muted-foreground focus-visible:ring-2 focus-visible:ring-foreground/40 motion-reduce:transition-none"
+                  >
+                    {name}
+                  </Link>
+                  <span className="text-sm text-muted-foreground">
+                    {' '}
+                    {count}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p className="text-muted-foreground">No tags found.</p>
+          )}
+        </Section>
+      </Page>
     </main>
   );
 }

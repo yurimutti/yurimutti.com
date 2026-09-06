@@ -39,7 +39,7 @@ export async function GET(
     id: `${prodUrl}/posts`,
     link: `${prodUrl}/posts`,
     language: 'en',
-    favicon: `${prodUrl}/favicon.ico`,
+    favicon: `${prodUrl}/apple-icon.png`,
     copyright: `All rights reserved ${new Date().getFullYear()}, Yuri Mutti`,
     feedLinks: {
       rss: `${prodUrl}/posts/feed/rss.xml`,
