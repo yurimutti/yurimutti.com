@@ -20,45 +20,45 @@ export const metadata = {
 
 ## Where it started
 
-This repo goes back to 2022. It started as a plain [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app) scaffold, and for a long time it wasn't a blog at all. It was a small institutional site in Portuguese, with pages for about me, projects, contact, and a link to my Discord. Styling ran on [Stitches](https://stitches.dev), paired with [Radix Colors](https://www.radix-ui.com/colors). I even added [Storybook](https://storybook.js.org) at one point and pulled it out a few months later, it never earned its keep.
+This repo goes back to 2022. It started as a plain `create-next-app` scaffold, and for a long time it wasn't a blog at all. It was a small institutional site in Portuguese, with pages for about me, projects, contact, and a link to my Discord. Styling ran on Stitches, paired with Radix Colors. I even added Storybook at one point and pulled it out a few months later, it never earned its keep.
 
-Tooling came first. [Prettier](https://prettier.io), [Husky](https://typicode.github.io/husky/), [commitlint](https://commitlint.js.org), [lint-staged](https://github.com/lint-staged/lint-staged), all set up in the first week, before the site had a single real page.
+Tooling came first. Prettier, Husky, `commitlint`, `lint-staged`, all set up in the first week, before the site had a single real page.
 
 The migration kept the original repository and tooling, but replaced the routing, styling, content architecture, feeds, analytics, and metadata layer.
 
 ## The core stack, then and now
 
-The site started on [Next.js](https://nextjs.org) 12 with the [Pages Router](https://nextjs.org/docs/pages). It stayed there for a long time before being upgraded to 14, mostly as a maintenance and performance update.
+The site started on Next.js 12 with the Pages Router. It stayed there for a long time before being upgraded to 14, mostly as a maintenance and performance update.
 
-The bigger shift came later, in a few days in July 2025. Next.js jumped from 14 to 15, and I finally moved to the [App Router](https://nextjs.org/docs/app) too, for shared layouts, colocated metadata, route handlers, React Server Components, and a more natural fit for content that's mostly static. `src/pages` became `src/app`. The old pages, about, projects, contact, Discord, got deleted and never rebuilt. That single decision is what turned this from a small portfolio site into something closer to a blog.
+The bigger shift came later, in a few days in July 2025. Next.js jumped from 14 to 15, and I finally moved to the App Router too, for shared layouts, colocated metadata, route handlers, React Server Components, and a more natural fit for content that's mostly static. `src/pages` became `src/app`. The old pages, about, projects, contact, Discord, got deleted and never rebuilt. That single decision is what turned this from a small portfolio site into something closer to a blog.
 
-[React](https://react.dev) moved from 18 to 19 in that same window too.
+React moved from 18 to 19 in that same window too.
 
 ## Swapping Stitches for Tailwind
 
-Stitches had been in the project for close to three years. It came out in the same commit that brought [Tailwind](https://tailwindcss.com) v4 in, no period where both ran side by side, just a straight swap. That made sense. Runtime CSS-in-JS libraries tend to introduce friction with React Server Components, and [Stitches itself had already stopped being actively maintained](https://github.com/stitchesjs/stitches/discussions/1149#discussioncomment-6223090) back in 2023.
+Stitches had been in the project for close to three years. It came out in the same commit that brought Tailwind v4 in, no period where both ran side by side, just a straight swap. That made sense. Runtime CSS-in-JS libraries tend to introduce friction with React Server Components, and [Stitches itself had already stopped being actively maintained](https://github.com/stitchesjs/stitches/discussions/1149#discussioncomment-6223090) back in 2023.
 
 ## Turning static pages into a content system
 
-Once the App Router was in place, the site needed an actual way to hold blog posts. That meant building an [MDX](https://mdxjs.com) pipeline, reading frontmatter out of each post file, and treating that frontmatter as the single source of truth. The homepage, the tags page, and the feed all pull from the same function that reads those files. Add a post, and it shows up everywhere it needs to, no separate registry to keep in sync. Publishing is now mostly a matter of adding one MDX file, tags, feeds, metadata, and the homepage all update from that same source.
+Once the App Router was in place, the site needed an actual way to hold blog posts. That meant building an MDX pipeline, reading frontmatter out of each post file, and treating that frontmatter as the single source of truth. The homepage, the tags page, and the feed all pull from the same function that reads those files. Add a post, and it shows up everywhere it needs to, no separate registry to keep in sync. Publishing is now mostly a matter of adding one MDX file, tags, feeds, metadata, and the homepage all update from that same source.
 
 ## Everything that reads that content
 
-Tags are derived straight from post frontmatter, there's no separate config file listing them out. The feed got rewritten to serve RSS, Atom, and JSON from one handler, using the [`feed`](https://www.npmjs.com/package/feed) package instead of the hand rolled XML that was there before. OG images are generated on the fly through an edge route using `next/og` instead of being static files. JSON-LD got added too, mostly so search engines have something structured to chew on.
+Tags are derived straight from post frontmatter, there's no separate config file listing them out. The feed got rewritten to serve RSS, Atom, and JSON from one handler, using the `feed` package instead of the hand rolled XML that was there before. OG images are generated on the fly through an edge route using `next/og` instead of being static files. JSON-LD got added too, mostly so search engines have something structured to chew on.
 
 ## Code snippets and playgrounds
 
-Syntax highlighting runs on [Shiki](https://shiki.style) with a [Dracula](https://draculatheme.com) theme. [Sandpack](https://sandpack.codesandbox.io) is wired in as well, so future posts can include live, editable code examples instead of static blocks. It's there and ready, waiting for a post that actually needs it.
+Syntax highlighting runs on Shiki with the GitHub light and dark themes. [Sandpack](https://sandpack.codesandbox.io) is wired in as well, so future posts can include live, editable code examples instead of static blocks. It's there and ready, waiting for a post that actually needs it.
 
 ## A few extra bits
 
-[Mermaid](https://mermaid.js.org) diagrams render directly inside the content now, no separate image exports needed. Dark and light theme switching runs on [next-themes](https://github.com/pacocoursey/next-themes). Analytics moved too, the old Google Tag Manager setup is gone, replaced by [Umami](https://umami.is), a privacy-focused open source tool that I run without cookies. And the site picked up some basic security headers along the way, nothing exotic, just the standard ones worth having.
+Mermaid diagrams render directly inside the content now, no separate image exports needed. Dark and light theme switching runs on [`next-themes`](https://github.com/pacocoursey/next-themes). Analytics moved too, the old Google Tag Manager setup is gone, replaced by [Umami](https://umami.is), a privacy-focused open source tool that I run without cookies. And the site picked up some basic security headers along the way, nothing exotic, just the standard ones worth having.
 
 ## What stayed the same
 
-[Yarn](https://yarnpkg.com) has been the package manager since the very first commit and never changed. Husky, commitlint, and lint-staged have been running since that first week in 2022. The one piece here that did change is the linting setup: a heavy config got replaced with something simpler.
+Yarn has been the package manager since the very first commit and never changed. Husky, `commitlint`, and `lint-staged` have been running since that first week in 2022. The one piece here that did change is the linting setup: a heavy config got replaced with something simpler.
 
-Newer tools like [Oxlint](https://oxc.rs), [Biome](https://biomejs.dev), and [Lefthook](https://lefthook.dev) exist now, and they're faster. But swapping just isn't a priority for now, what I already have still works fine.
+Newer tools like Oxlint, Biome, and Lefthook exist now, and they're faster. But swapping just isn't a priority for now, what I already have still works fine.
 
 ## Why now, and what's next
 
