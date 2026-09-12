@@ -12,7 +12,8 @@ export type ProjectLink = {
 export type Project = {
   name: string;
   description: string;
-  year: number;
+  /** "2026" for a project from one year, "2020–" for one still maintained. */
+  years: string;
   href: string;
   links?: ProjectLink[];
 };
@@ -37,7 +38,7 @@ export const featuredProjects: Project[] = [
     name: 'VelaChess',
     description:
       'Imports your chess games, builds a repertoire from how you actually play, and turns the positions that matter into spaced-repetition exercises.',
-    year: 2026,
+    years: '2026',
     href: 'https://velachess.com',
     links: [
       { label: 'Source', href: 'https://github.com/velachess/velachess' },
@@ -47,14 +48,14 @@ export const featuredProjects: Project[] = [
     name: 'recursos-frontend',
     description:
       'A curated list of libraries, tools and references for frontend developers, in Portuguese. 1.5k+ stars on GitHub.',
-    year: 2025,
+    years: '2020–',
     href: 'https://github.com/yurimutti/recursos-frontend',
   },
   {
     name: 'nextjs-loglayer',
     description:
       'Reference setup for structured logging in Next.js: one logger across server, client and edge, with console.* intercepted in instrumentation.ts.',
-    year: 2026,
+    years: '2026',
     href: 'https://github.com/yurimutti/nextjs-loglayer',
     links: [
       {

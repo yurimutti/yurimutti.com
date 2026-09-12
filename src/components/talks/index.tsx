@@ -8,7 +8,8 @@ const actionsFor = (a: Appearance): ActionLink[] => {
   if (a.videoUrl) links.push({ label: 'Watch', href: a.videoUrl });
   if (a.slidesUrl)
     links.push({ label: a.slidesLabel ?? 'Slides', href: a.slidesUrl });
-  if (a.eventUrl) links.push({ label: 'Event', href: a.eventUrl });
+  if (a.eventUrl)
+    links.push({ label: a.eventLabel ?? 'Event', href: a.eventUrl });
   return links;
 };
 

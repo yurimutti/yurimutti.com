@@ -25,7 +25,7 @@ export function ProjectRow({ project }: { project: Project }) {
           </SmartLink>
         </h3>
         <span className="shrink-0 text-sm tabular-nums text-muted-foreground">
-          {project.year}
+          {project.years}
         </span>
       </div>
       <p className="mt-1 text-sm leading-relaxed text-muted-foreground">

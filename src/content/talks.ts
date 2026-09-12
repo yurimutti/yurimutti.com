@@ -13,6 +13,8 @@ export type Appearance = {
   /** Overrides the "Slides" label, e.g. to flag the deck language. */
   slidesLabel?: string;
   eventUrl?: string;
+  /** Overrides the "Event" label when the link is not an event page. */
+  eventLabel?: string;
 };
 
 export type Talk = {
@@ -56,8 +58,8 @@ export const talks: Talk[] = [
         slidesUrl:
           'https://docs.google.com/presentation/d/1trcXiMwWgM66DRgyvB9sRWNnKiOozMB8GbCvYbPxqQ0/edit?usp=sharing',
         slidesLabel: 'Slides (PT-BR)',
-        eventUrl:
-          'https://oifuturo.org.br/historias/nave-recife-escola-tecnica-estadual-cicero-dias/',
+        eventUrl: 'https://www.instagram.com/naverecife/',
+        eventLabel: 'Instagram',
       },
     ],
   },
