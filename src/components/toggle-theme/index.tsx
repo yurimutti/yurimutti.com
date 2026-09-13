@@ -35,13 +35,15 @@ export const ToggleTheme = () => {
     setMounted(true);
   }, []);
 
+  // The glyph is identical in both themes, so it renders on the server and
+  // never pops in. Only the label waits for the resolved theme; until then
+  // it is a neutral one, which keeps server and client markup identical.
   const isDark = resolvedTheme === 'dark';
-  const label = isDark ? 'Switch to light mode' : 'Switch to dark mode';
-
-  // Reserve the space before hydration so the header does not shift.
-  if (!mounted) {
-    return <span className="inline-block size-6" aria-hidden="true" />;
-  }
+  const label = !mounted
+    ? 'Toggle theme'
+    : isDark
+      ? 'Switch to light mode'
+      : 'Switch to dark mode';
 
   return (
     <button
