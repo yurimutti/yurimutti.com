@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import type { ReactNode } from 'react';
-import { LinkArrow } from '@/components/ui/link-arrow';
 
 export type ActionLink = {
   label: string;
@@ -34,7 +33,7 @@ export function SmartLink({
 }
 
 /**
- * Small explicit destinations under a row: "Slides ↗  Event ↗  Article →".
+ * Explicit destinations under a row, as plain text: "Source  Article".
  * Renders nothing when there is nothing to link, so a row without
  * destinations simply ends after its text.
  */
@@ -45,12 +44,8 @@ export function LinkList({ links }: { links: ActionLink[] }) {
     <ul className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-sm">
       {links.map((link) => (
         <li key={link.href}>
-          <SmartLink
-            href={link.href}
-            className="group text-muted-foreground transition-colors duration-200 hover:text-foreground motion-reduce:transition-none"
-          >
+          <SmartLink href={link.href} className="link-secondary">
             {link.label}
-            <LinkArrow external={isExternal(link.href)} always />
           </SmartLink>
         </li>
       ))}

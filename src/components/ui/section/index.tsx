@@ -44,10 +44,7 @@ interface SectionLinkProps {
 /** A quiet secondary link, typically "View all ...". */
 export function SectionLink({ href, children }: SectionLinkProps) {
   return (
-    <Link
-      href={href}
-      className="text-sm text-muted-foreground transition-colors duration-200 hover:text-foreground motion-reduce:transition-none"
-    >
+    <Link href={href} className="link-secondary text-sm">
       {children}
     </Link>
   );

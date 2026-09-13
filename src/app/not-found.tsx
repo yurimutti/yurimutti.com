@@ -12,11 +12,8 @@ export default function NotFound() {
           URL might be incorrect.
         </p>
         <p className="pt-2">
-          <Link
-            href="/"
-            className="rounded-sm text-sm text-foreground outline-none transition-colors duration-200 hover:text-muted-foreground focus-visible:ring-2 focus-visible:ring-foreground/40 motion-reduce:transition-none"
-          >
-            ← Back to home
+          <Link href="/" className="link-secondary text-sm">
+            Back to home
           </Link>
         </p>
       </Page>

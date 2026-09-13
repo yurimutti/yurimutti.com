@@ -110,6 +110,58 @@
 }
 
 @layer components {
+  /* Links are typography, not controls. Two levels, no icons, no movement.
+     - .link-primary: content titles. Foreground, medium weight, underline
+       appears on hover.
+     - .link-secondary: actions and "view all" links. Muted, understated
+       underline at rest, foreground on hover.
+     Focus is a plain outline so keyboard users always see it. */
+  .link-primary,
+  .link-secondary {
+    border-radius: 0.125rem;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.25em;
+    transition:
+      color 150ms ease,
+      text-decoration-color 150ms ease;
+    outline: none;
+  }
+
+  .link-primary {
+    color: hsl(var(--foreground));
+    font-weight: 500;
+    text-decoration: underline;
+    text-decoration-color: transparent;
+  }
+
+  .link-primary:hover {
+    text-decoration-color: hsl(var(--muted-foreground) / 0.6);
+  }
+
+  .link-secondary {
+    color: hsl(var(--muted-foreground));
+    text-decoration: underline;
+    text-decoration-color: hsl(var(--muted-foreground) / 0.4);
+  }
+
+  .link-secondary:hover {
+    color: hsl(var(--foreground));
+    text-decoration-color: hsl(var(--foreground));
+  }
+
+  .link-primary:focus-visible,
+  .link-secondary:focus-visible {
+    outline: 2px solid hsl(var(--foreground) / 0.4);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .link-primary,
+    .link-secondary {
+      transition: none;
+    }
+  }
+
   /* Frosted strip fixed to the top edge of the viewport. It blurs and fades
      whatever scrolls underneath it and is only shown once the page has been
      scrolled (see TopFade); at the very top nothing is rendered over the

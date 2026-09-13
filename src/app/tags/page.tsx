@@ -33,7 +33,7 @@ export default async function TagsPage() {
                 <li key={name}>
                   <Link
                     href={`/tags/${encodeURIComponent(name.toLowerCase())}`}
-                    className="rounded-sm text-foreground outline-none transition-colors duration-200 hover:text-muted-foreground focus-visible:ring-2 focus-visible:ring-foreground/40 motion-reduce:transition-none"
+                    className="link-primary"
                   >
                     {name}
                   </Link>

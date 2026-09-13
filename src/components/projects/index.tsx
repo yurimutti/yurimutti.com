@@ -1,15 +1,10 @@
 import type { Community, Contribution, Project } from '@/content/projects';
-import { LinkArrow } from '@/components/ui/link-arrow';
-import { isExternal, LinkList, SmartLink } from '@/components/ui/link-list';
+import { LinkList, SmartLink } from '@/components/ui/link-list';
 
 /**
- * The project title is the one primary destination. It looks like a link at
- * rest (arrow always visible) and only the text itself is clickable: no row
- * hover surface, no background, no border.
+ * The project title is the one primary destination and the only thing in
+ * the row that is clickable besides the explicit secondary links.
  */
-const titleLinkClass =
-  'group rounded-sm font-medium text-foreground outline-none transition-opacity duration-200 hover:opacity-60 focus-visible:ring-2 focus-visible:ring-foreground/40 motion-reduce:transition-none';
-
 export function ProjectRow({ project }: { project: Project }) {
   // A secondary link that goes where the title already goes is noise.
   const secondaryLinks =
@@ -19,9 +14,8 @@ export function ProjectRow({ project }: { project: Project }) {
     <li className="py-3">
       <div className="flex items-baseline justify-between gap-4">
         <h3>
-          <SmartLink href={project.href} className={titleLinkClass}>
+          <SmartLink href={project.href} className="link-primary">
             {project.name}
-            <LinkArrow external={isExternal(project.href)} always />
           </SmartLink>
         </h3>
         <span className="shrink-0 text-sm tabular-nums text-muted-foreground">

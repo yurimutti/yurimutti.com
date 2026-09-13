@@ -16,7 +16,7 @@ export const Footer = () => {
               {...(href.startsWith('http')
                 ? { target: '_blank', rel: 'noreferrer' }
                 : {})}
-              className="rounded-sm outline-none transition-colors duration-200 hover:text-foreground focus-visible:ring-2 focus-visible:ring-foreground/40 motion-reduce:transition-none"
+              className="link-secondary"
             >
               {label}
             </a>

@@ -9,9 +9,9 @@ interface PageProps {
 /**
  * The single vertical rhythm for every page.
  *
- *   header text → first block   96px mobile / 112px desktop
+ *   header text to first block   96px mobile / 112px desktop
  *   between major sections       64px mobile /  80px desktop
- *   last block → footer text     96px mobile / 112px desktop
+ *   last block to footer text     96px mobile / 112px desktop
  *
  * The header and footer each carry 32px of their own padding, so this
  * container adds 64/80 on both ends to land on those numbers. Change the

@@ -72,7 +72,7 @@ export default function Home() {
           <Section
             title="Projects"
             action={
-              <SectionLink href="/projects">View all projects →</SectionLink>
+              <SectionLink href="/projects">View all projects</SectionLink>
             }
           >
             <ul className="grid">
@@ -85,7 +85,7 @@ export default function Home() {
 
         <Section
           title="Writing"
-          action={<SectionLink href="/posts">View all posts →</SectionLink>}
+          action={<SectionLink href="/posts">View all posts</SectionLink>}
         >
           <PostList posts={posts} />
         </Section>
@@ -93,9 +93,7 @@ export default function Home() {
         {talks.length > 0 && (
           <Section
             title="Speaking"
-            action={
-              <SectionLink href="/speaking">View all talks →</SectionLink>
-            }
+            action={<SectionLink href="/speaking">View all talks</SectionLink>}
           >
             <ul className="grid">
               {talks.slice(0, 3).map((talk) => (

@@ -85,7 +85,7 @@ export function BlogPost({
                   {index > 0 && <span aria-hidden="true">·</span>}
                   <Link
                     href={`/tags/${encodeURIComponent(tag.toLowerCase())}`}
-                    className="rounded-sm outline-none transition-colors duration-200 hover:text-foreground focus-visible:ring-2 focus-visible:ring-foreground/40 motion-reduce:transition-none"
+                    className="link-secondary"
                   >
                     {tag}
                   </Link>

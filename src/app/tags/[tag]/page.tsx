@@ -44,7 +44,7 @@ export default async function TagPage({ params }: PageProps) {
         <Section
           title={capitalizedTag}
           as="h1"
-          action={<SectionLink href="/tags">All tags →</SectionLink>}
+          action={<SectionLink href="/tags">All tags</SectionLink>}
         >
           <PostList posts={posts} />
         </Section>
