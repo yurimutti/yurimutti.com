@@ -1,16 +1,16 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
   <style>
-    /* Light: the page gradient's indigo family, stretched from its palest
-       stop to a deeper indigo so both ends read on a light tab.
-       Dark: the page's slate-to-plum gradient, lifted so it reads on a dark
-       tab. Same circle, only the colors change. */
-    :root { --a: #e0e7ff; --b: #7c86f5; }
+    /* Flat two-color diagonal wash, top-left to bottom-right. Both stops are
+       mid-tones on purpose: a pale stop on a circle reads as a highlight and
+       turns the mark into a sphere. Light = indigo family of the page
+       gradient, dark = its slate-to-plum family, lifted for dark tabs. */
+    :root { --a: #aab4f7; --b: #6469de; }
     @media (prefers-color-scheme: dark) {
-      :root { --a: #4b4f74; --b: #9a5f9c; }
+      :root { --a: #5c6094; --b: #a86ca4; }
     }
   </style>
   <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+    <linearGradient id="g" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="64" y2="64">
       <stop offset="0" style="stop-color: var(--a)"/>
       <stop offset="1" style="stop-color: var(--b)"/>
     </linearGradient>
