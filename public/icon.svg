@@ -6,7 +6,7 @@
        gradient, dark = its slate-to-plum family, lifted for dark tabs. */
     :root { --a: #aab4f7; --b: #6469de; }
     @media (prefers-color-scheme: dark) {
-      :root { --a: #5c6094; --b: #a86ca4; }
+      :root { --a: #3a3d6b; --b: #7a477c; }
     }
   </style>
   <defs>
