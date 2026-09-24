@@ -87,6 +87,10 @@ export const openSource: Contribution[] = [
         label: 'Merged PRs',
         href: 'https://github.com/strapi/strapi/pulls?q=is%3Apr+author%3Ayurimutti+is%3Amerged',
       },
+      {
+        label: 'Credited in v4.14 release',
+        href: 'https://medium.com/strapi/say-hello-to-strapi-v4-14-a8dacc6bbce1',
+      },
     ],
   },
 ];
