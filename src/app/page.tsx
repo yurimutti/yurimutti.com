@@ -9,7 +9,7 @@ import { talks } from '@/content/talks';
 import { Section, SectionLink } from '@/components/ui/section';
 
 const description =
-  'Software engineer focused on frontend and product engineering. I build web and mobile products, contribute to open source, and write about the things I learn along the way.';
+  'Software engineer focused on frontend and product engineering. I build products end-to-end, contribute to open source, and write about what I learn along the way.';
 
 export const metadata = {
   title: {
