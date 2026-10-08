@@ -58,7 +58,7 @@ export default function Home() {
         }}
       />
 
-      <Page>
+      <Page className="stagger">
         <section>
           {/* Visually hidden: the name is already in the header, but the page
               still needs an h1 for assistive tech and the document outline. */}
