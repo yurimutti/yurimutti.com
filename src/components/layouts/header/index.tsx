@@ -18,7 +18,7 @@ export const Header = () => {
       <div className="mx-auto flex max-w-screen-md items-center justify-between px-4 py-8">
         <Link
           href="/"
-          className="rounded-sm font-medium text-foreground outline-none focus-visible:ring-2 focus-visible:ring-foreground/40"
+          className="rounded-sm font-medium text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground/40"
         >
           Yuri Mutti
         </Link>
@@ -35,7 +35,7 @@ export const Header = () => {
                     href={href}
                     aria-current={active ? 'page' : undefined}
                     className={cn(
-                      'rounded-sm outline-none transition-colors duration-200 hover:text-foreground focus-visible:ring-2 focus-visible:ring-foreground/40 motion-reduce:transition-none',
+                      'rounded-sm transition-colors duration-(--duration-hover) hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground/40',
                       active ? 'text-foreground' : 'text-muted-foreground'
                     )}
                   >

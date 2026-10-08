@@ -33,6 +33,9 @@
   --code-block-bg: 0 0% 100%;
   --code-block-border: 240 5% 88%;
   --code-line-highlight: 240 5% 95%;
+  /* Motion: one curve and one hover speed for the whole site. */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --duration-hover: 150ms;
 }
 
 .dark {
@@ -97,14 +100,11 @@
     background-image: var(--gradient-background);
   }
 
+  /* Reduced motion keeps color and opacity fades; movement is removed where
+     it is declared (.pressable, .copy-icon, .stagger). */
   @media (prefers-reduced-motion: reduce) {
-    *,
-    ::before,
-    ::after {
-      animation-duration: 0.01ms !important;
-      animation-iteration-count: 1 !important;
-      transition-duration: 0.01ms !important;
-      scroll-behavior: auto !important;
+    html {
+      scroll-behavior: auto;
     }
   }
 }
@@ -122,8 +122,8 @@
     text-decoration-thickness: 1px;
     text-underline-offset: 0.25em;
     transition:
-      color 150ms ease,
-      text-decoration-color 150ms ease;
+      color var(--duration-hover) ease,
+      text-decoration-color var(--duration-hover) ease;
     outline: none;
   }
 
@@ -134,8 +134,15 @@
     text-decoration-color: transparent;
   }
 
-  .link-primary:hover {
-    text-decoration-color: hsl(var(--muted-foreground) / 0.6);
+  @media (hover: hover) and (pointer: fine) {
+    .link-primary:hover {
+      text-decoration-color: hsl(var(--muted-foreground) / 0.6);
+    }
+
+    .link-secondary:hover {
+      color: hsl(var(--foreground));
+      text-decoration-color: hsl(var(--foreground));
+    }
   }
 
   .link-secondary {
@@ -144,21 +151,57 @@
     text-decoration-color: hsl(var(--muted-foreground) / 0.4);
   }
 
-  .link-secondary:hover {
-    color: hsl(var(--foreground));
-    text-decoration-color: hsl(var(--foreground));
-  }
-
   .link-primary:focus-visible,
   .link-secondary:focus-visible {
     outline: 2px solid hsl(var(--foreground) / 0.4);
     outline-offset: 2px;
   }
 
+  /* Icon buttons: instant press feedback and a 40px+ hit area around a
+     small glyph. */
+  .pressable {
+    position: relative;
+    transition:
+      color var(--duration-hover) ease,
+      background-color var(--duration-hover) ease,
+      transform 150ms var(--ease-out);
+  }
+
+  .pressable::before {
+    content: '';
+    position: absolute;
+    inset: -8px;
+  }
+
+  .pressable:active {
+    transform: scale(0.97);
+  }
+
+  /* Copy button: both icons share one cell and crossfade. */
+  .copy-icon {
+    grid-area: 1 / 1;
+    transition:
+      opacity 200ms var(--ease-out),
+      transform 200ms var(--ease-out),
+      filter 200ms var(--ease-out);
+  }
+
+  [data-copied='false'] > .copy-icon-check,
+  [data-copied='true'] > .copy-icon-copy {
+    opacity: 0;
+    transform: scale(0.8);
+    filter: blur(2px);
+  }
+
   @media (prefers-reduced-motion: reduce) {
-    .link-primary,
-    .link-secondary {
-      transition: none;
+    .pressable:active {
+      transform: none;
+    }
+
+    [data-copied='false'] > .copy-icon-check,
+    [data-copied='true'] > .copy-icon-copy {
+      transform: none;
+      filter: none;
     }
   }
 
@@ -173,7 +216,7 @@
     z-index: 30;
     pointer-events: none;
     opacity: 0;
-    transition: opacity 200ms ease;
+    transition: opacity 200ms var(--ease-out);
     /* Almost no tint: the blur does the work, so the strip takes the color
        of whatever part of the gradient is underneath it instead of painting
        a white or black band on top. */
