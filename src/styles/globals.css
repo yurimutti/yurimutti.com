@@ -96,8 +96,19 @@
   }
 
   body {
-    @apply font-sans text-foreground;
+    @apply font-sans text-foreground antialiased;
     background-image: var(--gradient-background);
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
   }
 
   /* Reduced motion keeps color and opacity fades; movement is removed where
