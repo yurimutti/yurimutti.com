@@ -78,7 +78,11 @@ export function Mermaid({ source }: MermaidProps) {
         return;
       }
 
-      mermaidRef.current.innerHTML = source;
+      // First render only: show the source until the SVG is ready. On a
+      // theme change the previous SVG stays until the new one replaces it.
+      if (!mermaidRef.current.querySelector('svg')) {
+        mermaidRef.current.textContent = source;
+      }
 
       mermaid.initialize({
         startOnLoad: false,
@@ -90,7 +94,8 @@ export function Mermaid({ source }: MermaidProps) {
       });
 
       try {
-        const renderId = `mermaid-diagram-${reactId.replace(/:/g, '')}`;
+        // Unique per theme so Mermaid does not remove the SVG on screen.
+        const renderId = `mermaid-diagram-${reactId.replace(/:/g, '')}-${resolvedTheme}`;
         const { svg, bindFunctions } = await mermaid.render(renderId, source);
 
         if (cancelled || !mermaidRef.current) {
