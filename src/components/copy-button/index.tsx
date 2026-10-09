@@ -33,14 +33,14 @@ export function CopyButton({ code }: CopyButtonProps) {
       aria-label={label}
       title={label}
       data-copied={copied}
-      className="pressable grid size-7 cursor-pointer place-items-center rounded-sm text-muted-foreground hover:bg-foreground/5 hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground/40"
+      className="group relative grid size-7 cursor-pointer place-items-center rounded-sm text-muted-foreground transition ease-out before:absolute before:-inset-2 hover:bg-foreground/5 hover:text-foreground motion-safe:active:scale-97 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground/40"
     >
       <MdContentCopy
-        className="copy-icon copy-icon-copy size-4"
+        className="col-start-1 row-start-1 size-4 transition duration-200 ease-out group-data-[copied=true]:opacity-0 motion-safe:group-data-[copied=true]:scale-80 motion-safe:group-data-[copied=true]:blur-[2px]"
         aria-hidden="true"
       />
       <MdCheck
-        className="copy-icon copy-icon-check size-4"
+        className="col-start-1 row-start-1 size-4 transition duration-200 ease-out group-data-[copied=false]:opacity-0 motion-safe:group-data-[copied=false]:scale-80 motion-safe:group-data-[copied=false]:blur-[2px]"
         aria-hidden="true"
       />
     </button>

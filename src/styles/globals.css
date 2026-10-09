@@ -33,9 +33,6 @@
   --code-block-bg: 0 0% 100%;
   --code-block-border: 240 5% 88%;
   --code-line-highlight: 240 5% 95%;
-  /* Motion: one curve and one hover speed for the whole site. */
-  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
-  --duration-hover: 150ms;
 }
 
 .dark {
@@ -64,6 +61,27 @@
   --code-block-bg: 240 5% 10%;
   --code-block-border: 240 5% 22%;
   --code-line-highlight: 240 5% 16%;
+}
+
+/* Motion: a stronger ease-out replaces Tailwind's default, so `ease-out`
+   and the animations below share one curve. */
+@theme {
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --animate-enter: enter 300ms var(--ease-out) both;
+  --animate-fade-in: fade-in 300ms var(--ease-out) both;
+
+  @keyframes enter {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+  }
 }
 
 @theme inline {
@@ -111,8 +129,6 @@
     text-wrap: pretty;
   }
 
-  /* Reduced motion keeps color and opacity fades; movement is removed where
-     it is declared (.pressable, .copy-icon, .stagger). */
   @media (prefers-reduced-motion: reduce) {
     html {
       scroll-behavior: auto;
@@ -133,8 +149,8 @@
     text-decoration-thickness: 1px;
     text-underline-offset: 0.25em;
     transition:
-      color var(--duration-hover) ease,
-      text-decoration-color var(--duration-hover) ease;
+      color 150ms ease,
+      text-decoration-color 150ms ease;
     outline: none;
   }
 
@@ -143,16 +159,9 @@
     font-weight: 500;
     text-decoration: underline;
     text-decoration-color: transparent;
-  }
 
-  @media (hover: hover) and (pointer: fine) {
-    .link-primary:hover {
+    @variant hover {
       text-decoration-color: hsl(var(--muted-foreground) / 0.6);
-    }
-
-    .link-secondary:hover {
-      color: hsl(var(--foreground));
-      text-decoration-color: hsl(var(--foreground));
     }
   }
 
@@ -160,98 +169,17 @@
     color: hsl(var(--muted-foreground));
     text-decoration: underline;
     text-decoration-color: hsl(var(--muted-foreground) / 0.4);
+
+    @variant hover {
+      color: hsl(var(--foreground));
+      text-decoration-color: hsl(var(--foreground));
+    }
   }
 
   .link-primary:focus-visible,
   .link-secondary:focus-visible {
     outline: 2px solid hsl(var(--foreground) / 0.4);
     outline-offset: 2px;
-  }
-
-  /* Icon buttons: instant press feedback and a 40px+ hit area around a
-     small glyph. */
-  .pressable {
-    position: relative;
-    transition:
-      color var(--duration-hover) ease,
-      background-color var(--duration-hover) ease,
-      transform 150ms var(--ease-out);
-  }
-
-  .pressable::before {
-    content: '';
-    position: absolute;
-    inset: -8px;
-  }
-
-  .pressable:active {
-    transform: scale(0.97);
-  }
-
-  /* Copy button: both icons share one cell and crossfade. */
-  .copy-icon {
-    grid-area: 1 / 1;
-    transition:
-      opacity 200ms var(--ease-out),
-      transform 200ms var(--ease-out),
-      filter 200ms var(--ease-out);
-  }
-
-  [data-copied='false'] > .copy-icon-check,
-  [data-copied='true'] > .copy-icon-copy {
-    opacity: 0;
-    transform: scale(0.8);
-    filter: blur(2px);
-  }
-
-  /* Homepage entrance: direct children cascade in once. */
-  .stagger > * {
-    animation: stagger-enter 300ms var(--ease-out) both;
-  }
-
-  .stagger > :nth-child(2) {
-    animation-delay: 50ms;
-  }
-
-  .stagger > :nth-child(3) {
-    animation-delay: 100ms;
-  }
-
-  .stagger > :nth-child(4) {
-    animation-delay: 150ms;
-  }
-
-  .stagger > :nth-child(n + 5) {
-    animation-delay: 200ms;
-  }
-
-  @keyframes stagger-enter {
-    from {
-      opacity: 0;
-      transform: translateY(8px);
-    }
-  }
-
-  @keyframes stagger-fade {
-    from {
-      opacity: 0;
-    }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .pressable:active {
-      transform: none;
-    }
-
-    [data-copied='false'] > .copy-icon-check,
-    [data-copied='true'] > .copy-icon-copy {
-      transform: none;
-      filter: none;
-    }
-
-    .stagger > * {
-      animation-name: stagger-fade;
-    }
   }
 
   /* Frosted strip fixed to the top edge of the viewport. It blurs and fades

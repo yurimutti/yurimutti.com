@@ -58,7 +58,7 @@ export default function Home() {
         }}
       />
 
-      <Page className="stagger">
+      <Page className="motion-safe:*:animate-enter motion-reduce:*:animate-fade-in *:nth-2:[animation-delay:50ms] *:nth-3:[animation-delay:100ms] *:nth-4:[animation-delay:150ms] *:nth-5:[animation-delay:200ms]">
         <section>
           {/* Visually hidden: the name is already in the header, but the page
               still needs an h1 for assistive tech and the document outline. */}

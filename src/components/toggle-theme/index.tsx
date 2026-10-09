@@ -51,7 +51,7 @@ export const ToggleTheme = () => {
       onClick={() => setTheme(isDark ? 'light' : 'dark')}
       aria-label={label}
       title={label}
-      className="pressable flex size-6 cursor-pointer items-center justify-center rounded-sm text-muted-foreground hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground/40"
+      className="relative flex size-6 cursor-pointer items-center justify-center rounded-sm text-muted-foreground transition ease-out before:absolute before:-inset-2 hover:text-foreground motion-safe:active:scale-97 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground/40"
     >
       <HalfCircle />
     </button>

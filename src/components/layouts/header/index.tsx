@@ -35,7 +35,7 @@ export const Header = () => {
                     href={href}
                     aria-current={active ? 'page' : undefined}
                     className={cn(
-                      'rounded-sm transition-colors duration-(--duration-hover) hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground/40',
+                      'rounded-sm transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground/40',
                       active ? 'text-foreground' : 'text-muted-foreground'
                     )}
                   >
