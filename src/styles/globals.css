@@ -63,6 +63,27 @@
   --code-line-highlight: 240 5% 16%;
 }
 
+/* Motion: a stronger ease-out replaces Tailwind's default, so `ease-out`
+   and the animations below share one curve. */
+@theme {
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --animate-enter: enter 300ms var(--ease-out) both;
+  --animate-fade-in: fade-in 300ms var(--ease-out) both;
+
+  @keyframes enter {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+  }
+}
+
 @theme inline {
   --color-background: hsl(var(--background));
   --color-foreground: hsl(var(--foreground));
@@ -93,18 +114,24 @@
   }
 
   body {
-    @apply font-sans text-foreground;
+    @apply font-sans text-foreground antialiased;
     background-image: var(--gradient-background);
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
   }
 
   @media (prefers-reduced-motion: reduce) {
-    *,
-    ::before,
-    ::after {
-      animation-duration: 0.01ms !important;
-      animation-iteration-count: 1 !important;
-      transition-duration: 0.01ms !important;
-      scroll-behavior: auto !important;
+    html {
+      scroll-behavior: auto;
     }
   }
 }
@@ -132,34 +159,27 @@
     font-weight: 500;
     text-decoration: underline;
     text-decoration-color: transparent;
-  }
 
-  .link-primary:hover {
-    text-decoration-color: hsl(var(--muted-foreground) / 0.6);
+    @variant hover {
+      text-decoration-color: hsl(var(--muted-foreground) / 0.6);
+    }
   }
 
   .link-secondary {
     color: hsl(var(--muted-foreground));
     text-decoration: underline;
     text-decoration-color: hsl(var(--muted-foreground) / 0.4);
-  }
 
-  .link-secondary:hover {
-    color: hsl(var(--foreground));
-    text-decoration-color: hsl(var(--foreground));
+    @variant hover {
+      color: hsl(var(--foreground));
+      text-decoration-color: hsl(var(--foreground));
+    }
   }
 
   .link-primary:focus-visible,
   .link-secondary:focus-visible {
     outline: 2px solid hsl(var(--foreground) / 0.4);
     outline-offset: 2px;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .link-primary,
-    .link-secondary {
-      transition: none;
-    }
   }
 
   /* Frosted strip fixed to the top edge of the viewport. It blurs and fades
@@ -173,7 +193,7 @@
     z-index: 30;
     pointer-events: none;
     opacity: 0;
-    transition: opacity 200ms ease;
+    transition: opacity 200ms var(--ease-out);
     /* Almost no tint: the blur does the work, so the strip takes the color
        of whatever part of the gradient is underneath it instead of painting
        a white or black band on top. */

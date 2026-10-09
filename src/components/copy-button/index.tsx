@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { MdContentCopy, MdCheck } from 'react-icons/md';
 
 interface CopyButtonProps {
@@ -9,12 +9,16 @@ interface CopyButtonProps {
 
 export function CopyButton({ code }: CopyButtonProps) {
   const [copied, setCopied] = useState(false);
+  const timeoutRef = useRef<ReturnType<typeof setTimeout>>(undefined);
+
+  useEffect(() => () => clearTimeout(timeoutRef.current), []);
 
   const handleCopy = async () => {
     try {
       await navigator.clipboard.writeText(code);
       setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
+      clearTimeout(timeoutRef.current);
+      timeoutRef.current = setTimeout(() => setCopied(false), 2000);
     } catch (err) {
       console.error('Failed to copy code:', err);
     }
@@ -28,13 +32,17 @@ export function CopyButton({ code }: CopyButtonProps) {
       onClick={handleCopy}
       aria-label={label}
       title={label}
-      className="flex size-7 cursor-pointer items-center justify-center rounded-sm text-muted-foreground outline-none transition-colors duration-200 hover:bg-foreground/5 hover:text-foreground focus-visible:ring-2 focus-visible:ring-foreground/40 motion-reduce:transition-none"
+      data-copied={copied}
+      className="group relative grid size-7 cursor-pointer place-items-center rounded-sm text-muted-foreground transition ease-out before:absolute before:-inset-2 hover:bg-foreground/5 hover:text-foreground motion-safe:active:scale-97 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground/40"
     >
-      {copied ? (
-        <MdCheck className="size-4" aria-hidden="true" />
-      ) : (
-        <MdContentCopy className="size-4" aria-hidden="true" />
-      )}
+      <MdContentCopy
+        className="col-start-1 row-start-1 size-4 transition duration-200 ease-out group-data-[copied=true]:opacity-0 motion-safe:group-data-[copied=true]:scale-80 motion-safe:group-data-[copied=true]:blur-[2px]"
+        aria-hidden="true"
+      />
+      <MdCheck
+        className="col-start-1 row-start-1 size-4 transition duration-200 ease-out group-data-[copied=false]:opacity-0 motion-safe:group-data-[copied=false]:scale-80 motion-safe:group-data-[copied=false]:blur-[2px]"
+        aria-hidden="true"
+      />
     </button>
   );
 }
