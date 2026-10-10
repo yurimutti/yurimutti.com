@@ -12,6 +12,7 @@
     "start": "next start",
     "lint": "eslint . --ext .ts,.tsx,.js,.jsx",
     "lint:fix": "eslint . --ext .ts,.tsx,.js,.jsx --fix",
+    "test:e2e": "playwright test",
     "format": "prettier --write .",
     "prepare": "husky install",
     "find-deadcode": "ts-prune"
@@ -53,6 +54,7 @@
   "devDependencies": {
     "@commitlint/cli": "19.8.1",
     "@commitlint/config-conventional": "19.8.1",
+    "@playwright/test": "1.59.1",
     "@shikijs/transformers": "3.12.2",
     "@tailwindcss/postcss": "4.1.11",
     "@types/node": "^20.11.30",

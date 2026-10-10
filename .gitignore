@@ -38,3 +38,7 @@ next-env.d.ts
 
 # Claude Code / agent local settings
 .claude/settings.local.json
+
+# playwright
+/test-results/
+/playwright-report/
