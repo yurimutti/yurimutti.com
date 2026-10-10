@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <!-- Hue drift, not lighting: three blurred blobs (indigo, plum, violet)
+         over an indigo base at roughly constant lightness. A light-to-dark
+         falloff would read as a shaded sphere; this reads as a color wash. -->
+    <clipPath id="c"><circle cx="32" cy="32" r="32"/></clipPath>
+    <filter id="b" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="12"/></filter>
+  </defs>
+  <g clip-path="url(#c)">
+    <rect width="64" height="64" fill="#6a5bd8"/>
+    <g filter="url(#b)">
+      <ellipse cx="14" cy="40" rx="26" ry="24" fill="#4b5ae6"/>
+      <ellipse cx="52" cy="46" rx="24" ry="24" fill="#a04a8c"/>
+      <ellipse cx="38" cy="10" rx="24" ry="18" fill="#7c6ee6"/>
+    </g>
+  </g>
+</svg>

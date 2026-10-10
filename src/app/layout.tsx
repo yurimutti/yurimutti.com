@@ -43,6 +43,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.variable} suppressHydrationWarning>
       <head>
+        {/* Static in the root layout so client navigations never re-insert them. */}
+        <link rel="icon" href="/favicon.ico" sizes="48x48" />
+        <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+        <link rel="apple-touch-icon" href="/apple-icon.png" />
         <Script
           src="https://cloud.umami.is/script.js"
           data-website-id="85e641a5-a4b5-4af0-ad1b-0f7b15dc61f9"
